@@ -1,16 +1,53 @@
-# gita
+📖 Bhagavad Gita App
 
-A new Flutter project.
+A Flutter-based mobile application that brings the timeless wisdom of the Bhagavad Gita to your fingertips.
+The app provides chapter-wise access to shlokas, a clean and intuitive UI, and features that help users explore spirituality in a modern way.
 
-## Getting Started
+🚀 Features
 
-This project is a starting point for a Flutter application.
+📚 Chapter-wise navigation – Easily browse all 18 chapters of the Gita
 
-A few resources to get you started if this is your first Flutter project:
+🔍 Clean and readable UI – Focused on simplicity and accessibility
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+📖 Shloka view – Each verse displayed in a neat, user-friendly format
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🌐 (Upcoming) Multilingual support
+
+⭐ (Upcoming) Bookmarks & daily shloka reminders
+
+🎧 (Upcoming) Audio recitation
+
+🛠️ Tech Stack
+
+Framework: Flutter
+
+Backend: Firebase (planned for next phase)
+
+Database: Firestore / Realtime Database (for verses and user data)
+
+Languages: Dart
+
+🏗️ Project Roadmap
+
+✅ Phase 1 – Frontend (UI/UX) complete
+
+🔄 Phase 2 – Frontend + Backend (Firebase integration, dynamic data)
+
+⏳ Phase 3 – Launch (Play Store release + final polishing)
+
+🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+Feel free to fork this repo and submit a pull request.
+
+📩 Contact
+
+👤 Manav Mandalia
+
+LinkedIn: (https://www.linkedin.com/in/manav-mandalia-1307b1291/)
+
+GitHub: (https://github.com/MANAVmandlia78)
+
+🕉️ Inspiration
+
+This project is inspired by the desire to make the Bhagavad Gita more accessible in today’s digital age by combining spirituality with technology.
