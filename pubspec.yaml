@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   rive: ^0.13.20
   sqflite: ^2.4.2
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
@@ -88,3 +89,23 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+  
+# ==========================================================
+# 💥 REQUIRED CONFIGURATION FOR flutter_launcher_icons 💥
+# ==========================================================
+flutter_launcher_icons:
+  # Required: Specifies the path to your master icon image (e.g., app_icon.png)
+  image_path: "assets/images/Bhagvat Gita app.png" 
+  
+  # Required: Specifies the platforms to generate icons for
+  android: "launcher_icon" # Set to 'true' or a custom name (e.g., 'gita_icon')
+  ios: true                # Set to true to generate iOS icons
+  
+  # Optional: Minimum Android SDK version (keeping default for modern Flutter apps)
+  min_sdk_android: 21 
+  
+  # Optional: Configuration for Android Adaptive Icons (Android 8.0+).
+  # Uncomment the lines below if you have separate foreground/background images.
+  # adaptive_icon_foreground: "assets/images/app_icon_foreground.png"
+  # adaptive_icon_background: "#FFFFFF" # Or "assets/images/background.png"
+  

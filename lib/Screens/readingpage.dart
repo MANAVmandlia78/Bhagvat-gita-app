@@ -1,56 +1,41 @@
 import 'package:flutter/material.dart';
+// Import the Verse model from your database helper file
+import 'package:gita/data/local/database_helper.dart';
 
-// Use the primary color defined in previous files for consistency
-const Color kPrimaryOrange = Color(0xFFE65100); 
-const Color kBackgroundColor = Color(0xFFF7F7F7); // Light background
-
-// Mock data for the current verse
-const int currentChapter = 1;
-const int currentVerse = 1;
-const int totalVerses = 47;
-const String sanskritText = 'धृतराष्ट्र उवाच |\nधर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सव: |\nमामका: पाण्डवाश्चैव किमकुर्वत सञ्जय ||1||';
-const String transliterationText = 
-  'dhṛtarāṣṭra uvāca |\n'
-  'dharma-kṣhetre kuru-kṣhetre samavetā yuyutsavaḥ |\n'
-  'māmakāḥ pāṇḍavāśhchaiva kimakurvata sañjaya ||1||';
-const String translationText = 
-  'Dhritarashtra said: O Sanjay, after gathering on the holy field of Kurukshetra, and desiring to fight, what did my sons and the sons of Pandu do?';
-const String commentaryText = 
-  'The two armies had gathered on the battlefield of Kurukshetra, well prepared to fight a war that was inevitable. Still, in this verse, King Dhritarashtra asked Sanjay, what his sons and his brother Pandu’s sons were doing on the battlefield? It was apparent that they would fight, then why did he ask such a question?\n\n'
-  'The blind King Dhritarashtra\'s fondness for his own sons had clouded his spiritual wisdom and deviated him from the path of virtue. He had usurped the kingdom of Hastinapur from the rightful heirs; the Pandavas, sons of his brother Pandu. Feeling guilty of the injustice...';
-
-
-// Mock data for Word Meanings
-final Map<String, String> wordMeanings = {
-  'dhṛtarāṣṭraḥ uvāca': 'Dhṛtarāṣhṭra said;',
-  'dharma-kṣhetre': 'the land of dharma;',
-  'kuru-kṣhetre': 'at Kurukṣhetra;',
-  'samavetāḥ': 'having gathered;',
-  'yuyutsavaḥ': 'desiring to fight;',
-  'māmakāḥ': 'my sons;',
-  'pāṇḍavāḥ': 'the sons of Pandu;',
-  'cha': 'and;',
-  'eva': 'certainly;',
-  'kim': 'what;',
-  'akurvata': 'did they do;',
-  'sañjaya': 'Sanjay;',
-};
-
+// Enhanced color palette with spiritual touch
+const Color kPrimaryOrange = Color(0xFFFF6F00); 
+const Color kBackgroundColor = Color(0xFFFFF8E1); // Warm cream background
+const Color kAccentGold = Color(0xFFFFB300);
+const Color kSacredRed = Color(0xFFD84315);
+const Color kTextPrimary = Color(0xFF4E342E); // Warm brown for text
 
 class ReadingPage extends StatefulWidget {
-  const ReadingPage({super.key});
+  final Verse initialVerse;
+  final int chapterNumber;
+  
+  const ReadingPage({
+    super.key,
+    required this.initialVerse,
+    required this.chapterNumber,
+  });
 
   @override
   State<ReadingPage> createState() => _ReadingPageState();
 }
 
 class _ReadingPageState extends State<ReadingPage> {
-  // Mock state for audio player
   double _currentSliderValue = 0.0;
   bool _isPlaying = false;
-  int _currentVerseIndex = currentVerse;
+  
+  late Verse _currentVerse;
+  final int totalVerses = 47;
 
-  // Mock audio player logic (not functional, just UI state)
+  @override
+  void initState() {
+    super.initState();
+    _currentVerse = widget.initialVerse;
+  }
+  
   void _togglePlayPause() {
     setState(() {
       _isPlaying = !_isPlaying;
@@ -58,371 +43,474 @@ class _ReadingPageState extends State<ReadingPage> {
   }
 
   void _seekForwardBackward(int seconds) {
-    // In a real app, this would control the audio player position
     print('Seeking $seconds seconds...');
   }
   
   void _nextVerse() {
-    setState(() {
-      _currentVerseIndex = (_currentVerseIndex % totalVerses) + 1;
-    });
+    if (_currentVerse.verseNumber < totalVerses) {
+      setState(() {
+        _currentVerse = Verse(
+          id: _currentVerse.id + 1,
+          verseNumber: _currentVerse.verseNumber + 1,
+          sanskrit: 'Placeholder for Verse ${_currentVerse.verseNumber + 1}',
+          translation: 'Fetching next verse from DB is required here.',
+          wordMeaning: '',
+          commentary: '',
+        );
+      });
+    }
   }
 
   void _previousVerse() {
-    setState(() {
-      _currentVerseIndex = _currentVerseIndex == 1 ? totalVerses : _currentVerseIndex - 1;
-    });
+    if (_currentVerse.verseNumber > 1) {
+      setState(() {
+        _currentVerse = Verse(
+          id: _currentVerse.id - 1,
+          verseNumber: _currentVerse.verseNumber - 1,
+          sanskrit: 'Placeholder for Verse ${_currentVerse.verseNumber - 1}',
+          translation: 'Fetching previous verse from DB is required here.',
+          wordMeaning: '',
+          commentary: '',
+        );
+      });
+    }
   }
 
-  // Widget to display the Sanskrit text and its separator
-  Widget _buildSanskritSection() {
-    return Column(
-      children: [
-        // Verse Number
-        Text(
-          '$currentChapter.$_currentVerseIndex',
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-          ),
-        ),
-        const SizedBox(height: 20),
-
-        // Sanskrit Text
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text(
-            sanskritText,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 24,
-              fontFamily: 'Sanskrit', // Using a generic font name
-              height: 1.8,
-              color: Colors.black,
+  // Decorative Om symbol divider
+  Widget _buildOmDivider() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      child: Row(
+        children: [
+          Expanded(child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1)),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              '🪷',
+              style: TextStyle(fontSize: 20, color: kPrimaryOrange),
             ),
           ),
-        ),
-        const SizedBox(height: 30),
+          Expanded(child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1)),
+        ],
+      ),
+    );
+  }
 
-        // Decorative Separator
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0),
-          child: Divider(color: Colors.brown.shade200, thickness: 1),
+  // Enhanced lotus divider
+  Widget _buildLotusDivider() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      child: Row(
+        children: [
+          Expanded(child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1)),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Text(
+              '🪷',
+              style: TextStyle(fontSize: 18, color: kSacredRed),
+            ),
+          ),
+          Expanded(child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSanskritSection() {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.orange.shade50.withOpacity(0.3),
+            Colors.transparent,
+          ],
+        ),
+      ),
+      child: Column(
+        children: [
+          const SizedBox(height: 10),
+          
+          // Verse Number with decorative border
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+            decoration: BoxDecoration(
+              border: Border.all(color: kAccentGold, width: 2),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white.withOpacity(0.7),
+            ),
+            child: Text(
+              '${widget.chapterNumber}.${_currentVerse.verseNumber}',
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: kPrimaryOrange,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ),
+          
+          const SizedBox(height: 30),
+
+          // Sanskrit Text with enhanced styling
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.6),
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(color: kAccentGold.withOpacity(0.3), width: 1),
+              boxShadow: [
+                BoxShadow(
+                  color: kPrimaryOrange.withOpacity(0.08),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Text(
+              _currentVerse.sanskrit,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 22,
+                fontFamily: 'Sanskrit',
+                height: 2.0,
+                color: kTextPrimary,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          
+          _buildOmDivider(),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildAudioControls() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.7),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: kAccentGold.withOpacity(0.3), width: 1),
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Rewind button
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.orange.shade50,
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.replay_5),
+                  iconSize: 28,
+                  color: kPrimaryOrange,
+                  onPressed: () => _seekForwardBackward(-5),
+                ),
+              ),
+              const SizedBox(width: 20),
+
+              // Main Play/Pause Button with enhanced design
+              InkWell(
+                onTap: _togglePlayPause,
+                borderRadius: BorderRadius.circular(40),
+                child: Container(
+                  width: 70,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [kPrimaryOrange, kSacredRed],
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: kPrimaryOrange.withOpacity(0.5),
+                        blurRadius: 15,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    _isPlaying ? Icons.pause : Icons.play_arrow,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 20),
+              
+              // Forward button
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.orange.shade50,
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.forward_5),
+                  iconSize: 28,
+                  color: kPrimaryOrange,
+                  onPressed: () => _seekForwardBackward(5),
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 20),
+
+          // Enhanced slider
+          SliderTheme(
+            data: SliderTheme.of(context).copyWith(
+              trackHeight: 3.0,
+              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8.0),
+              overlayShape: const RoundSliderOverlayShape(overlayRadius: 16.0),
+              thumbColor: kPrimaryOrange,
+              activeTrackColor: kPrimaryOrange,
+              inactiveTrackColor: kAccentGold.withOpacity(0.3),
+            ),
+            child: Slider(
+              value: _currentSliderValue,
+              min: 0,
+              max: 100,
+              onChanged: (double value) {
+                setState(() {
+                  _currentSliderValue = value;
+                });
+              },
+            ),
+          ),
+          
+          // Time Labels
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '00:00',
+                  style: TextStyle(fontSize: 13, color: kTextPrimary.withOpacity(0.7)),
+                ),
+                Text(
+                  '00:00',
+                  style: TextStyle(fontSize: 13, color: kTextPrimary.withOpacity(0.7)),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  
+  Widget _buildWordMeaningsSection() {
+    final Map<String, String> wordMeanings = _currentVerse.wordMeaning.split(';').where((s) => s.contains('—')).fold({}, (map, element) {
+        final parts = element.split('—');
+        if (parts.length == 2) {
+            map[parts[0].trim()] = parts[1].trim();
+        }
+        return map;
+    });
+
+    return Column(
+      children: [
+        _buildLotusDivider(),
+        
+        // Header with decorative elements
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('✦', style: TextStyle(color: kAccentGold, fontSize: 16)),
+            const SizedBox(width: 12),
+            const Text(
+              'Word Meanings',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: kPrimaryOrange,
+                letterSpacing: 0.5,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Text('✦', style: TextStyle(color: kAccentGold, fontSize: 16)),
+          ],
+        ),
+        
+        const SizedBox(height: 25),
+
+        // Word meanings in a card
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.6),
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(color: kAccentGold.withOpacity(0.3), width: 1),
+          ),
+          child: Column(
+            children: wordMeanings.entries.map(
+              (entry) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '• ',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: kAccentGold,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Expanded(
+                      child: RichText(
+                        text: TextSpan(
+                          style: TextStyle(fontSize: 16, height: 1.6, color: kTextPrimary),
+                          children: [
+                            TextSpan(
+                              text: entry.key,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: kPrimaryOrange,
+                              ),
+                            ),
+                            const TextSpan(text: ' — '),
+                            TextSpan(text: entry.value),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ).toList(),
+          ),
         ),
       ],
     );
   }
   
-  // Widget to display the audio controls section
-  Widget _buildAudioControls() {
+  Widget _buildTranslationSection() {
     return Column(
       children: [
-        // Play/Pause and Seek Buttons
+        _buildLotusDivider(),
+        
+        // Header
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Rewind 5 seconds
-            IconButton(
-              icon: const Icon(Icons.replay_5),
-              iconSize: 30,
-              color: Colors.grey.shade600,
-              onPressed: () => _seekForwardBackward(-5),
-            ),
-            const SizedBox(width: 20),
-
-            // Main Play/Pause Button
-            InkWell(
-              onTap: _togglePlayPause,
-              borderRadius: BorderRadius.circular(40),
-              child: Container(
-                width: 65,
-                height: 65,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: kPrimaryOrange,
-                  boxShadow: [
-                    BoxShadow(
-                      color: kPrimaryOrange.withOpacity(0.5),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Icon(
-                  _isPlaying ? Icons.pause : Icons.play_arrow,
-                  size: 40,
-                  color: Colors.white,
-                ),
+            Text('✦', style: TextStyle(color: kAccentGold, fontSize: 16)),
+            const SizedBox(width: 12),
+            const Text(
+              'Translation',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: kPrimaryOrange,
+                letterSpacing: 0.5,
               ),
             ),
-            const SizedBox(width: 20),
-            
-            // Forward 5 seconds
-            IconButton(
-              icon: const Icon(Icons.forward_5),
-              iconSize: 30,
-              color: Colors.grey.shade600,
-              onPressed: () => _seekForwardBackward(5),
-            ),
+            const SizedBox(width: 12),
+            Text('✦', style: TextStyle(color: kAccentGold, fontSize: 16)),
           ],
         ),
-
-        const SizedBox(height: 20),
-
-        // Time Slider
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-          child: Column(
-            children: [
-              SliderTheme(
-                data: SliderTheme.of(context).copyWith(
-                  trackHeight: 2.0,
-                  thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 6.0),
-                  overlayShape: const RoundSliderOverlayShape(overlayRadius: 12.0),
-                ),
-                child: Slider(
-                  value: _currentSliderValue,
-                  min: 0,
-                  max: 100, // Mock max duration
-                  activeColor: kPrimaryOrange,
-                  inactiveColor: Colors.grey.shade300,
-                  onChanged: (double value) {
-                    setState(() {
-                      _currentSliderValue = value;
-                    });
-                  },
-                ),
-              ),
-              
-              // Time Labels
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '00:00', // Mock Current Time
-                    style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
-                  ),
-                  Text(
-                    '00:00', // Mock Total Duration
-                    style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 30),
         
-        // Separator below audio controls
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0),
-          child: Divider(color: Colors.brown.shade200, thickness: 1),
+        const SizedBox(height: 25),
+
+        // Translation text in card
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.6),
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(color: kAccentGold.withOpacity(0.3), width: 1),
+          ),
+          child: Text(
+            _currentVerse.translation,
+            textAlign: TextAlign.justify,
+            style: TextStyle(
+              fontSize: 16,
+              height: 1.8,
+              color: kTextPrimary,
+            ),
+          ),
         ),
       ],
     );
   }
 
-  // Widget to display the Transliteration section
-  Widget _buildTransliterationSection() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Text(
-            'Transliteration',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: kPrimaryOrange,
-            ),
-          ),
-          const SizedBox(height: 15),
-          Text(
-            transliterationText,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16,
-              height: 1.6,
-              color: Colors.grey.shade800,
-            ),
-          ),
-          const SizedBox(height: 30),
-
-          // Decorative Separator
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Divider(color: Colors.brown.shade200, thickness: 1),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Word Meanings Section (Padded and Centered List)
-Widget _buildWordMeaningsSection() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      const SizedBox(height: 30),
-
-      // Header
-      const Text(
-        'Word Meanings',
-        style: TextStyle(
-          fontSize: 22,
-          fontWeight: FontWeight.bold,
-          color: Colors.black87,
-        ),
-      ),
-      const SizedBox(height: 20),
-
-      // Centered Content
-      Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+  Widget _buildCommentarySection() {
+    return Column(
+      children: [
+        _buildLotusDivider(),
+        
+        // Header
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ...wordMeanings.entries.map(
-              (entry) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min, // ✅ shrink to content
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Word (Orange)
-                    Text(
-                      entry.key,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: kPrimaryOrange,
-                        height: 1.5,
-                      ),
-                    ),
-
-                    const SizedBox(width: 6),
-
-                    // Separator/Dash
-                    const Text(
-                      '—',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black87,
-                      ),
-                    ),
-
-                    const SizedBox(width: 6),
-
-                    // Meaning (Black/Grey)
-                    Text(
-                      entry.value,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey.shade800,
-                        height: 1.5,
-                      ),
-                    ),
-                  ],
-                ),
+            Text('✦', style: TextStyle(color: kAccentGold, fontSize: 16)),
+            const SizedBox(width: 12),
+            const Text(
+              'Commentary',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: kPrimaryOrange,
+                letterSpacing: 0.5,
               ),
             ),
+            const SizedBox(width: 12),
+            Text('✦', style: TextStyle(color: kAccentGold, fontSize: 16)),
           ],
         ),
-      ),
+        
+        const SizedBox(height: 25),
 
-      const SizedBox(height: 30),
-
-      // Decorative Separator
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: Divider(color: Colors.brown.shade200, thickness: 1),
-      ),
-    ],
-  );
-}
-  // --- NEW WIDGET: Translation Section ---
-  Widget _buildTranslationSection() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Text(
-            'Translation',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87, 
-            ),
+        // Commentary text in card
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.6),
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(color: kAccentGold.withOpacity(0.3), width: 1),
           ),
-          const SizedBox(height: 20),
-
-          Text(
-            translationText,
-            textAlign: TextAlign.start,
-            style: TextStyle(
-              fontSize: 16,
-              height: 1.6,
-              color: Colors.grey.shade800,
-            ),
-          ),
-          const SizedBox(height: 30),
-
-          // Decorative Separator
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Divider(color: Colors.brown.shade200, thickness: 1),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // --- NEW WIDGET: Commentary Section ---
-  Widget _buildCommentarySection() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Commentary',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87, 
-            ),
-          ),
-          const SizedBox(height: 20),
-
-          Text(
-            commentaryText,
+          child: Text(
+            _currentVerse.commentary,
             textAlign: TextAlign.justify,
             style: TextStyle(
               fontSize: 16,
-              height: 1.6,
-              color: Colors.grey.shade800,
+              height: 1.8,
+              color: kTextPrimary,
             ),
           ),
-          // No bottom separator or padding needed here, as the content ends the scroll view
-        ],
-      ),
+        ),
+        
+        const SizedBox(height: 40),
+      ],
     );
   }
 
-
-  // Widget for the bottom verse navigation bar
   Widget _buildBottomVerseNavigation() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
       decoration: BoxDecoration(
         color: Colors.white,
+        border: Border(top: BorderSide(color: kAccentGold.withOpacity(0.3), width: 2)),
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 10,
             spreadRadius: 2,
+            offset: const Offset(0, -2),
           ),
         ],
       ),
@@ -431,51 +519,57 @@ Widget _buildWordMeaningsSection() {
         children: [
           // Previous Verse Button
           Opacity(
-            opacity: _currentVerseIndex > 1 ? 1.0 : 0.4,
-            child: IconButton(
-              icon: const Icon(Icons.chevron_left, size: 30),
-              color: Colors.black87,
-              onPressed: _currentVerseIndex > 1 ? _previousVerse : null,
+            opacity: _currentVerse.verseNumber > 1 ? 1.0 : 0.3,
+            child: Container(
+              decoration: BoxDecoration(
+                color: _currentVerse.verseNumber > 1 ? Colors.orange.shade50 : Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.chevron_left, size: 28),
+                color: kPrimaryOrange,
+                onPressed: _currentVerse.verseNumber > 1 ? _previousVerse : null,
+              ),
             ),
           ),
           
           // Current Verse Indicator
-          Text(
-            'Verse $_currentVerseIndex/$totalVerses',
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              color: Colors.orange.shade50,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: kAccentGold.withOpacity(0.5), width: 1),
+            ),
+            child: Text(
+              'Verse ${_currentVerse.verseNumber}/$totalVerses',
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: kPrimaryOrange,
+              ),
             ),
           ),
-
-          // Font Size Icon (Placeholder)
-          const Icon(Icons.font_download_outlined, color: Colors.black87, size: 24),
           
           // Next Verse Button
           Opacity(
-            opacity: _currentVerseIndex < totalVerses ? 1.0 : 0.4,
-            child: IconButton(
-              icon: const Icon(Icons.chevron_right, size: 30),
-              color: Colors.black87,
-              onPressed: _currentVerseIndex < totalVerses ? _nextVerse : null,
-            ),
-          ),
-          
-          // Font Settings Button
-          const Text(
-            'aA',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: kPrimaryOrange,
+            opacity: _currentVerse.verseNumber < totalVerses ? 1.0 : 0.3,
+            child: Container(
+              decoration: BoxDecoration(
+                color: _currentVerse.verseNumber < totalVerses ? Colors.orange.shade50 : Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.chevron_right, size: 28),
+                color: kPrimaryOrange,
+                onPressed: _currentVerse.verseNumber < totalVerses ? _nextVerse : null,
+              ),
             ),
           ),
         ],
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -484,68 +578,59 @@ Widget _buildWordMeaningsSection() {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(color: kAccentGold.withOpacity(0.3), width: 2)),
+          ),
+        ),
         leading: IconButton(
-          icon: const Icon(Icons.close, color: Colors.black),
+          icon: const Icon(Icons.close, color: kTextPrimary),
           onPressed: () {
-            // Navigator.pop(context); // Close the reading page (assuming this is used for navigation)
+            Navigator.pop(context);
           },
         ),
-        title: Text(
-          'Chapter $currentChapter',
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          ),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Chapter ${widget.chapterNumber}',
+              style: const TextStyle(
+                color: kPrimaryOrange,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5,
+              ),
+            ),
+          ],
         ),
         centerTitle: true,
         actions: [
-          // Icon for changing script/language (Placeholder for 'अ')
           IconButton(
-            icon: const Text('अ', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black)),
+            icon: const Text('अ', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: kPrimaryOrange)),
             onPressed: () {},
           ),
           IconButton(
-            icon: const Icon(Icons.bookmark_border, color: Colors.black),
-            onPressed: () {
-              // Action for bookmarking
-            },
+            icon: const Icon(Icons.bookmark_border, color: kPrimaryOrange),
+            onPressed: () {},
           ),
         ],
       ),
       
-      // Main content is scrollable
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: 30),
-            
-            // Sanskrit Verse Section
+            const SizedBox(height: 20),
             _buildSanskritSection(),
-
-            // Audio Controls Section
+            const SizedBox(height: 10),
             _buildAudioControls(),
-            
-            // Transliteration Section
-            _buildTransliterationSection(),
-
-            // Word Meanings Section
             _buildWordMeaningsSection(),
-            
-            // NEW SECTION: Translation
             _buildTranslationSection(),
-
-            // NEW SECTION: Commentary
             _buildCommentarySection(),
-
-            // Final Spacing above bottom navigation
-            const SizedBox(height: 50), 
           ],
         ),
       ),
       
-      // Bottom Navigation for verse movement
       bottomNavigationBar: _buildBottomVerseNavigation(),
     );
   }

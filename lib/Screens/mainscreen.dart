@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:gita/Screens/ChapterDetailPage.dart';
 import 'dart:ui';
 // 1. IMPORT DATABASE HELPER AND THE NEW MODEL
-import 'package:gita/data/local/database_helper.dart'; // Make sure this is your SQLite helper file 
+import 'package:gita/data/local/database_helper.dart'; // Make sure this is your SQLite helper file
 import 'package:gita/Screens/readingpage.dart';
 
 // Custom Colors based on the image's aesthetic (UNCHANGED)
-const Color kPrimaryOrange = Color(0xFFE65100); 
+const Color kPrimaryOrange = Color(0xFFE65100);
 const Color kBackgroundColor = Color(0xFFF7F7F7);
-const Color kDeepBlue = Color.fromARGB(255, 255, 255, 255); 
-const Color kHeroOverlay = Color.fromARGB(255, 255, 255, 255); 
-const Color kChapterNumberBg = Color(0xFFEEEEEE); 
+const Color kDeepBlue = Color.fromARGB(255, 255, 255, 255);
+const Color kHeroOverlay = Color.fromARGB(255, 255, 255, 255);
+const Color kChapterNumberBg = Color(0xFFEEEEEE);
 
 // --- Mock Data Structures (REMOVED: Old Chapter class is now in database_helper.dart) ---
 
@@ -88,7 +89,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   // 5. UPDATED METHOD SIGNATURE TO USE THE NEW Chapter MODEL
-  Widget _buildChapterCard(Chapter chapter) {
+// Remember to import your Chapter model and ChapterDetailPage at the top of mainscreen.dart
+
+Widget _buildChapterCard(Chapter chapter) {
     // The UI part remains UNCHANGED, only the source of 'chapter' has changed.
     return Padding(
       padding: const EdgeInsets.only(bottom: 12.0),
@@ -105,14 +108,22 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         child: InkWell(
+          // 💥 MODIFIED ONTAP LOGIC 💥
           onTap: () {
-            // Action to navigate to the chapter details page ReadingPage()
+            // Navigate to ChapterDetailPage, passing the unique chapter data
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const ReadingPage()),
+                builder: (context) => ChapterDetailPage(
+                  // Passing the specific chapter data to the detail page
+                  chapterNumber: chapter.number,
+                  chapterTitle: chapter.title,
+                  chapterSummary: chapter.summary, 
+                ),
+              ),
             );
           },
+          // --------------------------
           borderRadius: BorderRadius.circular(18),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -120,23 +131,29 @@ class _HomePageState extends State<HomePage> {
               children: [
                 // 1. Chapter Number Circle
                 Container(
-                  width: 44,
-                  height: 44,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color.fromARGB(255, 243, 163, 78),
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.transparent, // 👈 No fill color
+                    border: Border.all(
+                      color: const Color.fromARGB(255, 250, 144, 30), // 👈 Border color
+                      width: 2, // 👈 Border thickness
+                    ),
                   ),
                   child: Center(
                     child: Text(
-                      '${chapter.number}', // Uses chapter.number
+                      '${chapter.number}',
                       style: const TextStyle(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 18,
-                        color: Colors.black87,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Color.fromARGB(255, 33, 32, 31), // 👈 Match text color with border
                       ),
                     ),
                   ),
                 ),
+
                 const SizedBox(width: 16),
 
                 // 2. Chapter Title and Subtitle
@@ -148,11 +165,10 @@ class _HomePageState extends State<HomePage> {
                         'Chapter ${chapter.number}. ${chapter.title}', // Uses chapter.title
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontSize: 15,
                           color: Color(0xFF333333),
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                       ),
                       const SizedBox(height: 4),
                       Text(
@@ -184,8 +200,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  // --- Other Methods (UNCHANGED) ---
+    // --- Other Methods (UNCHANGED) ---
 
   Widget _buildMostReadVerseCard(MostReadVerse verse) {
     // ... (widget implementation is unchanged)
@@ -386,8 +401,12 @@ class _HomePageState extends State<HomePage> {
                                 vertical: 8,
                               ),
                               decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 230, 223, 223)
-                                    .withOpacity(0.4),
+                                color: const Color.fromARGB(
+                                  255,
+                                  230,
+                                  223,
+                                  223,
+                                ).withOpacity(0.4),
                                 borderRadius: BorderRadius.circular(30),
                                 boxShadow: [
                                   BoxShadow(
@@ -478,8 +497,9 @@ class _HomePageState extends State<HomePage> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 14),
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 14,
+                                ),
                                 elevation: 6,
                                 shadowColor: kPrimaryOrange.withOpacity(0.5),
                               ),
@@ -543,15 +563,15 @@ class _HomePageState extends State<HomePage> {
                               fit: BoxFit.cover,
                               errorBuilder: (context, error, stackTrace) =>
                                   Container(
-                                width: 80,
-                                height: 80,
-                                color: Colors.grey.shade200,
-                                child: const Icon(
-                                  Icons.menu_book,
-                                  size: 40,
-                                  color: Colors.grey,
-                                ),
-                              ),
+                                    width: 80,
+                                    height: 80,
+                                    color: Colors.grey.shade200,
+                                    child: const Icon(
+                                      Icons.menu_book,
+                                      size: 40,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
                             ),
                           ),
                           const SizedBox(width: 15),
@@ -618,8 +638,13 @@ class _HomePageState extends State<HomePage> {
 
                   // 6. CHAPTERS LIST (REPLACED mockChapters with conditional List)
                   _isLoading
-                      ? const Center(child: CircularProgressIndicator(color: kPrimaryOrange,)) // Show loader while fetching
-                      : Column( // Use Column to display the list of widgets
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: kPrimaryOrange,
+                          ),
+                        ) // Show loader while fetching
+                      : Column(
+                          // Use Column to display the list of widgets
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: _chapters
                               .map((chapter) => _buildChapterCard(chapter))
@@ -633,9 +658,7 @@ class _HomePageState extends State<HomePage> {
             // 3. MOST READ VERSES SECTION (UNCHANGED)
             // =========================================================
             _buildMostReadVersesSection(),
-            const SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 50),
           ],
         ),
       ),
