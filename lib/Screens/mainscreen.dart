@@ -88,6 +88,36 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // Helper method to build responsive drawer items
+  Widget _buildDrawerItem(
+    BuildContext context,
+    IconData icon,
+    String title,
+    VoidCallback onTap, {
+    bool isDestructive = false,
+  }) {
+    return ListTile(
+      contentPadding: EdgeInsets.symmetric(
+        horizontal: MediaQuery.of(context).size.width * 0.05,
+        vertical: MediaQuery.of(context).size.height * 0.005,
+      ),
+      leading: Icon(
+        icon,
+        color: isDestructive ? Colors.red : kPrimaryOrange,
+        size: MediaQuery.of(context).size.width * 0.06,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+          fontSize: MediaQuery.of(context).size.width * 0.04,
+          fontWeight: FontWeight.w500,
+          color: isDestructive ? Colors.red : Colors.black87,
+        ),
+      ),
+      onTap: onTap,
+    );
+  }
+
   // 5. UPDATED METHOD SIGNATURE TO USE THE NEW Chapter MODEL
 // Remember to import your Chapter model and ChapterDetailPage at the top of mainscreen.dart
 
@@ -341,12 +371,214 @@ Widget _buildChapterCard(Chapter chapter) {
 
     return Scaffold(
       backgroundColor: kBackgroundColor,
+      // 🆕 NEW APP BAR
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFFF6F00),
+        elevation: 4,
+        shadowColor: Colors.orange.withOpacity(0.5),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: 28,
+            ),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Text(
+              '🪷',
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(width: 8),
+            Text(
+              'Bhagavad Gita',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5,
+              ),
+            ),
+            SizedBox(width: 8),
+            Text(
+              '🪷',
+              style: TextStyle(fontSize: 20),
+            ),
+            
+          ],
+        ),
+        centerTitle: true,
+      ),
+      // 🆕 NEW DRAWER
+      drawer: Drawer(
+        width: MediaQuery.of(context).size.width * 0.75,
+        child: Container(
+          color: Colors.white,
+          child: SafeArea(
+            child: Column(
+              children: [
+                // Header with gradient
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(
+                    vertical: MediaQuery.of(context).size.height * 0.03,
+                    horizontal: 20,
+                  ),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        const Color(0xFFFF6F00),
+                        kPrimaryOrange.withOpacity(0.8),
+                      ],
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        height: MediaQuery.of(context).size.width * 0.15,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 3,
+                          ),
+                        ),
+                        child: Icon(
+                          Icons.person,
+                          size: MediaQuery.of(context).size.width * 0.08,
+                          color: kPrimaryOrange,
+                        ),
+                      ),
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+                      Text(
+                        'Manav',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.width * 0.05,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.005),
+                      Text(
+                        'manav@example.com',
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: MediaQuery.of(context).size.width * 0.035,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+                // Menu items in expanded scrollable area
+                Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.symmetric(
+                      vertical: MediaQuery.of(context).size.height * 0.01,
+                    ),
+                    children: [
+                      _buildDrawerItem(
+                        context,
+                        Icons.person,
+                        'Profile',
+                        () {
+                          Navigator.pop(context);
+                          // Navigate to profile page
+                        },
+                      ),
+                      _buildDrawerItem(
+                        context,
+                        Icons.bookmark,
+                        'Saved Verses',
+                        () {
+                          Navigator.pop(context);
+                          // Navigate to saved verses
+                        },
+                      ),
+                      _buildDrawerItem(
+                        context,
+                        Icons.history,
+                        'Reading History',
+                        () {
+                          Navigator.pop(context);
+                          // Navigate to reading history
+                        },
+                      ),
+                      Divider(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                        thickness: 1,
+                        indent: 20,
+                        endIndent: 20,
+                      ),
+                      _buildDrawerItem(
+                        context,
+                        Icons.settings,
+                        'Settings',
+                        () {
+                          Navigator.pop(context);
+                          // Navigate to settings
+                        },
+                      ),
+                      _buildDrawerItem(
+                        context,
+                        Icons.help_outline,
+                        'Help & Support',
+                        () {
+                          Navigator.pop(context);
+                          // Navigate to help
+                        },
+                      ),
+                      _buildDrawerItem(
+                        context,
+                        Icons.info_outline,
+                        'About',
+                        () {
+                          Navigator.pop(context);
+                          // Navigate to about
+                        },
+                      ),
+                      Divider(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                        thickness: 1,
+                        indent: 20,
+                        endIndent: 20,
+                      ),
+                      _buildDrawerItem(
+                        context,
+                        Icons.logout,
+                        'Logout',
+                        () {
+                          Navigator.pop(context);
+                          // Handle logout
+                        },
+                        isDestructive: true,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // =========================================================
-            // 1. HERO BANNER (UNCHANGED)
+            // 1. HERO BANNER (MODIFIED - Removed top icons)
             // =========================================================
             Container(
               clipBehavior: Clip.antiAlias,
@@ -376,65 +608,41 @@ Widget _buildChapterCard(Chapter chapter) {
                     ),
                   ),
                   Positioned(
-                    top: MediaQuery.of(context).padding.top + 10,
-                    left: 20,
-                    right: 20,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        IconButton(
-                          icon: const Icon(
-                            Icons.nightlight_round,
-                            color: Color.fromARGB(200, 255, 255, 255),
-                            size: 28,
+                    top: 20,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
                           ),
-                          onPressed: () {},
-                        ),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16,
-                                vertical: 8,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(
+                              255,
+                              230,
+                              223,
+                              223,
+                            ).withOpacity(0.4),
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 6,
                               ),
-                              decoration: BoxDecoration(
-                                color: const Color.fromARGB(
-                                  255,
-                                  230,
-                                  223,
-                                  223,
-                                ).withOpacity(0.4),
-                                borderRadius: BorderRadius.circular(30),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
-                                    blurRadius: 6,
-                                  ),
-                                ],
-                              ),
-                              child: const Text(
-                                '🙏 Radhe Radhe Manav 🙏',
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13,
-                                ),
-                              ),
+                            ],
+                          ),
+                          child: const Text(
+                            '🙏 Radhe Radhe Manav 🙏',
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
                             ),
                           ),
                         ),
-                        const Text(
-                          'अ',
-                          style: TextStyle(
-                            color: Color.fromARGB(200, 255, 255, 255),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 28,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ],
@@ -658,7 +866,7 @@ Widget _buildChapterCard(Chapter chapter) {
             // 3. MOST READ VERSES SECTION (UNCHANGED)
             // =========================================================
             _buildMostReadVersesSection(),
-            const SizedBox(height: 50),
+            const SizedBox(height: 80), // 🆕 ADDED BOTTOM PADDING
           ],
         ),
       ),
