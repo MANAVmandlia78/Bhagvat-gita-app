@@ -171,6 +171,30 @@ class DatabaseHelper {
     await createChapterTable(db, 12);
 
     await insertChapter12Verses(db);
+
+    await createChapterTable(db, 13);
+
+    await insertChapter13Verses(db);
+
+    await createChapterTable(db, 14);
+
+    await insertChapter14Verses(db);
+
+    await createChapterTable(db, 15);
+
+    await insertChapter15Verses(db);
+
+    await createChapterTable(db, 16);
+
+    await insertChapter16Verses(db);
+
+     await createChapterTable(db, 17);
+
+    await insertChapter17Verses(db);
+
+    await createChapterTable(db, 18);
+
+    await insertChapter18Verses(db);
   }
 
   // --- DYNAMIC TABLE CREATION FUNCTION ---
@@ -6573,8 +6597,2684 @@ class DatabaseHelper {
       'commentary':
           'This concluding verse summarizes the chapter: the path of devotion (**Bhakti Yoga**) is the **immortal dharma** that leads to the ultimate spiritual goal. Those who follow it with supreme faith and dedication are the most beloved by the Lord.',
     });
+  }
 
-    
+  Future<void> insertChapter13Verses(Database db) async {
+    // Start of Chapter 13: Kṣhetra Kṣhetrajña Vibhāg Yog
+
+    // Verse 1 (Arjuna Uvaca - present in many editions): Arjuna’s Query
+    await db.insert('chapter_13', {
+      'verse_number': 1,
+
+      'sanskrit':
+          'प्रकृतिं पुरुषं चैव क्षेत्रं क्षेत्रज्ञमेव च | एतद्वेदितुमिच्छामि ज्ञानं ज्ञेयं च केशव || 1 ||',
+      'translation':
+          'Arjuna said: O Keshava (Krishna), I wish to know **Prakriti** (Matter) and **Puruṣha** (Spirit), **Kṣhetra** (the Field) and **Kṣhetrajña** (the Knower of the Field), **Jñāna** (Knowledge), and **Jñeya** (the object of knowledge).',
+      'word_meaning':
+          'प्रकृतिम्—material nature; पुरुषम्—the spirit/enjoyer; च एव—and also; क्षेत्रम्—the field; क्षेत्रज्ञम्—the knower of the field; एव च—and also; एतत्—all this; वेदितुम्—to understand; इच्छामि—I wish; ज्ञानम्—knowledge; ज्ञेयम्—the object of knowledge; च—and; केशव—O Keshava (Krishna).',
+      'commentary':
+          'Arjuna poses six key metaphysical questions, setting the stage for Krishna’s discourse on the difference between the physical body/nature and the eternal soul/consciousness. This verse is omitted in some editions, making Krishna’s reply the official start.',
+    });
+
+    // Verse 2 (Shree Bhagavān Uvācha): The Definition of the Field and its Knower
+    await db.insert('chapter_13', {
+      'verse_number': 2,
+
+      'sanskrit':
+          'इदं शरीरं कौन्तेय क्षेत्रमित्यभिधीयते | एतद्यो वेत्ति तं प्राहुः क्षेत्रज्ञ इति तद्विदः || 2 ||',
+      'translation':
+          'The Supreme Lord said: O son of Kunti (Arjuna), this **body** (*idam śharīraṁ*) is called the **Field** (*Kṣhetra*), and he who **knows** (*vetti*) it is called the **Knower of the Field** (*Kṣhetrajña*) by those who know the truth.',
+      'word_meaning':
+          'इदम्—this; शरीरम्—body; कौन्तेय—O son of Kunti; क्षेत्रम्—the field; इति—thus; अभिधीयते—is designated; एतत्—this; यः—who; वेत्ति—knows; तम्—him; प्राहुः—they call; क्षेत्रज्ञः—the knower of the field; इति—thus; तत्-विदः—the knowers of both.',
+      'commentary':
+          'The body, along with the mind and intellect, is the "field" where we sow the seeds of our **karma** and reap the results. The soul (individual *ātmā*) is the knower/witness of this field.',
+    });
+
+    // Verse 3: The Supreme Knower of all Fields
+    await db.insert('chapter_13', {
+      'verse_number': 3,
+      'sanskrit':
+          'क्षेत्रज्ञं चापि मां विद्धि सर्वक्षेत्रेषु भारत | क्षेत्रक्षेत्रज्ञयोर्ज्ञानं यत्तज्ज्ञानं मतं मम || 3 ||',
+      'translation':
+          'Know Me to be the **Knower of the Field** (*Kṣhetrajña*) in **all fields** (*sarva-kṣhetreṣhu*), O scion of Bharata (Arjuna). The understanding of the Field and the Knower of the Field—that is true knowledge, in My opinion.',
+      'word_meaning':
+          'क्षेत्रज्ञम्—the Knower of the Field; च अपि—and also; माम्—Me; विद्धि—know; सर्व-क्षेत्रेषु—in all fields; भारत—O scion of Bharata; क्षेत्र-क्षेत्रज्ञयोः—of the Field and the Knower of the Field; ज्ञानम्—knowledge; यत्—which; तत्—that; ज्ञानम्—knowledge; मतम्—opinion; मम—My.',
+      'commentary':
+          'Krishna reveals there are two knowers: the individual soul (*jīva*) and the Supreme Soul (God/Paramātmā) who resides in all bodies. The ultimate spiritual goal is to know the distinction between the Field (matter) and both the individual and Supreme Knower (spirit).',
+    });
+
+    // Verse 4: Authority of Scripture
+    await db.insert('chapter_13', {
+      'verse_number': 4,
+      'sanskrit':
+          'तत्क्षेत्रं यच्च यादृक्च यद्विकारि यतश्च यत् | स च यो यत्प्रभावश्च तत्समासेन शृणु मे || 4 ||',
+      'translation':
+          'Listen, and I will briefly explain what that Field is, what its nature is, how changes occur in it, from where it arose, who the Knower of the Field is, and what His powers are.',
+      'word_meaning':
+          'तत्—that; क्षेत्रम्—Field; यत् च—and what; यादृक् च—and of what nature; यत्-विकारि—with what modifications; यतः च—and from what source; यत्—what; सः च—and He; यः—who; यत्-प्रभावः च—and what His powers are; तत्—that; समासेन—briefly; शृणु—hear; मे—from Me.',
+      'commentary':
+          'Krishna promises a concise, authoritative analysis of the six points Arjuna requested, providing the philosophical foundation for spiritual realization.',
+    });
+
+    // Verse 5: Sources of Knowledge
+    await db.insert('chapter_13', {
+      'verse_number': 5,
+      'sanskrit':
+          'ऋषिभिर्बहुधा गीतं छन्दोभिर्विविधैः पृथक् | ब्रह्मसूत्रपदैश्चैव हेतुमद्भिर्विनिश्चितैः || 5 ||',
+      'translation':
+          'This truth has been sung in many ways by sages in various Vedic hymns (*chhandobhiḥ*), and especially in the definitive and reasoned aphorisms of the **Brahma Sūtra**.',
+      'word_meaning':
+          'ऋषिभिः—by the sages; बहुधा—in many ways; गीतम्—sung; छन्दोभिः—in the Vedas (metres); विविधैः—various; पृथक्—separately; ब्रह्म-सूत्र-पदैः—in the aphorisms of the Brahma Sūtra; च एव—and also; हेतुमद्भिः—with reason/logic; विनिश्चितैः—conclusive.',
+      'commentary':
+          'Krishna confirms that the knowledge He is imparting is not novel but is firmly established in scripture, including the Vedas and the logical structure of the *Brahma Sūtra*.',
+    });
+
+    // Verse 6: Components of the Field (Kṣhetra) - Part 1
+    await db.insert('chapter_13', {
+      'verse_number': 6,
+      'sanskrit':
+          'महाभूतान्यहङ्कारो बुद्धिरव्यक्तमेव च | इन्द्रियाणि दशैकं च पञ्च चेन्द्रियगोचराः || 6 ||',
+      'translation':
+          'The Field (*Kṣhetra*) consists of: the five **Great Elements** (*Mahā-bhūtāni*), **Ego** (*ahaṅkāra*), **Intellect** (*buddhi*), the **Unmanifest** (*avyaktam* - Mūla Prakriti), the eleven **Senses** (*indriyāṇi*) and the five **objects of the senses** (*indriya-gocharāḥ*).',
+      'word_meaning':
+          'महा-भूतानि—the five great elements (earth, water, fire, air, ether); अहङ्कारः—the ego; बुद्धिः—the intellect; अव्यक्तम्—the unmanifest (primordial matter); एव च—and also; इन्द्रियाणि—the senses; दश एकम् च—ten and one (the mind); पञ्च च—and five; इन्द्रिय-गोचराः—the objects of the senses.',
+      'commentary':
+          'This and the next verse enumerate the **24 elements of material nature** (*Prakriti*) that constitute the Field. They include the gross body (elements), the subtle body (mind, intellect, ego, senses), and the causal body (unmanifest Prakriti).',
+    });
+
+    // Verse 7: Components of the Field (Kṣhetra) - Part 2 (Modifications)
+    await db.insert('chapter_13', {
+      'verse_number': 7,
+      'sanskrit':
+          'इच्छा द्वेषः सुखं दुःखं सङ्घातश्चेतना धृतिः | एतत्क्षेत्रं समासेन सविकारमुदाहृतम् || 7 ||',
+      'translation':
+          'Desire (*ichchhā*), hatred (*dveṣha*), pleasure (*sukha*), pain (*duḥkha*), the aggregate (body/mind), consciousness (*chetanā*), and steadfastness (*dhṛitiḥ*). This is the Field, briefly described with its modifications (*sa-vikāram*).',
+      'word_meaning':
+          'इच्छा—desire; द्वेषः—hatred; सुखम्—happiness; दुःखम्—distress; सङ्घातः—the aggregate (body); चेतना—consciousness/sensation; धृतिः—steadfastness; एतत्—this; क्षेत्रम्—the Field; समासेन—briefly; स-विकारम्—with its modifications; उदाहृतम्—declared.',
+      'commentary':
+          'This lists the internal qualities and experiences, which are the **modifications** (*vikāras*) of the Field. They are effects of the Field’s operation and are not inherent to the spirit (Kṣhetrajña).',
+    });
+
+    // Verse 8: Qualities of True Knowledge (Jñāna) - Part 1
+    await db.insert('chapter_13', {
+      'verse_number': 8,
+      'sanskrit':
+          'अमानित्वमदम्भित्वमहिंसा क्षान्तिरार्जवम् | आचार्योपासनं शौचं स्थैर्यमात्मविनिग्रहः || 8 ||',
+      'translation':
+          'True Knowledge (*Jñāna*) is: **Humility** (*amānitvam*), unpretentiousness (*adambhitvam*), **non-violence** (*ahiṁsā*), forbearance (*kṣhāntiḥ*), honesty (*ārjavam*), service to the Guru (*āchāryopāsanam*), purity (*śhaucham*), steadfastness (*sthairyam*), and self-control (*ātma-vinigrahaḥ*).',
+      'word_meaning':
+          'अमानित्वम्—humility; अदम्भित्वम्—unpretentiousness; अहिंसा—non-violence; क्षान्तिः—forbearance/patience; आर्जवम्—honesty/simplicity; आचार्य-उपासनम्—service to the Guru; शौचम्—purity (external and internal); स्थैर्यम्—steadfastness; आत्म-विनिग्रहः—self-control.',
+      'commentary':
+          'From this verse, Krishna describes **20 qualities** that constitute true spiritual knowledge. These are not intellectual facts, but ethical and moral virtues that prepare the mind for Self-realization. True knowledge is a way of being.',
+    });
+
+    // Verse 9: Qualities of True Knowledge (Jñāna) - Part 2
+    await db.insert('chapter_13', {
+      'verse_number': 9,
+      'sanskrit':
+          'इन्द्रियार्थेषु वैराग्यमनहङ्कार एव च | जन्ममृत्युजराव्याधिदुःखदोषानुदर्शनम् || 9 ||',
+      'translation':
+          'Detachment from the objects of the senses (*indriyārtheṣhu vairāgyam*), absence of ego (*anahaṅkāra*), and constantly reflecting on the suffering and defects of birth, death, old age, and sickness (*janma-mṛityu-jarā-vyādhi-duḥkha-doṣhānudarśhanam*);',
+      'word_meaning':
+          'इन्द्रिय-अर्थेषु—in the objects of the senses; वैराग्यम्—detachment; अनहङ्कारः—absence of ego; एव च—and also; जन्म-मृत्यु-जरा-व्याधि-दुःख-दोष-अनुदर्शनम्—constantly reflecting on the suffering and defects of birth, death, old age, and sickness.',
+      'commentary':
+          'This highlights the importance of **detachment** from worldly pleasures and **Vairagya** (dispassion), which is cultivated by meditating on the temporary, sorrowful, and defective nature of material life.',
+    });
+
+    // Verse 10: Qualities of True Knowledge (Jñāna) - Part 3
+    await db.insert('chapter_13', {
+      'verse_number': 10,
+      'sanskrit':
+          'असक्तिरनभिष्वङ्गः पुत्रदारगृहादिषु | नित्यं च समचित्तत्वमिष्टानिष्टोपपत्तिषु || 10 ||',
+      'translation':
+          'Non-attachment (*asaktiḥ*), non-identification with son, wife, home, and so forth (*anabhiṣhvaṅgaḥ*), and constant equanimity of mind (*sama-chittatvam*) upon the attainment of desirable and undesirable events (*iṣhṭāniṣhṭopapattiṣhu*);',
+      'word_meaning':
+          'असक्तिः—non-attachment; अनभिष्वङ्गः—non-identification/non-clinging; पुत्र-दार-गृह-आदिषु—to son, wife, home, etc.; नित्यम्—constantly; च—and; सम-चित्तत्वम्—equanimity; इष्ट-अनिष्ट-उपपत्तिषु—upon the attainment of desirable and undesirable events.',
+      'commentary':
+          'The devotee must rise above the clinging that binds one to family and possessions. **Equanimity** (*sama-chittatvam*) is the inner stability that remains unshaken by favorable (iṣhṭa) or unfavorable (aniṣhṭa) outcomes.',
+    });
+
+    // Verse 11: Qualities of True Knowledge (Jñāna) - Part 4
+    await db.insert('chapter_13', {
+      'verse_number': 11,
+      'sanskrit':
+          'मयि चानन्ययोगेन भक्तिरव्यभिचारिणी | विविक्तदेशसेवित्वमरतिर्जनसंसदि || 11 ||',
+      'translation':
+          'Unwavering devotion (*bhaktir avyabhichāriṇī*) to Me by the Yoga of non-separation (*ananya-yogena*), inclination to live in solitary places (*vivikta-deśha-sevitvam*), and distaste for the company of mundane people (*aratir jana-saṁsadi*);',
+      'word_meaning':
+          'मयि च—and in Me; अनन्य-योगेन—by the Yoga of non-separation (undivided); भक्तिः—devotion; अव्यभिचारिणी—unwavering; विविक्त-देश-सेवित्वम्—inclination to live in solitary places; अरतिः—distaste; जन-संसदि—for the company of mundane people.',
+      'commentary':
+          'This is a crucial virtue for the Bhakti Yogī: **pure, unmixed devotion** (*ananya-bhakti*) to the Lord. It also suggests a preference for a calm, introspective environment over excessive social contact, which can distract the mind.',
+    });
+
+    // Verse 12: Qualities of True Knowledge (Jñāna) - Part 5
+    await db.insert('chapter_13', {
+      'verse_number': 12,
+      'sanskrit':
+          'अध्यात्मज्ञाननित्यत्वं तत्त्वज्ञानार्थदर्शनम् | एतज्ज्ञानमिति प्रोक्तमज्ञानं यदतोऽन्यथा || 12 ||',
+      'translation':
+          'Constancy in the pursuit of spiritual knowledge (*adhyātma-jñāna-nityatvam*), and seeing the goal of the knowledge of truth (*tattva-jñānārtha-darśhanam*). All this is declared to be **Knowledge**; what is contrary to this is **Ignorance** (*ajñānam*).',
+      'word_meaning':
+          'अध्यात्म-ज्ञान-नित्यत्वम्—constancy in self-knowledge; तत्त्व-ज्ञान-अर्थ-दर्शनम्—seeing the goal of the knowledge of the Truth (the Supreme Reality); एतत्—this; ज्ञानम्—Knowledge; इति—thus; प्रोक्तम्—declared; अज्ञानम्—Ignorance; यत्—which; अतः—from this; अन्यथा—otherwise (different).',
+      'commentary':
+          'This concludes the list of 20 virtues defining *Jñāna*. **True Knowledge is not just what you know, but how you live**. Everything opposed to these virtues is considered *ajñāna* (ignorance).',
+    });
+
+    // Verse 13: Introducing the Object of Knowledge (Jñeya)
+    await db.insert('chapter_13', {
+      'verse_number': 13,
+      'sanskrit':
+          'ज्ञेयं यत्तत्प्रवक्ष्यामि यज्ज्ञात्वामृतमश्नुते | अनादिमत्परं ब्रह्म न सत्तन्नासदुच्यते || 13 ||',
+      'translation':
+          'I shall now describe the **Object of Knowledge** (*Jñeya*), by knowing which one attains immortality (*amṛitam aśhnute*). It is the beginningless Supreme **Brahman**, which is said to be neither being (*sat*) nor non-being (*asat*).',
+      'word_meaning':
+          'ज्ञेयम्—the object of knowledge; यत्—which; तत्—that; प्रवक्ष्यामि—I shall now describe; यत्—which; ज्ञात्वा—having known; अमृतम्—immortality; अश्नुते—one attains; अनादि-मत्—without any beginning; परम्—supreme; ब्रह्म—Brahman (the Absolute Truth); न सत्—neither being; तत्—that; न असत्—nor non-being; उच्यते—is called.',
+      'commentary':
+          'The *Jñeya* is the Supreme Absolute Reality (Brahman). It is beyond the duality of **Sat** (existent, manifest) and **Asat** (non-existent, unmanifest), as both terms are limited by the material intellect. It is the transcendental source of all existence.',
+    });
+
+    // Verse 14: The Pervasiveness of Brahman (The Jñeya) - Part 1
+    await db.insert('chapter_13', {
+      'verse_number': 14,
+      'sanskrit':
+          'सर्वतः पाणिपादं तत्सर्वतोऽक्षिशिरोमुखम् | सर्वतः श्रुतिमल्लोके सर्वमावृत्य तिष्ठति || 14 ||',
+      'translation':
+          'That Supreme Reality has hands and feet everywhere (*sarvataḥ pāṇi-pādaṁ*), eyes, heads, and faces everywhere (*sarvato-’kṣhi-śhiro-mukham*), hearing everywhere (*sarvataḥ śhruti-mal*) in the world, pervading everything, it remains (*sarvam āvṛitya tiṣhṭhati*).',
+      'word_meaning':
+          'सर्वतः—everywhere; पाणि-पादम्—hands and feet; तत्—that (Brahman); सर्वतः—everywhere; अक्षि-शिरः-मुखम्—eyes, heads, and faces; सर्वतः—everywhere; श्रुति-मत्—having ears (hearing); लोके—in the world; सर्वम्—everything; आवृत्य—encompassing; तिष्ठति—remains.',
+      'commentary':
+          'This describes the **Cosmic Form** of the Absolute (Brahman) as the **All-Pervading** spirit. It performs all actions and perceives all objects through the sensory and motor organs of every living being, yet it remains transcendent.',
+    });
+
+    // Verse 15: The Paradoxical Nature of Brahman - Part 2
+    await db.insert('chapter_13', {
+      'verse_number': 15,
+      'sanskrit':
+          'सर्वेन्द्रियगुणाभासं सर्वेन्द्रियविवर्जितम् | असक्तं सर्वभृच्चैव निर्गुणं गुणभोक्तृ च || 15 ||',
+      'translation':
+          'It appears to possess the functions of all the senses (*sarvendriya-guṇābhāsaṁ*), yet it is devoid of all senses (*sarvendriya-vivarjitam*); unattached (*asaktam*), yet the maintainer of all (*sarva-bhṛit*); free from the modes of nature (*nirguṇaṁ*), yet the enjoyer of them (*guṇa-bhoktṛi*).',
+      'word_meaning':
+          'सर्व-इन्द्रिय-गुण-आभासम्—shining with the qualities of all the senses; सर्व-इन्द्रिय-विवर्जितम्—devoid of all senses; असक्तम्—unattached; सर्व-भृत्—the supporter of all; च एव—and also; निर्गुणम्—without the three modes of nature (guṇas); गुण-भोक्तृ—the enjoyer of the modes; च—and.',
+      'commentary':
+          'This highlights the **paradoxical, transcendental nature** of Brahman. It is a subtle principle: It is beyond the material senses (sense-less) but is the source of all sensory perception; it is unattached to matter, yet it sustains the entire universe; it is not bound by the *guṇas* (modes of nature) but directs and enjoys their actions.',
+    });
+
+    // Ensure this code block extends your existing insertChapter13Verses function.
+
+    // Verse 16: The Paradoxical Reality of Brahman (The Jñeya) - Part 3
+    await db.insert('chapter_13', {
+      'verse_number': 16,
+
+      'sanskrit':
+          'बहिरन्तश्च भूतानामचरं चरमेव च | सूक्ष्मत्वात्तदविज्ञेयं दूरस्थं चान्तिके च तत् || 16 ||',
+      'translation':
+          'It exists **outside** and **inside** all beings; it is the **moving** and the **non-moving**. Because of its subtlety (*sūkṣhmatvāt*), it is incomprehensible; it is far away, yet it is also very near.',
+      'word_meaning':
+          'बहिः—outside; अन्तः च—and inside; भूतानाम्—of all beings; अचरम्—non-moving; चरम् एव च—and moving as well; सूक्ष्मत्वात्—because of its subtlety; तत्—that (Brahman); अविज्ञेयम्—incomprehensible; दूरस्थम् च—and situated far away; अन्तिके च—and near; तत्—that.',
+      'commentary':
+          'The essence of Brahman is its **subtlety** (*sūkṣhmatvāt*), which makes it logically difficult to grasp. It is simultaneously pervasive (inside everything) and transcendent (far away), revealing that physical distance is irrelevant to spiritual realization.',
+    });
+
+    // Verse 17: The Light of Lights
+    await db.insert('chapter_13', {
+      'verse_number': 17,
+
+      'sanskrit':
+          'अविभक्तं च भूतेषु विभक्तमिव च स्थितम् | भूतभर्तृ च तज्ज्ञेयं ग्रसिष्णु प्रभविष्णु च || 17 ||',
+      'translation':
+          'Though undivided, it appears to be divided (*vibhakta-miva*) among beings. It is the **supporter of all beings** (*bhūta-bhartṛi*), yet it is also the **consumer** (*grasiṣhṇu*), and the **creator** (*prabhaviṣhṇu*).',
+      'word_meaning':
+          'अविभक्तम् च—and undivided; भूतेषु—among beings; विभक्तम् इव च—and as if divided; स्थितम्—situated; भूत-भर्तृ—the supporter of beings; च तत् ज्ञेयम्—and that should be known; ग्रसिष्णु—the devourer; प्रभविष्णु—the creator; च—and.',
+      'commentary':
+          'Brahman, though non-dual (*avibhaktaṁ*), appears divided due to the multitude of individual bodies and minds. Krishna uses the cycles of life (*bhartṛi*), dissolution (*grasiṣhṇu*), and creation (*prabhaviṣhṇu*) to show the constant, single reality behind all cosmic phenomena.',
+    });
+
+    // Verse 18: The ultimate purpose of knowledge
+    await db.insert('chapter_13', {
+      'verse_number': 18,
+
+      'sanskrit':
+          'ज्योतिषामपि तज्ज्योतिस्तमसः परमुच्यते | ज्ञानं ज्ञेयं ज्ञानगम्यं हृदि सर्वस्य विष्ठितम् || 18 ||',
+      'translation':
+          'That Supreme Reality is the **Light of all lights**, said to be beyond darkness. It is **Knowledge** (*Jñānaṁ*), the **Object of Knowledge** (*Jñeyaṁ*), and the **Goal of Knowledge** (*Jñāna-gamyam*). It resides specially within the hearts of all.',
+      'word_meaning':
+          'ज्योतिषाम् अपि—even of lights; तत् ज्योतिः—that light; तमसः—of darkness; परम्—beyond; उच्यते—is called; ज्ञानम्—knowledge; ज्ञेयम्—the knowable; ज्ञान-गम्यम्—the goal of knowledge; हृदि—in the heart; सर्वस्य—of all; विष्ठितम्—resides.',
+      'commentary':
+          'This summarizes the *Jñeya* section. Brahman is the *self-luminous light* that removes the darkness of ignorance. Crucially, this ultimate reality is not distant but resides in the heart (*hṛidi sarvasya viṣhṭhitam*) of every being.',
+    });
+
+    // Verse 19: Conclusion of the Field, Knowledge, and Object
+    await db.insert('chapter_13', {
+      'verse_number': 19,
+
+      'sanskrit':
+          'इति क्षेत्रं तथा ज्ञानं ज्ञेयं चोक्तं समासतः | मद्भक्त एतद्विज्ञाय मद्भावायोपपद्यते || 19 ||',
+      'translation':
+          'Thus, the Field (*Kṣhetra*), Knowledge (*Jñānaṁ*), and the Object of Knowledge (*Jñeyaṁ*) have been briefly declared. My devotee (*mad-bhaktaḥ*), knowing this, becomes qualified to attain My nature (*mad-bhāvāyopapadyate*).',
+      'word_meaning':
+          'इति—thus; क्षेत्रम्—the Field; तथा—and; ज्ञानम्—Knowledge; ज्ञेयम् च—and the Knowable; उक्तम्—declared; समासतः—briefly; मत्-भक्तः—My devotee; एतत्—this; विज्ञाय—having realized; मद्-भावाय—to My nature; उपपद्यते—becomes qualified.',
+      'commentary':
+          'This serves as a pivotal transition. Krishna confirms the complete theoretical framework has been provided, and emphasizes that **Bhakti** is the practical means to apply this knowledge and realize the Self.',
+    });
+
+    // Verse 20: Introducing Prakṛiti and Puruṣha
+    await db.insert('chapter_13', {
+      'verse_number': 20,
+
+      'sanskrit':
+          'प्रकृतिं पुरुषं चैव विद्ध्यनादी उभावपि | विकारान्गुणांश्चैव विद्धि प्रकृतिसम्भवान् || 20 ||',
+      'translation':
+          'Know that **Prakṛiti** (Material Nature) and **Puruṣha** (the enjoyer/soul) are both **beginningless** (*anādī*). Know also that all transformations (*vikārān*) and the *guṇas* (modes of nature) are born of **Prakṛiti**.',
+      'word_meaning':
+          'प्रकृतिम्—Prakṛiti (Matter/Nature); पुरुषम्—Puruṣha (Spirit/Soul); च एव—and also; विद्धि—know; अनादी—beginningless; उभौ अपि—both; विकारान्—transformations; गुणान् च एव—and also the *guṇas*; विद्धि—know; प्रकृति-सम्भवान्—born of Prakṛiti.',
+      'commentary':
+          'Krishna now addresses Arjuna’s original Verse 1 question. He establishes that the two cosmic components—matter and soul—are both **eternal, without beginning** (*anādī*). This sets up the analysis of how they interact.',
+    });
+
+    // Verse 21: The cause of the soul’s suffering
+    await db.insert('chapter_13', {
+      'verse_number': 21,
+
+      'sanskrit':
+          'कार्यकारणकर्तृत्वे हेतुः प्रकृतिरुच्यते | पुरुषः सुखदुःखानां भोक्तृत्वे हेतुरुच्यते || 21 ||',
+      'translation':
+          'Prakṛiti is said to be the cause of the agency, effects, and instruments (the body/senses). **Puruṣha** (the soul) is said to be the cause of **experiencing** (*bhoktṛtve*) pleasure and pain.',
+      'word_meaning':
+          'कार्य-कारण-कर्तृत्वे—in the agency of the body, effect, and instruments; हेतुः—cause; प्रकृतिः—Prakṛiti; उच्यते—is called; पुरुषः—Puruṣha (the soul); सुख-दुःखानाम्—of pleasure and pain; भोक्तृत्वे—in the experience; हेतुः—cause; उच्यते—is called.',
+      'commentary':
+          'This defines the function of each eternal principle: **Prakṛiti** generates the physical and mental mechanisms (*body, action, effects*), while **Puruṣha** (the soul) is the conscious entity that falsely identifies with these mechanisms, thereby becoming the **experiencer** (*bhoktā*) of their resultant pleasure and pain.',
+    });
+
+    // Verse 22: The cause of rebirth
+    await db.insert('chapter_13', {
+      'verse_number': 22,
+
+      'sanskrit':
+          'पुरुषः प्रकृतिस्थो हि भुङ्क्ते प्रकृतिजान्गुणान् | कारणं गुणसङ्गोऽस्य सदसद्योनिजन्मसु || 22 ||',
+      'translation':
+          'The Puruṣha, situated in Prakṛiti (the body), experiences the *guṇas* born of Prakṛiti. Attachment to these *guṇas* is the cause of its birth in good and evil wombs.',
+      'word_meaning':
+          'पुरुषः—Puruṣha (the soul); प्रकृति-स्थः—situated in Prakṛiti; हि—certainly; भुङ्क्ते—experiences/enjoys; प्रकृति-जान्—born of Prakṛiti; गुणान्—the *guṇas*; कारणम्—the cause; गुण-सङ्गः—attachment to the *guṇas*; अस्य—his; सत्-असत्-योनि-जन्मसु—in taking birth in good and evil wombs.',
+      'commentary':
+          'The soul’s bondage is not inherent but caused by **attachment** (*guṇa-saṅgaḥ*). The false clinging to the experiences generated by the *guṇas* is what forces the soul into the cycle of rebirth (*saṁsāra*), dictating its future embodiment.',
+    });
+
+    // Verse 23: The Supreme Soul (Paramātmā)
+    await db.insert('chapter_13', {
+      'verse_number': 23,
+
+      'sanskrit':
+          'उपद्रष्टानुमन्ता च भर्ता भोक्ता महेश्वरः | परमात्मेति चाप्युक्तो देहेऽस्मिन्पुरुषः परः || 23 ||',
+      'translation':
+          'The Supreme Spirit (*Puruṣhaḥ Paraḥ*) in this body is the witness (*Upadraṣhṭā*), the sanctioner (*Anumantā*), the supporter (*Bhartā*), the experiencer (*Bhoktā*), and the **Supreme Lord** (*Maheśhvaraḥ*), also called the **Supreme Soul** (*Paramātmā*).',
+      'word_meaning':
+          'उपद्रष्टा—the witness; अनुमन्ता—the sanctioner; च—and; भर्ता—the supporter; भोक्ता—the experiencer; महा-ईश्वरः—the Supreme Lord; परम-आत्मा—the Supreme Soul; इति च अपि उक्तः—and is also called; देहे अस्मिन्—in this body; पुरुषः परः—the Supreme Spirit.',
+      'commentary':
+          'Krishna introduces the **Paramātmā** (Supreme Soul) as the third, highest principle present in the body. Unlike the individual soul, the Paramātmā is transcendent, acting primarily as the **Witness** (*Upadraṣhṭā*) and the **Sanctioner** (*Anumantā*) of the individual soul\'s choices.',
+    });
+
+    // Verse 24: The fruit of knowing Puruṣha and Prakṛiti
+    await db.insert('chapter_13', {
+      'verse_number': 24,
+
+      'sanskrit':
+          'य एवं वेत्ति पुरुषं प्रकृतिं च गुणैः सह | सर्वथा वर्तमानोऽपि न स भूयोऽभिजायते || 24 ||',
+      'translation':
+          'One who thus knows the **Puruṣha** (the soul), and **Prakṛiti** (nature) along with its *guṇas*, is not born again, regardless of their present mode of living.',
+      'word_meaning':
+          'यः—who; एवम्—thus; वेत्ति—knows; पुरुषम्—the spirit; प्रकृतिम् च—and Prakṛiti; गुणैः सह—along with the *guṇas*; सर्वथा—in all circumstances; वर्तमानः अपि—even being situated; न सः—he is not; भूयः—again; अभिजायते—born.',
+      'commentary':
+          'The ultimate knowledge is the ability to clearly distinguish the pure spiritual self from the material principle and its modes. This discriminative knowledge guarantees liberation (*na sa bhūyo’bhijāyate*) and is the essence of this chapter.',
+    });
+
+    // Verse 25: Three primary paths to realization
+    await db.insert('chapter_13', {
+      'verse_number': 25,
+
+      'sanskrit':
+          'ध्यानेनात्मनि पश्यन्ति केचिदात्मानमात्मना | अन्ये सांख्येन योगेन कर्मयोगेन चापरे || 25 ||',
+      'translation':
+          'Some perceive the Self within themselves through **meditation** (*Dhyānena*); others, through the **Yoga of Knowledge** (*Sānkhyena*); and yet others, through the **Yoga of Action** (*Karma-yogena*).',
+      'word_meaning':
+          'ध्यानेन—by meditation; आत्मनि—in the Self; पश्यन्ति—see; केचित्—some; आत्मानम्—the Self; आत्मना—by the mind/intellect; अन्ये—others; साङ्ख्येन योगेन—by the Yoga of knowledge (Sānkhya); कर्म-योगेन च अपरे—and others by the Yoga of action.',
+      'commentary':
+          'Krishna categorizes the three main practical approaches to attaining self-realization, confirming that all paths—contemplation, intellectual discrimination, and detached work—are valid means to achieve the same goal.',
+    });
+
+    // Verse 26: Salvation through faith (The fourth path)
+    await db.insert('chapter_13', {
+      'verse_number': 26,
+
+      'sanskrit':
+          'अन्ये त्वेवमजानन्तः श्रुत्वान्येभ्य उपासते | तेऽपि चातितरन्त्येव मृत्युं श्रुतिपरायणाः || 26 ||',
+      'translation':
+          'Others, however, not knowing these methods, begin to worship by hearing from others. They too transcend the path of death, being sincerely devoted to what they have heard (*śhruti-parāyaṇāḥ*).',
+      'word_meaning':
+          'अन्ये तु—but others; एवम्—thus; अजानन्तः—not knowing; श्रुत्वा—having heard; अन्येभ्यः—from others; उपासते—worship; ते अपि च—they also; अतितरन्ति एव—certainly cross over; मृत्युम्—death; श्रुति-परायणाः—devoted to hearing (from authorities).',
+      'commentary':
+          'This introduces the path of **faith** (*Śhruti-parāyaṇāḥ*). Even those lacking the capacity for deep Yoga or intense intellect can achieve liberation merely by faithfully following the instructions heard from a realized teacher.',
+    });
+
+    // Verse 27: The vision of the universal Self
+    await db.insert('chapter_13', {
+      'verse_number': 27,
+
+      'sanskrit':
+          'यावत्सञ्जायते किञ्चित्सत्त्वं स्थावरजङ्गमम् | क्षेत्रक्षेत्रज्ञसंयोगात्तद्विद्धि भरतर्षभ || 27 ||',
+      'translation':
+          'Whatever moving or non-moving thing comes into existence, O best of the Bhāratas, know that it arises from the **union of the Field and the Knower of the Field** (*Kṣhetra-Kṣhetrajña-saṁyogāt*).',
+      'word_meaning':
+          'यावत्—whatever; सञ्जायते—comes into being; किञ्चित्—anything; सत्त्वम्—being; स्थावर-जङ्गमम्—moving and non-moving; क्षेत्र-क्षेत्रज्ञ-संयोगात्—from the union of the Field and the Knower of the Field; तत् विद्धि—know that; भरतर्षभ—O best of the Bhāratas.',
+      'commentary':
+          'The universe is a composite reality. All creation—from stones to people—is the result of the eternal collaboration between **Matter** (the passive *Kṣhetra*) and **Spirit** (the active *Kṣhetrajña*).',
+    });
+
+    // Verse 28: The vision of the Supreme in all
+    await db.insert('chapter_13', {
+      'verse_number': 28,
+
+      'sanskrit':
+          'समं सर्वेषु भूतेषु तिष्ठन्तं परमेश्वरम् | विनश्यत्स्वविनश्यन्तं यः पश्यति स पश्यति || 28 ||',
+      'translation':
+          'One who sees the **Supreme Lord** (*Parameśhvaraṁ*) dwelling **equally** (*samaṁ*) in all beings—the Imperishable amidst the perishable—truly sees the reality.',
+      'word_meaning':
+          'समम्—equally; सर्वेषु भूतेषु—in all beings; तिष्ठन्तम्—dwelling; परम-ईश्वरम्—the Supreme Lord; विनश्यत्सु—in the perishing; अ-विनश्यन्तम्—the non-perishing; यः—who; पश्यति—sees; सः—he; पश्यति—truly sees.',
+      'commentary':
+          'This is the hallmark of the realized vision. The wise person perceives the **non-perishing Supreme Lord** residing within every temporary, perishing body. This equal vision prevents self-degradation and harmful action.',
+    });
+
+    // Verse 29: The consequence of the equal vision
+    await db.insert('chapter_13', {
+      'verse_number': 29,
+
+      'sanskrit':
+          'समं पश्यन्हि सर्वत्र समवस्थितमीश्वरम् | न हिनस्त्यात्मनात्मानं ततो याति परां गतिम् || 29 ||',
+      'translation':
+          'Because one sees the equal Lord situated everywhere, one does not degrade the self by the self, and thereby attains the supreme destination.',
+      'word_meaning':
+          'समम्—equal; पश्यन्—seeing; हि—certainly; सर्वत्र—everywhere; समवस्थितम्—equally situated; ईश्वरम्—the Lord; न हिनस्ति—does not injure/degrade; आत्मना आत्मानम्—the self by the self; ततः—therefore; याति—attains; पराम् गतिम्—the supreme goal.',
+      'commentary':
+          'Injury to the self (*ātmanātmānaṁ hinasti*) means acting out of ignorance, which generates *karma*. By maintaining the equal vision, the wise person acts in alignment with the Divine, ensuring spiritual progress (*parāṁ gatim*).',
+    });
+
+    // Verse 30: The true doer is Prakṛiti
+    await db.insert('chapter_13', {
+      'verse_number': 30,
+
+      'sanskrit':
+          'प्रकृत्यैव च कर्माणि क्रियमाणानि सर्वशः | यः पश्यति तथात्मानमकर्तारं स पश्यति || 30 ||',
+      'translation':
+          'One who sees that **all actions are performed entirely by Prakṛiti** (material nature) and that the Self is the non-doer (*akartāṁ*)—he truly sees.',
+      'word_meaning':
+          'प्रकृत्या एव—by Prakṛiti alone; च कर्माणि—and actions; क्रियमाणानि—being performed; सर्वशः—entirely; यः पश्यति—who sees; तथा आत्मानम्—and similarly the Self; अकर्तारम्—the non-doer; सः पश्यति—he truly sees.',
+      'commentary':
+          'This resolves the problem of agency. The liberated soul understands that all physical and mental activities are mechanisms of nature, and the true **Self** is merely the eternal **witness** (*akartāraṁ*), thus freeing itself from all actions.',
+    });
+
+    // Ensure this code block extends your existing insertChapter13Verses function.
+
+    // Verse 31: The vision of unity leading to Brahman
+    await db.insert('chapter_13', {
+      'verse_number': 31,
+
+      'sanskrit':
+          'यदा भूतपृथग्भावमेकस्थमनुपश्यति | तत एव च विस्तारं ब्रह्म सम्पद्यते तदा || 31 ||',
+      'translation':
+          'When one realizes that the manifold variety of beings is **established in the one** (*eka-stham*) and sees the evolution of all that variety originating from the same source, then he attains to Brahman.',
+      'word_meaning':
+          'यदा—when; भूत-पृथक्-भावम्—the separate existence of beings; एक-स्थम्—established in the one; अनुपश्यति—realizes; ततः एव च—and from that alone; विस्तारम्—the evolution/expansion; ब्रह्म—Brahman (the Absolute Truth); सम्पद्यते—attains; तदा—then.',
+      'commentary':
+          'This describes the ultimate realization (*Samyag Darśana*). The seeker must see past the apparent diversity (*pṛithagbhāvam*) and recognize the single, underlying reality (Brahman) as the cause and substratum of all phenomenal expansion. This realization *is* the attainment of Brahman.',
+    });
+
+    // Verse 32: The eternal, non-binding nature of the Self
+    await db.insert('chapter_13', {
+      'verse_number': 32,
+
+      'sanskrit':
+          'अनादित्वान्निर्गुणत्वात्परमात्मायमव्ययः | शरीरस्थोऽपि कौन्तेय न करोति न लिप्यते || 32 ||',
+      'translation':
+          'Because the Supreme Soul (*Paramātmā*) is beginningless (*anāditvāt*) and without the *guṇas* (modes), O son of Kuntī, though dwelling in the body, it **neither acts nor is bound** (*na karo ti na lipyate*).',
+      'word_meaning':
+          'अनादित्वात्—because of beginninglessness; निर्गुणत्वात्—because of being without *guṇas*; परम-आत्मा—the Supreme Soul; अयम्—this; अव्ययः—imperishable; शरीर-स्थः अपि—though dwelling in the body; न करोति—does not act; न लिप्यते—is not bound.',
+      'commentary':
+          'This reaffirms the nature of the *Kṣhetrajña*. The soul is eternal (*anāditvāt*) and spiritual (*nirguṇatvāt*); therefore, the actions and binding nature of the body are not its own. The soul is merely the detached witness within the body.',
+    });
+
+    // Verse 33: The illumination of the entire field
+    await db.insert('chapter_13', {
+      'verse_number': 33,
+
+      'sanskrit':
+          'यथा सर्वगतं सौक्ष्म्यादाकाशं नोपलिप्यते | सर्वत्रावस्थितो देहे तथात्मा नोपलिप्यते || 33 ||',
+      'translation':
+          'Just as the all-pervading space (*ākāśham*), due to its subtlety, is not tainted (*na upalipyate*), similarly, the Self, though situated in every body, is never tainted.',
+      'word_meaning':
+          'यथा—just as; सर्व-गतम्—all-pervading; सौक्ष्म्यात्—due to its subtlety; आकाशम्—space/ether; न उपलिप्यते—is not tainted; सर्वत्र—everywhere; अवस्थितः—situated; देहे—in the body; तथा—similarly; आत्मा—the Self; न उपलिप्यते—is not tainted.',
+      'commentary':
+          'This famous analogy of **Space (*Ākāśham*)** demonstrates the soul\'s non-attachment. Just as air pollution does not stick to space, the spiritual soul remains pure, unaffected by the activities, merits, and demerits of the material body it inhabits.',
+    });
+
+    // Verse 34: The light of consciousness
+    await db.insert('chapter_13', {
+      'verse_number': 34,
+
+      'sanskrit':
+          'यथा प्रकाशयत्येकः कृत्स्नं लोकमिमं रविः | क्षेत्रं क्षेत्री तथा कृत्स्नं प्रकाशयति भारत || 34 ||',
+      'translation':
+          'Just as the sun single-handedly illuminates this entire world, O Bhārata, so does the Knower of the Field (*Kṣhetrī*) illuminate the entire Field.',
+      'word_meaning':
+          'यथा—just as; प्रकाशयति—illuminates; एकः—single; कृत्स्नम्—entire; लोकम् इमम्—this world; रविः—the sun; क्षेत्रम्—the Field; क्षेत्री—the Knower of the Field; तथा—similarly; कृत्स्नम्—the entire; प्रकाशयति—illuminates; भारत—O Bhārata.',
+      'commentary':
+          'The analogy of the **Sun** (*Ravi*) shows the function of the soul. The soul\'s consciousness illuminates the entire body-mind complex, just as the sun illuminates the world. The consciousness is one, but the field it illuminates (the body) varies.',
+    });
+
+    // Verse 35: The Conclusion of Knowledge (The path to the Supreme Goal)
+    await db.insert('chapter_13', {
+      'verse_number': 35,
+
+      'sanskrit':
+          'क्षेत्रक्षेत्रज्ञयोरेवमन्तरं ज्ञानचक्षुषा | भूतप्रकृतिमोक्षं च ये विदुर्यान्ति ते परम् || 35 ||',
+      'translation':
+          'Those who perceive the **distinction** (*antaraṁ*) between the Field and the Knower of the Field with the **eye of knowledge** (*jñāna-chakṣhuṣhā*), and understand the process of **release from material nature** (*bhūta-prakṛiti-mokṣhaṁ*), attain the Supreme.',
+      'word_meaning':
+          'क्षेत्र-क्षेत्रज्ञयोः—of the Field and the Knower of the Field; एवम्—thus; अन्तरम्—the distinction; ज्ञान-चक्षुषा—with the eye of knowledge; भूत-प्रकृति-मोक्षम्—release from material nature; च—and; ये विदुः—those who know; यान्ति ते—they attain; परम्—the Supreme.',
+      'commentary':
+          'This final verse summarizes the whole chapter. The essential knowledge for liberation is **Viveka** (discrimination)—distinguishing the soul (Spirit) from the body (Matter). Possessing this discriminative wisdom grants the ultimate goal (*paramaṁ*).',
+    });
+  }
+
+  Future<void> insertChapter14Verses(Database db) async {
+    await db.insert('chapter_14', {
+      'verse_number': 1,
+
+      'sanskrit':
+          'परं भूयः प्रवक्ष्यामि ज्ञानानां ज्ञानमुत्तमम् | यज्ज्ञात्वा मुनयः सर्वे परां सिद्धिमितो गताः || 1 ||',
+      'translation':
+          'The Blessed Lord said: I shall once again explain to you the supreme wisdom, the best of all knowledge; knowing which, all the sages have attained supreme perfection.',
+      'word_meaning':
+          'परम्—supreme; भूयः—again; प्रवक्ष्यामि—I shall explain; ज्ञानानाम्—of knowledge; ज्ञानम्—wisdom; उत्तमम्—supreme; यत्—by which; ज्ञात्वा—knowing; मुनयः—sages; सर्वे—all; पराम्—supreme; सिद्धिम्—perfection; इतः—from here; गताः—attained.',
+      'commentary':
+          'Shree Krishna begins this chapter by introducing knowledge that transcends even what was explained before — the understanding of the three guṇas (sattva, rajas, tamas) that bind the soul.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 2,
+
+      'sanskrit':
+          'इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः | सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च || 2 ||',
+      'translation':
+          'Having taken refuge in this knowledge, they attain oneness with Me. They are neither born at creation nor disturbed at dissolution.',
+      'word_meaning':
+          'इदम्—this; ज्ञानम्—knowledge; उपाश्रित्य—taking refuge in; मम—My; साधर्म्यम्—oneness in nature; आगताः—attained; सर्गे—at creation; अपि—even; न—not; उपजायन्ते—are born; प्रलये—at dissolution; न—not; व्यथन्ति—are disturbed; च—and.',
+      'commentary':
+          'Those who realize this supreme knowledge transcend material nature. They are not subject to birth and death because they merge into the divine consciousness of God.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 3,
+
+      'sanskrit':
+          'मम योनिर्महद् ब्रह्म तस्मिन्गर्भं दधाम्यहम् | सम्भवः सर्वभूतानां ततो भवति भारत || 3 ||',
+      'translation':
+          'The great Brahman is My womb, and in that I place the seed; from that, O Bhārata, the birth of all beings takes place.',
+      'word_meaning':
+          'मम—My; योनि:—womb; महत् ब्रह्म—great primordial nature; तस्मिन्—in that; गर्भम्—seed; दधामि—I place; अहम्—I; सम्भवः—birth; सर्व भूतानाम्—of all beings; ततः—from that; भवति—is; भारत—O Bhārata.',
+      'commentary':
+          'Here Krishna describes the process of creation. Material nature (Mahad Brahma) is like a womb, and He impregnates it with the seeds of all living beings — thus creation begins.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 4,
+
+      'sanskrit':
+          'सर्वयोनिषु कौन्तेय मूर्तयः सम्भवन्ति याः | तासां ब्रह्म महद्योनिरहं बीजप्रदः पिता || 4 ||',
+      'translation':
+          'O son of Kunti, whatever forms are produced in any wombs, the great Brahman is their womb, and I am the seed-giving father.',
+      'word_meaning':
+          'सर्व योनिषु—in all species; कौन्तेय—O son of Kunti; मूर्तयः—forms; सम्भवन्ति—are born; याः—whatever; तासाम्—of them; ब्रह्म—material nature; महत् योनि:—great womb; अहम्—I; बीज प्रदः—seed-giving; पिता—father.',
+      'commentary':
+          'The Lord is both the efficient and material cause of creation. Prakṛiti (nature) is His womb, and He Himself provides the living souls — making Him the ultimate Father of all beings.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 5,
+
+      'sanskrit':
+          'सत्त्वं रजस्तम इति गुणाः प्रकृतिसम्भवाः | निबध्नन्ति महाबाहो देहे देहिनमव्ययम् || 5 ||',
+      'translation':
+          'Sattva, rajas, and tamas — these three guṇas, born of material nature, bind the eternal soul to the body, O mighty-armed one.',
+      'word_meaning':
+          'सत्त्वम्—mode of goodness; रजस्—mode of passion; तमः—mode of ignorance; इति—thus; गुणाः—qualities; प्रकृति सम्भवाः—born of material nature; निबध्नन्ति—bind; महा बाहो—O mighty-armed one; देहे—in the body; देहिनम्—embodied soul; अव्ययम्—imperishable.',
+      'commentary':
+          'These three guṇas (qualities) form the fundamental forces of Prakṛiti. Though the soul is eternal and beyond them, it becomes bound by their influence when in contact with matter.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 6,
+
+      'sanskrit':
+          'तत्र सत्त्वं निर्मलत्वात्प्रकाशकमनामयम् | सुखसङ्गेन बध्नाति ज्ञानसङ्गेन चानघ || 6 ||',
+      'translation':
+          'Of these, sattva, being pure, illuminates and is free from disease. It binds the soul through attachment to happiness and knowledge, O sinless one.',
+      'word_meaning':
+          'तत्र—among them; सत्त्वम्—mode of goodness; निर्मलत्वात्—being pure; प्रकाशकम्—illuminating; अनामयम्—free from disease; सुख सङ्गेन—by attachment to happiness; बध्नाति—binds; ज्ञान सङ्गेन—by attachment to knowledge; च—and; अनघ—O sinless one.',
+      'commentary':
+          'The mode of goodness promotes clarity, wisdom, and peace. However, it still binds the soul by attachment to virtue and comfort, preventing liberation.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 7,
+
+      'sanskrit':
+          'रजो रागात्मकं विद्धि तृष्णासङ्गसमुद्भवम् | तन्निबध्नाति कौन्तेय कर्मसङ्गेन देहिनम् || 7 ||',
+      'translation':
+          'Know rajas to be of the nature of passion, the source of thirst and attachment; it binds the soul through attachment to action, O son of Kunti.',
+      'word_meaning':
+          'रजः—mode of passion; रागात्मकम्—of the nature of desire; विद्धि—know; तृष्णा—thirst; सङ्ग—attachment; समुद्भवम्—born of; तत्—that; निबध्नाति—binds; कौन्तेय—O son of Kunti; कर्म सङ्गेन—by attachment to actions; देहिनम्—the embodied soul.',
+      'commentary':
+          'Rajas leads to activity and restlessness. It causes the soul to remain engaged in worldly pursuits due to desire and attachment to the results of work.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 8,
+
+      'sanskrit':
+          'तमस्त्वज्ञानजं विद्धि मोहनं सर्वदेहिनाम् | प्रमादालस्यनिद्राभिस्तन्निबध्नाति भारत || 8 ||',
+      'translation':
+          'Know tamas to be born of ignorance; it deludes all embodied beings. It binds the soul through negligence, laziness, and sleep, O Bhārata.',
+      'word_meaning':
+          'तमः—mode of ignorance; तु—but; अज्ञानजम्—born of ignorance; विद्धि—know; मोहनम्—deluding; सर्व देहिनाम्—of all embodied beings; प्रमाद—negligence; आलस्य—laziness; निद्राभिः—by sleep; तत्—that; निबध्नाति—binds; भारत—O Bhārata.',
+      'commentary':
+          'The mode of ignorance clouds wisdom and leads to delusion, lethargy, and inertia. It drags the soul down toward darkness and bondage.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 9,
+
+      'sanskrit':
+          'सत्त्वं सुखे सञ्जयति रजः कर्मणि भारत | ज्ञानमावृत्य तु तमः प्रमादे सञ्जयत्युत || 9 ||',
+      'translation':
+          'Sattva binds one to happiness, rajas to action, and tamas, covering knowledge, binds one to negligence, O Bhārata.',
+      'word_meaning':
+          'सत्त्वम्—mode of goodness; सुखे—to happiness; सञ्जयति—binds; रजः—mode of passion; कर्मणि—to action; भारत—O Bhārata; ज्ञानम्—knowledge; आवृत्य—covering; तु—but; तमः—mode of ignorance; प्रमादे—to negligence; सञ्जयति—binds; उत—indeed.',
+      'commentary':
+          'Each guṇa binds the soul differently — goodness to joy and peace, passion to constant effort, and ignorance to sloth and carelessness.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 10,
+
+      'sanskrit':
+          'रजस्तमश्चाभिभूय सत्त्वं भवति भारत | रजः सत्त्वं तमश्चैव तमः सत्त्वं रजस्तथा || 10 ||',
+      'translation':
+          'Sometimes sattva prevails over rajas and tamas, O Bhārata; sometimes rajas dominates sattva and tamas, and sometimes tamas dominates sattva and rajas.',
+      'word_meaning':
+          'रजः—passion; तमः—ignorance; च—and; अभिभूय—overpowering; सत्त्वम्—goodness; भवति—prevails; भारत—O Bhārata; रजः—passion; सत्त्वम्—goodness; तमः—ignorance; च—also; एव—indeed; तमः—ignorance; सत्त्वम्—goodness; रजः—passion; तथा—likewise.',
+      'commentary':
+          'The three guṇas are in constant struggle for dominance. Depending on circumstances and one’s inner tendencies, one guṇa may overpower the others at different times.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 11,
+
+      'sanskrit':
+          'सर्वद्वारेषु देहेऽस्मिन्प्रकाश उपजायते | ज्ञानं यदा तदा विद्याद्विवृद्धं सत्त्वमित्युत || 11 ||',
+      'translation':
+          'When the light of knowledge shines through all the gates of the body, then one should know that sattva has increased.',
+      'word_meaning':
+          'सर्व द्वारेषु—through all the gates (the senses); देहे अस्मिन्—in this body; प्रकाशः—illumination; उपजायते—arises; ज्ञानम्—knowledge; यदा—when; तदा—then; विद्यात्—know; विवृद्धम्—increased; सत्त्वम्—mode of goodness; इति—thus; उत—indeed.',
+      'commentary':
+          'When one’s senses, mind, and intellect are clear and illumined by wisdom, it indicates the predominance of the sattva guṇa.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 12,
+
+      'sanskrit':
+          'लोभः प्रवृत्तिरारम्भः कर्मणामशमः स्पृहा | रजस्येतानि जायन्ते विवृद्धे भरतर्षभ || 12 ||',
+      'translation':
+          'When greed, activity, worldly pursuits, restlessness, and desire arise, know that rajas has increased, O best of the Bharatas.',
+      'word_meaning':
+          'लोभः—greed; प्रवृत्तिः—activity; आरम्भः—undertaking; कर्मणाम्—of actions; अशमः—restlessness; स्पृहा—desire; रजसि—in the mode of passion; एतानि—these; जायन्ते—arise; विवृद्धे—when increased; भरतर्षभ—O best of the Bharatas.',
+      'commentary':
+          'An increase in rajas manifests as ambition, competition, and endless desire for results — making one restless and outwardly active.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 13,
+
+      'sanskrit':
+          'अप्रकाशोऽप्रवृत्तिश्च प्रमादो मोह एव च | तमस्येतानि जायन्ते विवृद्धे कुरुनन्दन || 13 ||',
+      'translation':
+          'Darkness, inactivity, negligence, and delusion arise when tamas predominates, O joy of the Kurus.',
+      'word_meaning':
+          'अप्रकाशः—darkness; अप्रवृत्तिः—inactivity; च—and; प्रमादः—negligence; मोहः—delusion; एव—indeed; च—and; तमसि—in the mode of ignorance; एतानि—these; जायन्ते—arise; विवृद्धे—when increased; कुरु नन्दन—O joy of the Kurus.',
+      'commentary':
+          'When tamas increases, it clouds the intellect. A person becomes dull, careless, and inert, losing enthusiasm for right action.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 14,
+
+      'sanskrit':
+          'यदा सत्त्वे प्रवृद्धे तु प्रलयं याति देहभृत् | तदोत्तमविदां लोकानमलान्प्रतिपद्यते || 14 ||',
+      'translation':
+          'When one dies in the state of sattva, one attains the pure worlds of the wise and the virtuous.',
+      'word_meaning':
+          'यदा—when; सत्त्वे—in the mode of goodness; प्रवृद्धे—increased; तु—indeed; प्रलयम्—dissolution; याति—attains (death); देह भृत्—the embodied being; तदा—then; उत्तम विदाम्—of the wise; लोकान्—worlds; अमलान्—pure; प्रतिपद्यते—attains.',
+      'commentary':
+          'A person who dies while under the influence of sattva goes to higher celestial realms, experiencing peace and purity as a reward for virtuous living.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 15,
+
+      'sanskrit':
+          'रजसि प्रलयं गत्वा कर्मसङ्गिषु जायते | तथा प्रलीनस्तमसि मूढयोनिषु जायते || 15 ||',
+      'translation':
+          'Dying in rajas, one is born among those attached to action; dying in tamas, one takes birth in the wombs of the deluded.',
+      'word_meaning':
+          'रजसि—in the mode of passion; प्रलयम्—death; गत्वा—having attained; कर्म सङ्गिषु—among the active; जायते—is born; तथा—similarly; प्रलीनः—having died; तमसि—in ignorance; मूढ—deluded; योनिषु—in wombs; जायते—is born.',
+      'commentary':
+          'Death under the influence of rajas leads to rebirth among those constantly striving and desiring results. Death under tamas leads to ignorant or even subhuman births.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 16,
+
+      'sanskrit':
+          'कर्मणः सुकृतस्याहुः सात्त्विकं निर्मलं फलम् | रजसस्तु फलंदुःखमज्ञानं तमसः फलम् || 16 ||',
+      'translation':
+          'The result of righteous action, they say, is pure and sattvic; the result of rajas is pain, and the result of tamas is ignorance.',
+      'word_meaning':
+          'कर्मणः—of work; सुकृतस्य—of good deeds; आहुः—they say; सात्त्विकम्—of the mode of goodness; निर्मलम्—pure; फलम्—result; रजसः—of passion; तु—but; फलम्—result; दुःखम्—pain; अज्ञानम्—ignorance; तमसः—of the mode of ignorance; फलम्—result.',
+      'commentary':
+          'Good deeds performed in sattva yield clarity and peace. Actions in rajas bring restlessness and dissatisfaction, while those in tamas result in confusion and ignorance.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 17,
+
+      'sanskrit':
+          'सत्त्वात्सञ्जायते ज्ञानं रजसो लोभ एव च | प्रमादमोहौ तमसो भवतोऽज्ञानमेव च || 17 ||',
+      'translation':
+          'From sattva arises knowledge, from rajas arises greed, and from tamas arise negligence and delusion, as well as ignorance.',
+      'word_meaning':
+          'सत्त्वात्—from goodness; सञ्जायते—arises; ज्ञानम्—knowledge; रजसः—from passion; लोभः—greed; एव—indeed; च—and; प्रमाद—negligence; मोहौ—delusion; तमसः—from ignorance; भवतः—arise; अज्ञानम्—ignorance; एव—indeed; च—and.',
+      'commentary':
+          'Each guṇa gives rise to a certain mental state — sattva produces clarity and wisdom, rajas gives rise to desire, and tamas leads to dullness and forgetfulness.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 18,
+
+      'sanskrit':
+          'ऊर्ध्वं गच्छन्ति सत्त्वस्था मध्ये तिष्ठन्ति राजसाः | जघन्यगुणवृत्तिस्था अधो गच्छन्ति तामसाः || 18 ||',
+      'translation':
+          'Those situated in sattva go upward; the rajasic remain in the middle; and those in tamas, engaged in the lowest qualities, go downward.',
+      'word_meaning':
+          'ऊर्ध्वम्—upward; गच्छन्ति—go; सत्त्व स्थाः—situated in goodness; मध्ये—in the middle; तिष्ठन्ति—remain; राजसाः—those in passion; जघन्य—base; गुण वृत्ति स्थाः—engaged in the lowest qualities; अधः—downward; गच्छन्ति—go; तामसाः—those in ignorance.',
+      'commentary':
+          'The mode of goodness elevates the soul toward higher realms or spiritual progress, passion keeps it bound to material striving, and ignorance drags it toward degradation.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 19,
+
+      'sanskrit':
+          'नान्यं गुणेभ्यः कर्तारं यदा द्रष्टानुपश्यति | गुणेभ्यश्च परं वेत्ति मद्भावं सोऽधिगच्छति || 19 ||',
+      'translation':
+          'When the seer perceives no doer other than the guṇas and knows that which is beyond the guṇas, he attains My divine nature.',
+      'word_meaning':
+          'न—no; अन्यम्—other; गुणेभ्यः—than the guṇas; कर्तारम्—doer; यदा—when; द्रष्टा—the seer; अनुपश्यति—perceives; गुणेभ्यः च—and beyond the guṇas; परम्—transcendent; वेत्ति—knows; मत् भावम्—My divine nature; सः—he; अधिगच्छति—attains.',
+      'commentary':
+          'When a wise person realizes that all actions are done by nature’s modes and the soul is merely a witness, they transcend the guṇas and reach divine consciousness.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 20,
+
+      'sanskrit':
+          'गुणानेतानतीत्य त्रीन्देही देहसमुद्भवान् | जन्ममृत्युजरादुःखैर्विमुक्तोऽमृतमश्नुते || 20 ||',
+      'translation':
+          'When the embodied soul transcends these three guṇas, which arise from the body, it is freed from birth, death, old age, and sorrow, and attains immortality.',
+      'word_meaning':
+          'गुणान्—qualities; एतान्—these; अतीत्य—transcending; त्रीन्—three; देही—the embodied soul; देह—body; समुद्भवान्—arising from; जन्म—birth; मृत्यु—death; जरा—old age; दुःखैः—sorrows; विमुक्तः—freed; अमृतम्—immortality; अश्नुते—attains.',
+      'commentary':
+          'Liberation is achieved when one rises above the three modes of material nature. Such a soul becomes free from the cycle of birth and death and experiences eternal bliss.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 21,
+
+      'sanskrit':
+          'अर्जुन उवाच | कैर्लिङ्गैस्त्रीन्गुणानेतानतीतो भवति प्रभो | किमाचारः कथं चैतांस्त्रीन्गुणानतिवर्तते || 21 ||',
+      'translation':
+          'Arjuna said: O Lord, by what marks is one known who has gone beyond these three guṇas? What is his conduct, and how does he transcend them?',
+      'word_meaning':
+          'अर्जुनः उवाच—Arjuna said; कैः लिङ्गैः—by what characteristics; त्रीन् गुणान्—three modes; एतान्—these; अतीतः—transcended; भवति—becomes; प्रभो—O Lord; किम् आचारः—what conduct; कथम्—and how; च—and; एतान्—these; त्रीन् गुणान्—three modes; अतिवर्तते—transcends.',
+      'commentary':
+          'Arjuna seeks clarification on how to recognize a person who has transcended the guṇas — their external signs, behavior, and the means by which they overcome material influence.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 22,
+
+      'sanskrit':
+          'श्रीभगवानुवाच | प्रकाशं च प्रवृत्तिं च मोहमेव च पाण्डव | न द्वेष्टि सम्प्रवृत्तानि न निवृत्तानि काङ्क्षति || 22 ||',
+      'translation':
+          'The Blessed Lord said: O son of Pandu, one who neither hates illumination, activity, and delusion when they appear, nor longs for them when they disappear, is said to have transcended the guṇas.',
+      'word_meaning':
+          'श्री भगवान् उवाच—the Blessed Lord said; प्रकाशम्—illumination (sattva); च—and; प्रवृत्तिम्—activity (rajas); च—and; मोहम्—delusion (tamas); एव—indeed; च—and; पाण्डव—O son of Pandu; न—not; द्वेष्टि—hates; सम्प्रवृत्तानि—when they arise; न—not; निवृत्तानि—when they cease; काङ्क्षति—desires.',
+      'commentary':
+          'The transcendent person remains unaffected by the rise and fall of the guṇas. They neither crave sattva, nor shun rajas or tamas — they stay detached and balanced.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 23,
+
+      'sanskrit':
+          'उदासीनवदासीनो गुणैर्यो न विचाल्यते | गुणा वर्तन्त इत्येवं योऽवतिष्ठति नेङ्गते || 23 ||',
+      'translation':
+          'One who sits like a neutral observer, unmoved by the guṇas, knowing that it is the guṇas that act, and remains steady and unshaken — such a person transcends them.',
+      'word_meaning':
+          'उदासीनवत्—like one indifferent; आसीनः—sitting; गुणैः—by the modes; यः—who; न—not; विचाल्यते—is disturbed; गुणाः—the modes; वर्तन्ते—act; इति—thus; एवम्—so; यः—who; अवतिष्ठति—remains firm; न—not; इङ्गते—moves.',
+      'commentary':
+          'The wise remain as witnesses, realizing that the modes of nature operate independently of the soul. This detachment grants stability and peace.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 24,
+
+      'sanskrit':
+          'समदुःखसुखः स्वस्थः समलोष्टाश्मकाञ्चनः | तुल्यप्रियाप्रियो धीरस्तुल्यनिन्दात्मसंस्तुतिः || 24 ||',
+      'translation':
+          'One who is the same in pleasure and pain, who dwells in the Self, who regards a clod, a stone, and gold alike; who is even-minded toward loved and unloved, firm, and the same in praise and blame — such a person is transcendent.',
+      'word_meaning':
+          'सम दुःख सुखः—balanced in joy and sorrow; स्वस्थः—steady in the self; सम—equal; लोष्ट—clod; अश्म—stone; काञ्चनः—gold; तुल्य प्रिय अप्रियः—equal to the agreeable and disagreeable; धीरः—steady; तुल्य—equal; निन्दा—blame; आत्म संस्तुतिः—and praise of oneself.',
+      'commentary':
+          'The person who has transcended the guṇas sees all things and experiences with equanimity — unaffected by material distinctions or others’ opinions.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 25,
+
+      'sanskrit':
+          'मानापमानयोस्तुल्यस्तुल्यो मित्रारिपक्षयोः | सर्वारम्भपरित्यागी गुणातीतः स उच्यते || 25 ||',
+      'translation':
+          'One who is the same in honor and dishonor, the same toward friend and foe, and who has abandoned all undertakings — such a person is said to have transcended the guṇas.',
+      'word_meaning':
+          'मान—honor; अपमानयोः—dishonor; तुल्यः—equal; तुल्यः—equal; मित्र—friend; अरि—enemy; पक्षयोः—among parties; सर्व आरम्भ—of all undertakings; परित्यागी—renouncer; गुण अतीतः—beyond the guṇas; सः—he; उच्यते—is said.',
+      'commentary':
+          'Freedom from egoistic involvement makes one beyond dualities. Such a soul sees no difference between friend or foe and gives up self-centered action.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 26,
+
+      'sanskrit':
+          'मां च योऽव्यभिचारेण भक्तियोगेन सेवते | स गुणान्समतीत्यैतान्ब्रह्मभूयाय कल्पते || 26 ||',
+      'translation':
+          'But those who serve Me with unwavering devotion, transcending these guṇas, become eligible to attain Brahman (the divine state).',
+      'word_meaning':
+          'माम्—Me; च—and; यः—who; अव्यभिचारेण—unflinching; भक्ति योगेन—through devotion; सेवते—serves; सः—he; गुणान्—modes; समतीत्य—transcending; एतान्—these; ब्रह्म भूयाय—becoming Brahman; कल्पते—becomes fit.',
+      'commentary':
+          'Unwavering devotion to the Lord leads one beyond the influence of material nature. Such a devotee attains oneness with the divine essence.',
+    });
+
+    await db.insert('chapter_14', {
+      'verse_number': 27,
+
+      'sanskrit':
+          'ब्रह्मणो हि प्रतिष्ठाहममृतस्याव्ययस्य च | शाश्वतस्य च धर्मस्य सुखस्यैकान्तिकस्य च || 27 ||',
+      'translation':
+          'For I am the foundation of the imperishable Brahman, of immortal and eternal dharma, and of everlasting bliss.',
+      'word_meaning':
+          'ब्रह्मणः—of Brahman; हि—indeed; प्रतिष्ठा—foundation; अहम्—I am; अमृतस्य—of the immortal; अव्ययस्य—of the imperishable; च—and; शाश्वतस्य—of the eternal; च—and; धर्मस्य—of dharma; सुखस्य—of happiness; एकान्तिकस्य—supreme; च—and.',
+      'commentary':
+          'Krishna concludes by revealing that He is the ultimate basis of Brahman itself. Devotion to Him transcends even spiritual liberation — leading to eternal bliss and divine union.',
+    });
+  }
+
+  Future<void> insertChapter15Verses(Database db) async {
+    await db.insert('chapter_15', {
+      'verse_number': 1,
+
+      'sanskrit':
+          'ऊर्ध्वमूलमधःशाखमश्वत्थं प्राहुरव्ययम् | छन्दांसि यस्य पर्णानि यस्तं वेद स वेदवित् || 1 ||',
+      'translation':
+          'The Supreme Divine Personality said: They speak of an eternal Ashvattha tree with roots above and branches below. Its leaves are the Vedic hymns, and one who knows this tree is a knower of the Vedas.',
+      'word_meaning':
+          'ऊर्ध्व—upward; मूलम्—roots; अधः—downward; शाखम्—branches; अश्वत्थम्—the banyan tree; प्राहुः—they say; अव्ययम्—eternal; छन्दांसि—the Vedic hymns; यस्य—whose; पर्णानि—leaves; यः—who; तम्—that; वेद—knows; सः—he; वेद-वित्—is the knower of the Vedas.',
+      'commentary':
+          'The upside-down banyan tree represents material existence, with its roots (God) above and branches (worldly manifestations) below. Its leaves—the Vedas—sustain life by providing spiritual knowledge.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 2,
+
+      'sanskrit':
+          'अधश्चोर्ध्वं प्रसृतास्तस्य शाखा गुणप्रवृद्धा विषयप्रवालाः | अधश्च मूलान्यनुसन्ततानि कर्मानुबन्धीनि मनुष्यलोके || 2 ||',
+      'translation':
+          'Its branches extend upward and downward, nourished by the modes of material nature, with sense objects as its buds. Its roots spread downward, binding living beings to actions in the human world.',
+      'word_meaning':
+          'अधः—downward; च—and; ऊर्ध्वम्—upward; प्रसृताः—extended; तस्य—its; शाखाः—branches; गुण-प्रवृद्धाः—nourished by the modes; विषय-प्रवालाः—buds as sense objects; अधः—downward; च—and; मूलानि—roots; अनुसन्ततानि—extended; कर्म-अनुबन्धीनि—bound by actions; मनुष्य-लोके—in the world of humans.',
+      'commentary':
+          'The branches of material life are nourished by the three gunas (sattva, rajas, tamas). The sense objects act as buds, and karma acts as roots, keeping the soul bound to material existence.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 3,
+
+      'sanskrit':
+          'न रूपमस्येह तथोपलभ्यते नान्तो न चादिर्न च संप्रतिष्ठा | अश्वत्थमेनं सुविरूढमूलं असङ्गशस्त्रेण दृढेन छित्त्वा || 3 ||',
+      'translation':
+          'Its form cannot be perceived here in this world—neither its beginning, nor its end, nor its foundation. But after cutting down this deeply rooted Ashvattha tree with the strong axe of detachment—',
+      'word_meaning':
+          'न—not; रूपम्—form; अस्य—its; इह—here; तथा—so; उपलभ्यते—is perceived; न—not; अन्तः—end; न—not; च—and; आदिः—beginning; न—not; च—and; संप्रतिष्ठा—foundation; अश्वत्थम्—banyan tree; एनम्—this; सुविरूढ-मूलम्—firmly rooted; असङ्ग-शस्त्रेण—with the weapon of detachment; दृढेन—strong; छित्त्वा—having cut.',
+      'commentary':
+          'The illusory nature of the material world cannot be fully known. Only by the weapon of detachment can one sever ties with this entangled existence.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 4,
+
+      'sanskrit':
+          'ततः पदं तत्परिमार्गितव्यं यस्मिन्गता न निवर्तन्ति भूयः | तमेव चाद्यं पुरुषं प्रपद्ये यतः प्रवृत्तिः प्रसृता पुराणी || 4 ||',
+      'translation':
+          'Then one must seek that supreme abode, having reached which, there is no return. I take refuge in that primeval Supreme Person, from whom the eternal activity has emanated.',
+      'word_meaning':
+          'ततः—then; पदम्—abode; तत्—that; परिमार्गितव्यम्—should be sought; यस्मिन्—in which; गता—having gone; न—not; निवर्तन्ति—return; भूयः—again; तम्—Him; एव—indeed; च—and; आद्यं—primeval; पुरुषम्—Supreme Person; प्रपद्ये—I surrender; यतः—from whom; प्रवृत्तिः—activity; प्रसृता—has emanated; पुराणी—ancient.',
+      'commentary':
+          'Liberation comes by surrendering to the eternal source of all activity—the Supreme Lord—whose abode once attained, one never returns to the cycle of birth and death.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 5,
+
+      'sanskrit':
+          'निर्मानमोहा जितसङ्गदोषा अध्यात्मनित्या विनिवृत्तकामाः | द्वन्द्वैर्विमुक्ताः सुखदुःखसंज्ञैर् गच्छन्त्यमूढाः पदमव्ययं तत् || 5 ||',
+      'translation':
+          'Free from pride and delusion, victorious over the evil of attachment, dwelling constantly in the Self, their desires completely gone, freed from the dualities of pleasure and pain—such wise ones reach that eternal abode.',
+      'word_meaning':
+          'नि—without; मान—pride; मोहा—delusion; जित—conquered; सङ्ग—attachment; दोषाः—evil; अध्यात्म—self-realized; नित्या—ever fixed; विनिवृत्त—withdrawn; कामाः—desires; द्वन्द्वैः—duality; विमुक्ताः—freed; सुख—pleasure; दुःख—pain; संज्ञैः—named; गच्छन्ति—reach; अमूढाः—the wise; पदम्—abode; अव्ययम्—eternal.',
+      'commentary':
+          'Only those who are free from ego, desires, and attachment, and are unaffected by the dualities of life, can attain the imperishable Supreme state.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 6,
+
+      'sanskrit':
+          'न तद्भासयते सूर्यो न शशाङ्को न पावकः | यद्गत्वा न निवर्तन्ते तद्धाम परमं मम || 6 ||',
+      'translation':
+          'Neither the sun, nor the moon, nor fire can illuminate that Supreme Abode. Having gone there, one never returns. That is My supreme abode.',
+      'word_meaning':
+          'न—not; तत्—that; भासयते—illuminates; सूर्यः—the sun; न—not; शशाङ्कः—the moon; न—not; पावकः—fire; यत्—where; गत्वा—having gone; न—not; निवर्तन्ते—they return; तत्—that; धाम—abode; परमम्—supreme; मम—My.',
+      'commentary':
+          'The divine realm of God is beyond material illumination. Once the soul reaches it, it never returns to mortal existence.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 7,
+
+      'sanskrit':
+          'ममैवांशो जीवलोके जीवभूतः सनातनः | मनःषष्ठानीन्द्रियाणि प्रकृतिस्थानि कर्षति || 7 ||',
+      'translation':
+          'The living entities in this conditioned world are My eternal fragmental parts. But bound by material nature, they struggle with the six senses, including the mind.',
+      'word_meaning':
+          'मम—My; एव—indeed; अंशः—fragment; जीव-लोके—in the world of living beings; जीव-भूतः—the living entity; सनातनः—eternal; मनः—mind; षष्ठानि—sixth; इन्द्रियाणि—senses; प्रकृति-स्थानि—situated in material nature; कर्षति—struggles.',
+      'commentary':
+          'Every living being is an eternal spark of the Divine, but illusion and attachment to the senses keep it entangled in material struggles.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 8,
+
+      'sanskrit':
+          'शरीरं यदवाप्नोति यच्चाप्युत्क्रामतीश्वरः | गृहित्वैतानि संयाति वायुर्गन्धानिवाशयात् || 8 ||',
+      'translation':
+          'Just as the wind carries scents from their source, the embodied soul carries the mind and senses from one body to another when it leaves an old body and enters a new one.',
+      'word_meaning':
+          'शरीरम्—body; यत्—when; अवाप्नोति—attains; यत् च—and; अपि—also; उत्क्रामति—leaves; ईश्वरः—the soul; गृहित्वा—taking; एतानि—these; संयाति—goes; वायुः—the wind; गन्धान्—scents; इव—as; आशयात्—from their source.',
+      'commentary':
+          'This verse beautifully explains reincarnation—the soul carries impressions (mind and senses) like wind carrying fragrance, continuing its journey from one life to another.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 9,
+
+      'sanskrit':
+          'श्रोत्रं चक्षुः स्पर्शनं च रसनं घ्राणमेव च | अधिष्ठाय मनश्चायं विषयानुपसेवते || 9 ||',
+      'translation':
+          'Presiding over the ear, eye, touch, tongue, and nose, as well as the mind, the embodied soul experiences the sense objects.',
+      'word_meaning':
+          'श्रोत्रम्—ear; च—and; चक्षुः—eye; स्पर्शनम्—touch; च—and; रसनम्—tongue; घ्राणम्—nose; एव—indeed; च—and; अधिष्ठाय—presiding; मनः—mind; च—and; अयम्—this (soul); विषयान्—sense objects; उपसेवते—enjoys.',
+      'commentary':
+          'The soul operates through the body’s senses to interact with the world. However, the senses serve as instruments, not the true enjoyers—the soul is the conscious experiencer.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 10,
+
+      'sanskrit':
+          'उत्क्रामन्तं स्थितं वापि भुञ्जानं वा गुणान्वितम् | विमूढा नानुपश्यन्ति पश्यन्ति ज्ञानचक्षुषः || 10 ||',
+      'translation':
+          'The ignorant do not perceive the soul when it departs from the body, dwells within it, or enjoys the sense objects. But those with the eyes of knowledge can see it.',
+      'word_meaning':
+          'उत्क्रामन्तम्—departing; स्थितम्—residing; वा—or; अपि—even; भुञ्जानम्—enjoying; वा—or; गुण—modes of nature; अन्वितम्—associated; विमूढाः—the deluded; न—not; अनुपश्यन्ति—see; पश्यन्ति—see; ज्ञान—of knowledge; चक्षुषः—with eyes.',
+      'commentary':
+          'Those blinded by ignorance cannot perceive the journey of the soul. Only the wise, through spiritual knowledge, can see beyond the physical form.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 11,
+
+      'sanskrit':
+          'यतन्तो योगिनश्चैनं पश्यन्त्यात्मन्यवस्थितम् | यतन्तोऽप्यकृतात्मानो नैनं पश्यन्त्यचेतसः || 11 ||',
+      'translation':
+          'The yogis, striving diligently, perceive the soul situated within themselves. But those whose minds are not purified and who lack self-control cannot perceive it, even though they strive.',
+      'word_meaning':
+          'यतन्तः—striving; योगिनः—yogis; च—and; एनम्—this (soul); पश्यन्ति—see; आत्मनि—within themselves; अवस्थितम्—situated; यतन्तः—striving; अपि—even; अ-кृत-आत्मानः—those not disciplined; न—not; एनम्—this (soul); पश्यन्ति—see; अ-चेतसः—undeveloped minds.',
+      'commentary':
+          'The disciplined yogis realize the soul within through meditation and purity of mind. Those lacking mental control and self-discipline cannot perceive the soul even with effort.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 12,
+
+      'sanskrit':
+          'यदादित्यगतं तेजो जगद्भासयतेऽखिलम् | यच्चन्द्रमसि यच्चाग्नौ तत्तेजो विद्धि मामकम् || 12 ||',
+      'translation':
+          'Know that the splendor that shines from the sun, which illumines the whole world, and that which is in the moon and in fire—know that to be My radiance.',
+      'word_meaning':
+          'यत्—that which; आदित्य-गतम्—residing in the sun; तेजः—radiance; जगत्—the world; भासयते—illumines; अखिलम्—entire; यत् च—and that which; चन्द्रमसि—in the moon; यत् च—and that which; अग्नौ—in fire; तत्—that; तेजः—splendor; विद्धि—know; मामकम्—Mine.',
+      'commentary':
+          'The divine energy of God pervades all luminous sources—the sun, moon, and fire—all shine by His brilliance.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 13,
+
+      'sanskrit':
+          'गामाविश्य च भूतानि धारयाम्यहमोजसा | पुष्णामि चौषधीः सर्वाः सोमो भूत्वा रसात्मकः || 13 ||',
+      'translation':
+          'Entering the earth, I sustain all beings with My energy. Becoming the moon, I nourish all plants with the essence of life.',
+      'word_meaning':
+          'गाम्—earth; आविश्य—entering; च—and; भूतानि—all beings; धारयामि—I sustain; अहम्—I; ओजसा—by My energy; पुष्णामि—I nourish; च—and; औषधीः—plants; सर्वाः—all; सोमः—the moon; भूत्वा—becoming; रस-आत्मकः—full of nectar.',
+      'commentary':
+          'God’s presence supports all life—He sustains the earth, nourishes plants through the moon’s essence, and pervades creation with divine vitality.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 14,
+
+      'sanskrit':
+          'अहं वैश्वानरो भूत्वा प्राणिनां देहमाश्रितः | प्राणापानसमायुक्तः पचाम्यन्नं चतुर्विधम् || 14 ||',
+      'translation':
+          'Becoming the fire of digestion in the bodies of all living beings, I unite with the vital air and digest the four kinds of food.',
+      'word_meaning':
+          'अहम्—I; वैश्वानरः—digestive fire; भूत्वा—becoming; प्राणिनाम्—of living beings; देहम्—body; आश्रितः—situated; प्राण—life airs; अपान—downward air; समायुक्तः—united; पचामि—I digest; अन्नम्—food; चतुर्विधम्—of four kinds (chewed, swallowed, licked, sucked).',
+      'commentary':
+          'The Lord manifests as the metabolic fire (Vaishvānara) in all living bodies, enabling digestion and sustaining physical life.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 15,
+
+      'sanskrit':
+          'सर्वस्य चाहं हृदि सन्निविष्टो मत्तः स्मृतिर्ज्ञानमपोहनं च | वेदैश्च सर्वैरहमेव वेद्यो वेदान्तकृद्वेदविदेव चाहम् || 15 ||',
+      'translation':
+          'I am seated in the hearts of all beings; from Me come memory, knowledge, and forgetfulness. I am verily the object to be known by all the Vedas. Indeed, I am the compiler of Vedanta and the knower of the Vedas.',
+      'word_meaning':
+          'सर्वस्य—of all; च—and; अहम्—I; हृदि—in the heart; सन्निविष्टः—situated; मत्तः—from Me; स्मृतिः—memory; ज्ञानम्—knowledge; अपोहनम्—forgetfulness; च—and; वेदैः—by the Vedas; च—and; सर्वैः—all; अहम्—I; एव—indeed; वेद्यः—to be known; वेदान्त—Vedanta; कृत्—compiler; वेद-वित्—knower of Vedas; एव—indeed; च—and; अहम्—I.',
+      'commentary':
+          'The Lord dwells in the hearts of all beings as the inner guide, giving rise to memory, knowledge, and even forgetfulness. He is both the author and subject of all Vedic wisdom.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 16,
+
+      'sanskrit':
+          'द्वाविमौ पुरुषौ लोके क्षरश्चाक्षर एव च | क्षरः सर्वाणि भूतानि कूटस्थोऽक्षर उच्यते || 16 ||',
+      'translation':
+          'There are two kinds of beings in this world—the perishable and the imperishable. The perishable are all created beings, and the imperishable is the unchanging soul.',
+      'word_meaning':
+          'द्वौ—two; इमौ—these; पुरुषौ—beings; लोके—in the world; क्षरः—perishable; च—and; अक्षरः—imperishable; एव—indeed; च—and; क्षरः—the perishable; सर्वाणि—all; भूतानि—creatures; कूटस्थः—the immutable; अक्षरः—the imperishable; उच्यते—is said.',
+      'commentary':
+          'All living beings with material bodies are perishable. The soul, being spiritual and immutable, is imperishable.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 17,
+
+      'sanskrit':
+          'उत्तमः पुरुषस्त्वन्यः परमात्मेत्युधाहृतः | यो लोकत्रयमाविश्य बिभर्त्यव्यय ईश्वरः || 17 ||',
+      'translation':
+          'But distinct from these two is the Supreme Person, called the Paramātmā, who, entering the three worlds, sustains them as the imperishable Lord.',
+      'word_meaning':
+          'उत्तमः—the Supreme; पुरुषः—Person; तु—but; अन्यः—another; परमात्मा—the Supreme Soul; इति—thus; उधाहृतः—is said; यः—who; लोक-त्रयम्—the three worlds; आविश्य—entering; बिभर्ति—sustains; अव्ययः—imperishable; ईश्वरः—the Lord.',
+      'commentary':
+          'Beyond both the perishable (bodies) and imperishable (souls) exists the Supreme Divine Being—God Himself—who pervades and supports all realms.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 18,
+
+      'sanskrit':
+          'यस्मात्क्षरमतीतोऽहमक्षरादपि चोत्तमः | अतोऽस्मि लोके वेदे च प्रथितः पुरुषोत्तमः || 18 ||',
+      'translation':
+          'Because I am transcendental to both the perishable and the imperishable, and am even higher than the imperishable, I am celebrated in the world and in the Vedas as the Supreme Person (Puruṣhottama).',
+      'word_meaning':
+          'यस्मात्—because; क्षरम्—the perishable; अतीतः—transcended; अहम्—I; अक्षरात्—imperishable; अपि—even; च—and; उत्तमः—higher; अतः—therefore; अस्मि—I am; लोके—in the world; वेदे—in the Vedas; च—and; प्रथितः—celebrated; पुरुष-उत्तमः—the Supreme Person.',
+      'commentary':
+          'God is beyond both material and spiritual categories—He is Supreme. Hence, He is known as Purushottama, the highest of all beings.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 19,
+
+      'sanskrit':
+          'यो मामेवमसम्मूढो जानाति पुरुषोत्तमम् | स सर्वविद्भजति मां सर्वभावेन भारत || 19 ||',
+      'translation':
+          'One who, without delusion, knows Me as the Supreme Person, knows everything. Such a person worships Me wholeheartedly, O Bhārata.',
+      'word_meaning':
+          'यः—who; माम्—Me; एवम्—thus; असम्मूढः—undeluded; जानाति—knows; पुरुषोत्तमम्—the Supreme Person; सः—he; सर्व-वित्—knower of all; भजति—worships; माम्—Me; सर्व-भावेन—with full devotion; भारत—O Bhārata.',
+      'commentary':
+          'Those who truly recognize Krishna as the Supreme Person understand the essence of all knowledge and naturally engage in wholehearted devotion.',
+    });
+
+    await db.insert('chapter_15', {
+      'verse_number': 20,
+
+      'sanskrit':
+          'इति गुह्यतमं शास्त्रमिदमुक्तं मयानघ | एतद्बुद्ध्वा बुद्धिमान्स्यात्कृतकृत्यश्च भारत || 20 ||',
+      'translation':
+          'Thus, I have explained to you this most confidential teaching, O sinless one. Understanding this, a person becomes wise and fulfills all that is to be accomplished.',
+      'word_meaning':
+          'इति—thus; गुह्य-तमम्—most secret; शास्त्रम्—teaching; इदम्—this; उक्तम्—has been spoken; मया—by Me; अनघ—O sinless one; एतत्—this; बुद्ध्वा—knowing; बुद्धिमान्—wise; स्यात्—becomes; कृत-कृत्यः—fulfilled; च—and; भारत—O Bhārata.',
+      'commentary':
+          'By understanding this supreme knowledge about the eternal soul and Supreme Person, one attains true wisdom and achieves the ultimate purpose of human life—union with God.',
+    });
+  }
+
+  Future<void> insertChapter16Verses(Database db) async {
+    await db.insert('chapter_16', {
+      'verse_number': 1,
+
+      'sanskrit':
+          'अभयं सत्त्वसंशुद्धिर्ज्ञानयोगव्यवस्थितिः | दानं दमश्च यज्ञश्च स्वाध्यायस्तप आर्जवम् || 1 ||',
+      'translation':
+          'Fearlessness, purity of mind, steadfastness in the yoga of knowledge, charity, control of the senses, performance of sacrifice, study of the scriptures, austerity, and straightforwardness—these are divine qualities, O Arjuna.',
+      'word_meaning':
+          'अभयम्—fearlessness; सत्त्व—of mind; संशुद्धिः—purity; ज्ञानयोग—of the yoga of knowledge; व्यवस्थितिः—steadfastness; दानम्—charity; दमः—control of the senses; च—and; यज्ञः—sacrifice; स्वाध्यायः—study of the scriptures; तपः—austerity; आर्जवम्—straightforwardness.',
+      'commentary':
+          'Shree Krishna begins listing divine qualities (Daivi Sampatti) necessary for liberation. The first among them is fearlessness, born from faith and knowledge of the Self.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 2,
+
+      'sanskrit':
+          'अहिंसा सत्यमक्रोधस्त्यागः शान्तिरपैशुनम् | दया भूतेष्वलोलुप्त्वं मार्दवं ह्रीरचापलम् || 2 ||',
+      'translation':
+          'Non-violence, truthfulness, absence of anger, renunciation, tranquility, aversion to fault-finding, compassion to living beings, absence of greed, gentleness, modesty, and lack of fickleness—these are divine virtues.',
+      'word_meaning':
+          'अहिंसा—non-violence; सत्यम्—truthfulness; अक्रोधः—absence of anger; त्यागः—renunciation; शान्तिः—tranquility; अपैशुनम्—aversion to fault-finding; दया—compassion; भूतेषु—to all living beings; अलोलुप्त्वम्—absence of greed; मार्दवम्—gentleness; ह्रीः—modesty; अचापलम्—lack of fickleness.',
+      'commentary':
+          'These qualities are manifestations of a purified mind. They lead to inner peace and alignment with divine nature.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 3,
+
+      'sanskrit':
+          'तेजः क्षमा धृतिः शौचमद्रोहो नातिमानिता | भवन्ति संपदं दैवीमभिजातस्य भारत || 3 ||',
+      'translation':
+          'Vigor, forgiveness, fortitude, cleanliness, absence of malice, and lack of excessive pride—these, O Bhārata, are the qualities of those born with divine nature.',
+      'word_meaning':
+          'तेजः—vigor; क्षमा—forgiveness; धृतिः—fortitude; शौचम्—cleanliness; अद्रोहः—absence of malice; न—not; अतिमानिता—excessive pride; भवन्ति—are; संपदम्—qualities; दैवीम्—divine; अभिजातस्य—of one born with; भारत—O Bhārata.',
+      'commentary':
+          'These divine traits elevate a person spiritually. A divine-natured person lives harmoniously and progresses toward liberation.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 4,
+
+      'sanskrit':
+          'दम्भो दर्पोऽभिमानश्च क्रोधः पारुष्यमेव च | अज्ञानं चाभिजातस्य पार्थ संपदमासुरीम् || 4 ||',
+      'translation':
+          'Hypocrisy, arrogance, pride, anger, harshness, and ignorance—these, O Parth, are the qualities of those born with demoniac nature.',
+      'word_meaning':
+          'दम्भः—hypocrisy; दर्पः—arrogance; अभिमानः—pride; च—and; क्रोधः—anger; पारुष्यम्—harshness; एव—indeed; च—and; अज्ञानम्—ignorance; च—and; अभिजातस्य—of one born with; पार्थ—O Parth; संपदम्—qualities; आसुरीम्—demoniac.',
+      'commentary':
+          'Asuric (demoniac) qualities lead to bondage and suffering. They are rooted in ego and ignorance of the true self.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 5,
+
+      'sanskrit':
+          'दैवी संपद्विमोक्षाय निबन्धायासुरी मता | मा शुचः संपदं दैवीमभिजातोऽसि पाण्डव || 5 ||',
+      'translation':
+          'The divine qualities lead to liberation, while the demoniac qualities lead to bondage. But do not grieve, O son of Pandu, for you are born with divine virtues.',
+      'word_meaning':
+          'दैवी—divine; संपत्—qualities; विमोक्षाय—to liberation; निबन्धाय—to bondage; आसुरी—demoniac; मता—are considered; मा शुचः—do not grieve; संपदम्—qualities; दैवीम्—divine; अभिजातः—born with; असि—you are; पाण्डव—O son of Pandu.',
+      'commentary':
+          'Shree Krishna reassures Arjuna that he possesses divine qualities and is destined for liberation.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 6,
+
+      'sanskrit':
+          'द्वौ भूतसर्गौ लोकेऽस्मिन्दैव आसुर एव च | दैवो विस्तरशः प्रोक्त आसुरं पार्थ मे शृणु || 6 ||',
+      'translation':
+          'There are two kinds of beings in this world—the divine and the demoniac. The divine nature has been described in detail; now hear from Me about the demoniac, O Parth.',
+      'word_meaning':
+          'द्वौ—two; भूतसर्गौ—kinds of beings; लोके—in the world; अस्मिन्—in this; दैवः—divine; आसुरः—demoniac; एव—indeed; च—and; दैवः—divine; विस्तरशः—in detail; प्रोक्तः—described; आसुरम्—demoniac; पार्थ—O Parth; मे—My; शृणु—hear.',
+      'commentary':
+          'Shree Krishna introduces the contrast between divine and demoniac natures as two paths shaping human behavior and destiny.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 7,
+
+      'sanskrit':
+          'प्रवृत्तिं च निवृत्तिं च जना न विदुरासुराः | न शौचं नापि चाचारो न सत्यं तेषु विद्यते || 7 ||',
+      'translation':
+          'Those of demoniac nature do not understand what is proper action and what is improper. They have neither purity, nor proper conduct, nor truth.',
+      'word_meaning':
+          'प्रवृत्तिम्—right action; च—and; निवृत्तिम्—prohibition; च—and; जनाः—people; न—not; विदुः—understand; आसुराः—of demoniac nature; न—not; शौचम्—purity; न—not; अपि—also; च—and; आचारः—proper conduct; न—not; सत्यम्—truth; तेषु—in them; विद्यते—exists.',
+      'commentary':
+          'People of demoniac nature act impulsively without moral clarity, disregarding purity, discipline, and truth.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 8,
+
+      'sanskrit':
+          'असत्यमप्रतिष्ठं ते जगदाहुरनीश्वरम् | अपरस्परसंभूतं किमन्यत्कामहैतुकम् || 8 ||',
+      'translation':
+          'They say that the world is unreal, without moral foundation, and without God. They claim it is produced by mutual union of male and female, and that lust alone is its cause.',
+      'word_meaning':
+          'असत्यम्—unreal; अप्रतिष्ठम्—without moral basis; ते—they; जगत्—world; आहुः—say; अनईश्वरम्—without God; अपरस्परसंभूतम्—born of sexual union; किम्—what else; अन्यत्—other; कामहेतुकम्—caused by lust.',
+      'commentary':
+          'This verse describes the materialistic worldview of demoniac people, who deny divinity and moral order, attributing creation to mere desire and matter.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 9,
+
+      'sanskrit':
+          'एतां दृष्टिमवष्टभ्य नष्टात्मानोऽल्पबुद्धयः | प्रभवन्त्युग्रकर्माणः क्षयाय जगतोऽहिताः || 9 ||',
+      'translation':
+          'Holding such views, the demoniac, who are of small intellect and ruined souls, engage in unholy acts meant to destroy the world.',
+      'word_meaning':
+          'एताम्—this; दृष्टिम्—view; अवष्टभ्य—holding; नष्टात्मानः—ruined souls; अल्पबुद्धयः—of small intellect; प्रभवन्ति—arise; उग्रकर्माणः—cruel acts; क्षयाय—for destruction; जगतः—of the world; अहिताः—enemies.',
+      'commentary':
+          'Such thinking leads to destructive behavior. Denying divine order, they become enemies of harmony and society.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 10,
+
+      'sanskrit':
+          'काममाश्रित्य दुष्पूरं दम्भमानमदान्विताः | मोहाद्‍गृहीत्वासद्ग्राहान्प्रवर्तन्तेऽशुचिव्रताः || 10 ||',
+      'translation':
+          'Filled with insatiable desires, hypocrisy, pride, and arrogance, the demoniac, deluded by ignorance, engage in impure acts, following false doctrines.',
+      'word_meaning':
+          'कामम्—desire; आश्रित्य—taking refuge in; दुष्पूरम्—insatiable; दम्भ—hypocrisy; मान—pride; मद—arrogance; अन्विताः—endowed with; मोहात्—through delusion; गृहीत्वा—grasping; असत्—false; ग्राहान्—doctrines; प्रवर्तन्ते—engage; अशुचि—impure; व्रताः—vows.',
+      'commentary':
+          'Driven by greed and pride, they adopt unholy practices and distorted philosophies to justify indulgence.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 11,
+      'sanskrit':
+          'चिन्तामपरिमेयां च प्रलयान्तामुपाश्रिताः | कामोपभोगपरमा एतावदिति निश्चिताः || 11 ||',
+      'translation':
+          'Gripped by innumerable anxieties that end only with death, they are devoted to the gratification of desires and convinced that this is the highest goal of life.',
+      'word_meaning':
+          'चिन्ताम्—anxieties; अपरिमेयाम्—immeasurable; च—and; प्रलयान्ताम्—ending only with death; उपाश्रिताः—taking refuge in; काम—desire; उपभोग—enjoyment; परमाḥ—supremely engrossed; एतावत्—thus; इति—so thinking; निश्चिताः—convinced.',
+      'commentary':
+          'Their desires and worries never end; they live and die in the endless pursuit of pleasure, thinking material enjoyment is life’s only purpose.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 12,
+      'sanskrit':
+          'आशापाशशतैर्बद्धाः कामक्रोधपरायणाः | ईहन्ते कामभोगार्थमन्यायेनार्थसञ्चयान् || 12 ||',
+      'translation':
+          'Bound by hundreds of desires, filled with lust and anger, they strive to accumulate wealth by unjust means for sensual pleasure.',
+      'word_meaning':
+          'आशा—desires; पाश—fetters; शतैः—by hundreds; बद्धाः—bound; काम—lust; क्रोध—anger; परायणाः—devoted to; ईहन्ते—they strive; कामभोगार्थम्—for sensual enjoyment; अन्यायेन—unlawfully; अर्थ—wealth; सञ्चयान्—to accumulate.',
+      'commentary':
+          'People enslaved by greed and anger resort to unethical practices to fulfill their material cravings, deepening their bondage.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 13,
+      'sanskrit':
+          'इदमद्य मया लब्धमिमं प्राप्स्ये मनोरथम् | इदमस्तीदमपि मे भविष्यति पुनर्धनम् || 13 ||',
+      'translation':
+          '“This has today been gained by me; this desire I shall obtain. This is mine already, and this wealth too shall be mine again in the future.”',
+      'word_meaning':
+          'इदम्—this; अद्य—today; मया—by me; लब्धम्—gained; इमम्—this; प्राप्स्ये—I shall obtain; मनोरथम्—desire; इदम्—this; अस्ति—is; इदम्—this; अपि—also; मे—mine; भविष्यति—will become; पुनः—again; धनम्—wealth.',
+      'commentary':
+          'They live in egoistic delusion, thinking themselves the sole doers and owners, never realizing the transient nature of wealth and desires.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 14,
+      'sanskrit':
+          'असौ मया हतः शत्रुर्हनिष्ये चापरानपि | ईश्वरोऽहमहं भोगी सिद्धोऽहं बलवान्सुखी || 14 ||',
+      'translation':
+          '“I have slain this enemy, and others too I shall slay! I am the lord; I am the enjoyer; I am perfect, powerful, and happy.”',
+      'word_meaning':
+          'असौ—that one; मया—by me; हतः—slain; शत्रुः—enemy; हनिष्ये—I shall slay; च—and; अपरान्—others; अपि—also; ईश्वरः—lord; अहम्—I am; अहम्—I; भोगी—enjoyer; सिद्धः—perfect; अहम्—I am; बलवान्—powerful; सुखी—happy.',
+      'commentary':
+          'Puffed up with pride, they imagine themselves the doers of all actions, blinded by power and arrogance.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 15,
+      'sanskrit':
+          'आढ्योऽभिजनवानस्मि कोऽन्योऽस्ति सदृशो मया | यक्ष्ये दास्यामि मोदिष्य इत्यज्ञानविमोहिताः || 15 ||',
+      'translation':
+          '“I am wealthy and high-born; who else is equal to me? I shall perform sacrifices, give charity, and enjoy!”—thus they are deluded by ignorance.',
+      'word_meaning':
+          'आढ्यः—wealthy; अभिजनवान्—noble; अस्मि—I am; कः—who; अन्यः—else; अस्ति—is; सदृशः—equal; मया—to me; यक्ष्ये—I will sacrifice; दास्यामि—I will give (charity); मोदिष्ये—I will enjoy; इति—thus; अज्ञान—ignorance; विमोहिताः—deluded.',
+      'commentary':
+          'Their ego blinds them into thinking they are superior to others. Even their acts of charity or religion are driven by pride and self-glorification.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 16,
+      'sanskrit':
+          'अनेकचित्तविभ्रान्ता मोहजालसमावृताः | प्रसक्ताः कामभोगेषु पतन्ति नरकेऽशुचौ || 16 ||',
+      'translation':
+          'Bewildered by numerous thoughts, caught in the web of delusion, and addicted to sensual enjoyments, they fall into a foul hell.',
+      'word_meaning':
+          'अनेक—many; चित्त—minds; विभ्रान्ताः—confused; मोहजाल—net of delusion; समावृताः—enveloped; प्रसक्ताः—attached; कामभोगेषु—to sensual enjoyments; पतन्ति—they fall; नरके—into hell; अशुचौ—impure.',
+      'commentary':
+          'Their endless desires lead to confusion and downfall. Excessive indulgence traps them in lower states of existence.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 17,
+      'sanskrit':
+          'आत्मसंभाविताः स्तब्धा धनमानमदान्विताः | यजन्ते नामयज्ञैस्ते दम्भेनाविधिपूर्वकम् || 17 ||',
+      'translation':
+          'Self-conceited, stubborn, filled with pride and arrogance of wealth, they perform ostentatious sacrifices not in accordance with scriptural injunctions.',
+      'word_meaning':
+          'आत्मसंभाविताः—self-conceited; स्तब्धाः—stubborn; धन—wealth; मान—pride; मद—arrogance; अन्विताः—endowed with; यजन्ते—they perform sacrifices; नाम—by name only; यज्ञैः—with rituals; ते—they; दम्भेन—out of hypocrisy; अविधिपूर्वकम्—without following scriptural rules.',
+      'commentary':
+          'Their religious acts are motivated by ego, not devotion. Such superficial rituals bring no spiritual merit.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 18,
+      'sanskrit':
+          'अहंकारं बलं दर्पं कामं क्रोधं च संश्रिताः | मामात्मपरदेहेषु प्रद्विषन्तोऽभ्यसूयकाः || 18 ||',
+      'translation':
+          'Possessed by ego, strength, arrogance, desire, and anger, these cruel people hate Me, who dwells in their own bodies and in others.',
+      'word_meaning':
+          'अहंकारम्—ego; बलम्—strength; दर्पम्—arrogance; कामम्—desire; क्रोधम्—anger; च—and; संश्रिताः—endowed with; माम्—Me; आत्म—self; पर—others; देहेषु—in bodies; प्रद्विषन्तः—hating; अभ्यसूयकाः—envious.',
+      'commentary':
+          'When ego dominates, they lose sight of the Divine within themselves and others, turning hateful and destructive.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 19,
+      'sanskrit':
+          'तानहं द्विषतः क्रुरान्संसारेषु नराधमान् | क्षिपाम्यजस्रमशुभानासुरीष्वेव योनिषु || 19 ||',
+      'translation':
+          'Those hateful, cruel, and vilest among men, I repeatedly hurl into demoniac wombs in the cycle of rebirths.',
+      'word_meaning':
+          'तान्—them; अहम्—I; द्विषतः—hateful; क्रुरान्—cruel; संसारेषु—in worldly existence; नराधमान्—the vilest of men; क्षिपामि—I cast; अजस्रम्—constantly; अशुभान्—inauspicious; आसुरीषु—demoniac; एव—indeed; योनिषु—in wombs.',
+      'commentary':
+          'As a consequence of their actions and mindset, they are born in environments that perpetuate ignorance and suffering.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 20,
+      'sanskrit':
+          'आसुरीं योनिमापन्ना मूढा जन्मनि जन्मनि | मामप्राप्यैव कौन्तेय ततो यान्त्यधमां गतिम् || 20 ||',
+      'translation':
+          'Entering demoniac wombs birth after birth, these deluded souls never reach Me, O son of Kunti, but sink to the lowest state of existence.',
+      'word_meaning':
+          'आसुरीम्—demoniac; योनिम्—womb; आपन्नाः—attaining; मूढाः—deluded; जन्मनि जन्मनि—birth after birth; माम्—Me; अप्राप्य—not attaining; एव—indeed; कौन्तेय—O son of Kunti; ततः—thereafter; यान्ति—they go; अधमाम्—lowest; गतिम्—state.',
+      'commentary':
+          'Their continued indulgence in demoniac tendencies keeps them bound to lower realms, far from divine realization.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 21,
+      'sanskrit':
+          'त्रिविधं नरकस्येदं द्वारं नाशनमात्मनः | कामः क्रोधस्तथा लोभस्तस्मादेतत्त्रयं त्यजेत् || 21 ||',
+      'translation':
+          'There are three gates leading to hell—lust, anger, and greed. They destroy the soul; therefore, one should abandon all three.',
+      'word_meaning':
+          'त्रिविधम्—threefold; नरकस्य—of hell; इदम्—this; द्वारम्—gate; नाशनम्—destructive; आत्मनः—of the soul; कामः—lust; क्रोधः—anger; तथा—and; लोभः—greed; तस्मात्—therefore; एतत्—these; त्रयम्—three; त्यजेत्—should abandon.',
+      'commentary':
+          'Shree Krishna summarizes the root of evil: desire, anger, and greed. Renouncing them leads to peace and spiritual progress.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 22,
+      'sanskrit':
+          'एतैर्विमुक्तः कौन्तेय तमोद्वारैस्त्रिभिर्नरः | आचरत्यात्मनः श्रेयस्ततो याति परां गतिम् || 22 ||',
+      'translation':
+          'Freed from these three gates of darkness, O son of Kunti, a person acts for self-upliftment and then attains the supreme goal.',
+      'word_meaning':
+          'एतैः—from these; विमुक्तः—freed; कौन्तेय—O son of Kunti; तमोद्वारैः—gates of darkness; त्रिभिः—three; नरः—person; आचरति—acts; आत्मनः—self; श्रेयः—welfare; ततः—then; याति—attains; पराम्—supreme; गतिम्—destination.',
+      'commentary':
+          'When lust, anger, and greed are conquered, the mind becomes pure and ready for liberation.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 23,
+      'sanskrit':
+          'यः शास्त्रविधिमुत्सृज्य वर्तते कामकारतः | न स सिद्धिमवाप्नोति न सुखं न परां गतिम् || 23 ||',
+      'translation':
+          'He who disregards the injunctions of the scriptures and acts according to his desires attains neither perfection, nor happiness, nor the supreme goal.',
+      'word_meaning':
+          'यः—who; शास्त्र—scripture; विधिम्—injunction; उत्सृज्य—disregarding; वर्तते—acts; कामकारतः—according to desire; न—not; सः—he; सिद्धिम्—perfection; अवाप्नोति—attains; न—not; सुखम्—happiness; न—not; पराम्—supreme; गतिम्—goal.',
+      'commentary':
+          'Disregarding divine law leads to moral and spiritual ruin. Discipline and scriptural guidance are essential for self-purification.',
+    });
+
+    await db.insert('chapter_16', {
+      'verse_number': 24,
+      'sanskrit':
+          'तस्माच्छास्त्रं प्रमाणं ते कार्याकार्यव्यवस्थितौ | ज्ञात्वा शास्त्रविधानोक्तं कर्म कर्तुमिहार्हसि || 24 ||',
+      'translation':
+          'Therefore, the scriptures are your authority in determining what should and should not be done. Knowing their prescriptions, you should act accordingly in this world.',
+      'word_meaning':
+          'तस्मात्—therefore; शास्त्रम्—scripture; प्रमाणम्—authority; ते—for you; कार्य—duty; अकार्य—non-duty; व्यवस्थितौ—in determining; ज्ञात्वा—knowing; शास्त्र—scriptural; विधान—injunction; उक्तम्—prescribed; कर्म—action; कर्तुम्—to perform; इह—in this world; अर्हसि—you should.',
+      'commentary':
+          'Shree Krishna concludes by emphasizing that scriptures are the guiding light for right action, ensuring moral clarity and spiritual progress.',
+    });
+  }
+
+  Future<void> insertChapter17Verses(Database db) async {
+    await db.insert('chapter_17', {
+  'verse_number': 1,
+  'sanskrit':
+      'अर्जुन उवाच | ये शास्त्रविधिमुत्सृज्य यजन्ते श्रद्धयान्विताः | तेषां निष्ठा तु का कृष्ण सत्त्वमाहो रजस्तमः || 1 ||',
+  'translation':
+      'Arjun said: O Krishna, what is the position of those who disregard the scriptures, yet worship with faith? Is their faith in goodness, passion, or ignorance?',
+  'word_meaning':
+      'अर्जुन उवाच—Arjun said; ये—those who; शास्त्रविधिम्—scriptural injunctions; उत्सृज्य—disregard; यजन्ते—worship; श्रद्धया—faith; अन्विताः—possessed of; तेषाम्—their; निष्ठा—faith; तु—but; का—what; कृष्ण—O Krishna; सत्त्वम्—goodness; आहो—or; रजः—passion; तमः—ignorance.',
+  'commentary':
+      'Arjun inquires whether those who worship faithfully but without scriptural guidance act in goodness, passion, or ignorance. This begins the classification of faith.'
+    });
+
+await db.insert('chapter_17', {
+  'verse_number': 2,
+  'sanskrit':
+      'श्रीभगवानुवाच | त्रिविधा भवति श्रद्धा देहिनां सा स्वभावजा | सात्त्विकी राजसी चैव तामसी चेति तां श्रृणु || 2 ||',
+  'translation':
+      'The Blessed Lord said: Faith is of three kinds, born of the nature of the embodied beings — sattvic, rajasic, and tamasic. Hear about them from Me.',
+  'word_meaning':
+      'श्रीभगवानुवाच—The Blessed Lord said; त्रिविधा—threefold; भवति—is; श्रद्धा—faith; देहिनाम्—of the embodied beings; सा—it; स्वभावजा—born of nature; सात्त्विकी—of goodness; राजसी—of passion; तामसी—of ignorance; इति—thus; ताम्—of that; श्रृणु—hear.',
+  'commentary':
+      'Krishna explains that faith arises from one’s inherent nature (*svabhava*) and is classified into three types—sattvic, rajasic, and tamasic.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 3,
+  'sanskrit':
+      'सत्त्वानुरूपा सर्वस्य श्रद्धा भवति भारत | श्रद्धामयोऽयं पुरुषो यो यच्छ्रद्धः स एव सः || 3 ||',
+  'translation':
+      'The faith of every person is according to their nature, O Bhārata. One is made of faith; as one’s faith, so is one’s nature.',
+  'word_meaning':
+      'सत्त्व—nature; अनुरूपा—according to; सर्वस्य—of every person; श्रद्धा—faith; भवति—is; भारत—O Bhārata; श्रद्धामयः—full of faith; अयम्—this; पुरुषः—person; यः—who; यत्—what; श्रद्धः—faith; सः—he; एव—indeed; सः—so.',
+  'commentary':
+      'Faith reflects one’s inner nature. A person essentially becomes what they place their faith in — faith shapes identity and behavior.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 4,
+  'sanskrit':
+      'यजन्ते सात्त्विका देवान्यक्षरक्षांसि राजसाः | प्रेतान्भूतगणांश्चान्ये यजन्ते तामसा जनाः || 4 ||',
+  'translation':
+      'Those in the mode of goodness worship the gods; those in passion worship demigods and demons; and those in ignorance worship ghosts and spirits.',
+  'word_meaning':
+      'यजन्ते—worship; सात्त्विकाः—those in goodness; देवान्—gods; यक्षा—celestial beings; रक्षांसि—demons; राजसाः—those in passion; प्रेतान्—spirits; भूतगणान्—ghosts; च—and; अन्ये—others; यजन्ते—worship; तामसाः—those in ignorance; जनाः—people.',
+  'commentary':
+      'The type of deity one worships reflects one’s nature: divine beings for sattvic, powerful beings for rajasic, and dark entities for tamasic tendencies.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 5,
+  'sanskrit':
+      'अशास्त्रविहितं घोरं तप्यन्ते ये तपो जनाः | दम्भाहंकारसंयुक्ताः कामरागबलान्विताः || 5 ||',
+  'translation':
+      'Those who perform severe austerities not enjoined by the scriptures, impelled by hypocrisy and ego, and driven by desire and attachment, are of ignorance.',
+  'word_meaning':
+      'अशास्त्रविहितम्—not prescribed by scripture; घोरम्—terrible; तप्यन्ते—perform austerities; ये—those; तपः—austerity; जनाः—people; दम्भ—hypocrisy; अहंकार—ego; संयुक्ताः—united with; काम—desire; राग—attachment; बल—force; अन्विताः—driven by.',
+  'commentary':
+      'Such false asceticism, born of pride and desire, leads not to enlightenment but to harm, reflecting tamasic delusion.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 6,
+  'sanskrit':
+      'कर्शयन्तः शरीरस्थं भूतग्राममचेतसः | मां चैवान्तःशरीरस्थं तान्विद्ध्यासुरनिश्चयान् || 6 ||',
+  'translation':
+      'Those senseless persons who torture the elements in their body, and Me dwelling within, know them to be demoniacal in disposition.',
+  'word_meaning':
+      'कर्शयन्तः—torturing; शरीरस्थम्—situated in the body; भूतग्रामम्—the group of elements; अचेतसः—senseless; माम्—Me; च—also; एव—indeed; अन्तःशरीरस्थम्—situated within the body; तान्—them; विद्धि—know; असुरनिश्चयान्—of demoniacal resolve.',
+  'commentary':
+      'Those who harm their own body or life force in the name of austerity offend the Divine within; such behavior is demonic, not spiritual.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 7,
+  'sanskrit':
+      'आहारस्त्वपि सर्वस्य त्रिविधो भवति प्रियः | यज्ञस्तपस्तथा दानं तेषां भेदमिमं श्रृणु || 7 ||',
+  'translation':
+      'Even food, sacrifice, austerity, and charity are of three kinds according to the modes of nature. Hear their distinctions from Me.',
+  'word_meaning':
+      'आहारः—food; तु—indeed; अपि—even; सर्वस्य—of everyone; त्रिविधः—three kinds; भवति—is; प्रियः—dear; यज्ञः—sacrifice; तपः—austerity; तथा—also; दानम्—charity; तेषाम्—their; भेदम्—differences; इमम्—this; श्रृणु—hear.',
+  'commentary':
+      'Krishna begins classifying human actions like eating, worship, and charity according to the three gunas — goodness, passion, and ignorance.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 8,
+  'sanskrit':
+      'आयुःसत्त्वबलारोग्यसुखप्रीतिविवर्धनाः | रस्याः स्निग्धाः स्थिरा हृद्या आहाराः सात्त्विकप्रियाः || 8 ||',
+  'translation':
+      'Foods that increase life, purity, strength, health, happiness, and satisfaction — that are juicy, nourishing, and pleasant — are dear to the sattvic.',
+  'word_meaning':
+      'आयुः—life; सत्त्व—purity; बल—strength; आरोग्य—health; सुख—happiness; प्रीति—contentment; विवर्धनाः—increasing; रस्याः—juicy; स्निग्धाः—unctuous; स्थिराः—steady; हृद्या—pleasing to the heart; आहाराः—foods; सात्त्विकप्रियाः—dear to those in goodness.',
+  'commentary':
+      'Sattvic foods nurture clarity and longevity. They include fresh, wholesome, and mild-tasting foods that bring inner peace.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 9,
+  'sanskrit':
+      'कट्वम्ललवणात्युष्णतीक्ष्णरूक्षविदाहिनः | आहारा राजसस्येष्टा दुःखशोकामयप्रदाः || 9 ||',
+  'translation':
+      'Foods that are bitter, sour, salty, excessively hot, pungent, dry, and burning are dear to the passionate, but cause pain, sorrow, and disease.',
+  'word_meaning':
+      'कटु—bitter; अम्ल—sour; लवण—salty; अत्युष्ण—very hot; तीक्ष्ण—pungent; रूक्ष—dry; विदाहिनः—burning; आहाराः—foods; राजसस्य—of those in passion; इष्टाः—dear; दुःख—pain; शोक—sorrow; आमय—disease; प्रदाः—producing.',
+  'commentary':
+      'Rajasic foods excite the senses but disturb mental balance, often leading to restlessness and ailments.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 10,
+  'sanskrit':
+      'यातयामं गतरसं पूति पर्युषितं च यत् | उच्छिष्टमपि चामेध्यं भोजनं तामसप्रियम् || 10 ||',
+  'translation':
+      'Food that is stale, tasteless, putrid, decomposed, impure, or leftovers is dear to those in ignorance.',
+  'word_meaning':
+      'यातयामम्—stale; गतरसम्—tasteless; पूति—foul-smelling; पर्युषितम्—decomposed; च—and; यत्—which; उच्छिष्टम्—remnants; अपि—even; च—and; अमेध्यम्—impure; भोजनम्—food; तामसप्रियम्—dear to the tamasic.',
+  'commentary':
+      'Tamasic foods diminish vitality and clarity, symbolizing laziness, ignorance, and spiritual darkness.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 11,
+  'sanskrit':
+      'अफलाकाङ्क्षिभिर्यज्ञो विधिदृष्टो य इज्यते | यष्टव्यमेवेति मनः समाधाय स सात्त्विकः || 11 ||',
+  'translation':
+      'Sacrifice that is performed according to scriptural injunctions, without desire for reward, and with a firm mind — that is sattvic.',
+  'word_meaning':
+      'अफलाकाङ्क्षिभिः—without desire for fruit; यज्ञः—sacrifice; विधिदृष्टः—according to ordinance; यः—which; इज्यते—is performed; यष्टव्यम्—ought to be performed; एव—indeed; इति—thus; मनः—mind; समाधाय—with concentration; सः—that; सात्त्विकः—is of goodness.',
+  'commentary':
+      'A sattvic sacrifice is selfless and scripturally guided, performed with devotion rather than personal gain.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 12,
+  'sanskrit':
+      'अभिसंधाय तु फलं दम्भार्थमपि चैव यत् | इज्यते भरतश्रेष्ठ तं यज्ञं विद्धि राजसम् || 12 ||',
+  'translation':
+      'But sacrifice performed for the sake of reward or ostentation — know that sacrifice, O best of the Bharatas, to be rajasic.',
+  'word_meaning':
+      'अभिसंधाय—with desire for; तु—but; फलं—fruit; दम्भार्थम्—for show; अपि—also; च—and; एव—indeed; यत्—which; इज्यते—is performed; भरतश्रेष्ठ—O best of the Bharatas; तम्—that; यज्ञम्—sacrifice; विद्धि—know; राजसम्—of passion.',
+  'commentary':
+      'Rajasic sacrifices are motivated by ego or personal reward, not by devotion or purity of heart.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 13,
+  'sanskrit':
+      'विधिहीनमसृष्टान्नं मन्त्रहीनमदक्षिणम् | श्रद्धाविरहितं यज्ञं तामसं परिचक्षते || 13 ||',
+  'translation':
+      'Sacrifice that is not in accordance with scriptural rules, where no food is distributed, no mantras are chanted, no gifts given, and no faith exists — that is said to be tamasic.',
+  'word_meaning':
+      'विधिहीनम्—without rule; असृष्टान्नम्—without food distribution; मन्त्रहीनम्—without mantras; अदक्षिणम्—without gift; श्रद्धाविरहितम्—without faith; यज्ञम्—sacrifice; तामसम्—of ignorance; परिचक्षते—is said to be.',
+  'commentary':
+      'Tamasic sacrifice lacks understanding, reverence, and compassion — performed mechanically or superstitiously.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 14,
+  'sanskrit':
+      'देवद्विजगुरुप्राज्ञपूजनं शौचमार्जवम् | ब्रह्मचर्यमहिंसा च शारीरं तप उच्यते || 14 ||',
+  'translation':
+      'Worship of the gods, the twice-born, teachers, and the wise; purity, straightforwardness, celibacy, and non-violence — these are said to be austerities of the body.',
+  'word_meaning':
+      'देव—of the gods; द्विज—of the twice-born; गुरु—of teachers; प्राज्ञ—of the wise; पूजनम्—worship; शौचम्—purity; आर्जवम्—straightforwardness; ब्रह्मचर्यम्—celibacy; अहिंसा—non-violence; च—and; शारीरम्—of the body; तपः—austerity; उच्यते—is said to be.',
+  'commentary':
+      'Austerity of the body includes respect for elders and discipline in personal conduct — it strengthens moral and spiritual integrity.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 15,
+  'sanskrit':
+      'अनुद्वेगकरं वाक्यं सत्यं प्रियहितं च यत् | स्वाध्यायाभ्यसनं चैव वाङ्मयं तप उच्यते || 15 ||',
+  'translation':
+      'Speech that does not cause distress, that is truthful, pleasing, and beneficial, along with regular study of the scriptures — this is called austerity of speech.',
+  'word_meaning':
+      'अनुद्वेगकरम्—not causing distress; वाक्यम्—speech; सत्यम्—truthful; प्रियहितम्—pleasing and beneficial; च—and; यत्—which; स्वाध्यायाभ्यसनम्—study and recitation of scriptures; च—and; एव—indeed; वाङ्मयम्—of speech; तपः—austerity; उच्यते—is called.',
+  'commentary':
+      'Austerity of speech involves truth, kindness, and scriptural study — words must heal and uplift, not harm or mislead.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 16,
+  'sanskrit':
+      'मनःप्रसादः सौम्यत्वं मौनमात्मविनिग्रहः | भावसंशुद्धिरित्येतत्तपो मानसमुच्यते || 16 ||',
+  'translation':
+      'Serenity of mind, gentleness, silence, self-control, and purity of heart — these are called austerities of the mind.',
+  'word_meaning':
+      'मनःप्रसादः—serenity of mind; सौम्यत्वम्—gentleness; मौनम्—silence; आत्मविनिग्रहः—self-control; भावसंशुद्धिः—purity of heart; इति—thus; एतत्—this; तपः—austerity; मानसम्—of the mind; उच्यते—is said to be.',
+  'commentary':
+      'Mental austerity involves maintaining inner calm, clarity, and compassion. True discipline begins with mastery over thoughts and emotions.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 17,
+  'sanskrit':
+      'श्रद्धया परया तप्तं तपस्तत्त्रिविधं नरैः | अफलाकाङ्क्षिभिर्युक्तैः सात्त्विकं परिचक्षते || 17 ||',
+  'translation':
+      'When these threefold austerities are practiced with supreme faith by those who expect no reward, they are said to be sattvic.',
+  'word_meaning':
+      'श्रद्धया—with faith; परया—supreme; तप्तम्—performed; तपः—austerity; तत्—that; त्रिविधम्—threefold; नरैः—by men; अफलाकाङ्क्षिभिः—expecting no reward; युक्तैः—with discipline; सात्त्विकम्—of goodness; परिचक्षते—is said to be.',
+  'commentary':
+      'Austerity done with devotion and no selfish motive is pure (sattvic) and leads to inner harmony and wisdom.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 18,
+  'sanskrit':
+      'सत्कारमानपूजार्थं तपो दम्भेन चैव यत् | क्रियते तदिह प्रोक्तं राजसं चलमध्रुवम् || 18 ||',
+  'translation':
+      'Austerity performed for respect, honor, or worship, and motivated by hypocrisy, is said to be rajasic, unstable, and impermanent.',
+  'word_meaning':
+      'सत्कार—respect; मान—honor; पूजा—worship; अर्थम्—for the sake of; तपः—austerity; दम्भेन—by hypocrisy; च—and; एव—indeed; यत्—which; क्रियते—is practiced; तत्—that; इह—here; प्रोक्तम्—is said to be; राजसम्—of passion; चलम्—unstable; अध्रुवम्—impermanent.',
+  'commentary':
+      'Rajasic austerity is ego-driven — done for recognition or show, it lacks sincerity and fades quickly.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 19,
+  'sanskrit':
+      'मूढग्रहेणात्मनो यत्पीडया क्रियते तपः | परस्योत्सादनार्थं वा तत् तामसमुदाहृतम् || 19 ||',
+  'translation':
+      'Austerity performed out of foolish obstinacy, with self-torture or to harm others, is said to be tamasic.',
+  'word_meaning':
+      'मूढग्रहेण—out of deluded resolve; आत्मनः—of oneself; यत्—which; पीडया—with torture; क्रियते—is performed; तपः—austerity; परस्य—of another; उत्सादनार्थम्—for harming; वा—or; तत्—that; तामसम्—of ignorance; उदाहृतम्—is declared.',
+  'commentary':
+      'Tamasic austerity arises from ignorance or cruelty — harming oneself or others under the guise of discipline.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 20,
+  'sanskrit':
+      'दातव्यमिति यद्दानं दीयतेऽनुपकारिणे | देशे काले च पात्रे च तद्दानं सात्त्विकं स्मृतम् || 20 ||',
+  'translation':
+      'Charity given with a sense of duty, at the proper place and time, and to a worthy person, without expectation of return, is considered sattvic.',
+  'word_meaning':
+      'दातव्यम्—it ought to be given; इति—thus; यत्—which; दानम्—charity; दीयते—is given; अनुपकारिणे—to one who cannot return the favor; देशे—place; काले—time; च—and; पात्रे—to a deserving person; च—and; तत्—that; दानम्—charity; सात्त्विकम्—of goodness; स्मृतम्—is remembered.',
+  'commentary':
+      'Sattvic charity is selfless, pure, and mindful — given out of compassion, not for recognition or gain.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 21,
+  'sanskrit':
+      'यत्तु प्रत्युपकारार्थं फलमुद्दिश्य वा पुनः | दीयते च परिक्लिष्टं तद्दानं राजसं स्मृतम् || 21 ||',
+  'translation':
+      'But charity given expecting something in return, or for some fruit or result, and given reluctantly, is considered rajasic.',
+  'word_meaning':
+      'यत्—which; तु—but; प्रत्युपकारार्थम्—for return of favor; फलम्—reward; उद्दिश्य—seeking; वा—or; पुनः—again; दीयते—is given; च—and; परिक्लिष्टम्—with reluctance; तत्—that; दानम्—charity; राजसम्—of passion; स्मृतम्—is considered.',
+  'commentary':
+      'Rajasic charity is transactional — it is done with expectation or hesitation, lacking true generosity of spirit.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 22,
+  'sanskrit':
+      'अदेशकाले यद्दानमपात्रेभ्यश्च दीयते | असत्कृतमवज्ञातं तत्तामसमुदाहृतम् || 22 ||',
+  'translation':
+      'Charity given at the wrong place or time, to unworthy persons, or without respect or sincerity, is said to be tamasic.',
+  'word_meaning':
+      'अदेशकाले—at an improper place or time; यत्—which; दानम्—charity; अपात्रेभ्यः—to unworthy persons; च—and; दीयते—is given; असत्कृतम्—without respect; अवज्ञातम्—with disdain; तत्—that; तामसम्—of ignorance; उदाहृतम्—is declared.',
+  'commentary':
+      'Tamasic charity is thoughtless and disrespectful — given carelessly or to unworthy recipients, it brings no spiritual merit.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 23,
+  'sanskrit':
+      'ॐ तत् सत् इति निर्देशो ब्रह्मणस्त्रिविधः स्मृतः | ब्राह्मणास्तेन वेदाश्च यज्ञाश्च विहिताः पुरा || 23 ||',
+  'translation':
+      '“Om Tat Sat” — this has been declared as the triple designation of Brahman. The Brahmins, the Vedas, and sacrifices were created of that in ancient times.',
+  'word_meaning':
+      'ॐ तत् सत्—Om, Tat, Sat; इति—thus; निर्देशः—designation; ब्रह्मणः—of Brahman; त्रिविधः—threefold; स्मृतः—is remembered; ब्राह्मणाः—the Brahmins; तेन—by that; वेदाः—the Vedas; च—and; यज्ञाः—sacrifices; च—and; विहिताः—ordained; पुरा—in the beginning.',
+  'commentary':
+      'These sacred words — Om, Tat, and Sat — symbolize the Absolute Truth and are used to sanctify all spiritual acts like sacrifice, study, and charity.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 24,
+  'sanskrit':
+      'तस्मादोमित्युदाहृत्य यज्ञदानतपःक्रियाः | प्रवर्तन्ते विधानोक्ताः सततं ब्रह्मवादिनाम् || 24 ||',
+  'translation':
+      'Therefore, acts of sacrifice, charity, and austerity as enjoined by the scriptures are always begun by the devotees of Brahman with the utterance of “Om.”',
+  'word_meaning':
+      'तस्मात्—therefore; ओम् इति—uttering Om; उदाहृत्य—after uttering; यज्ञ—sacrifice; दान—charity; तपः—penance; क्रियाः—acts; प्रवर्तन्ते—begin; विधानोक्ताः—as prescribed by the scriptures; सततम्—always; ब्रह्मवादिनाम्—by the knowers of Brahman.',
+  'commentary':
+      'The utterance of “Om” sanctifies all spiritual practices, aligning them with divine consciousness.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 25,
+  'sanskrit':
+      'तदित्यनभिसंधाय फलं यज्ञतपःक्रियाः | दानक्रियाश्च विविधाः क्रियन्ते मोक्षकाङ्क्षिभिः || 25 ||',
+  'translation':
+      'Uttering “Tat,” the seekers of liberation perform various acts of sacrifice, austerity, and charity without desire for results.',
+  'word_meaning':
+      'तत् इति—uttering Tat; अनभिसंधाय—without attachment; फलं—fruit; यज्ञ—sacrifice; तपः—austerity; क्रियाः—acts; दानक्रियाः—acts of charity; च—and; विविधाः—various; क्रियन्ते—are performed; मोक्षकाङ्क्षिभिः—by those seeking liberation.',
+  'commentary':
+      '“Tat” signifies dedication to the Supreme — acts done with this spirit are free from ego and desire.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 26,
+  'sanskrit':
+      'सद्भावे साधुभावे च सदित्येतत्प्रयुज्यते | प्रशस्ते कर्मणि तथा सच्छब्दः पार्थ युज्यते || 26 ||',
+  'translation':
+      'The word “Sat” is used to denote existence and goodness; O Parth, it is also used to describe praiseworthy actions.',
+  'word_meaning':
+      'सद्भावे—in the sense of reality; साधुभावे—in the sense of goodness; च—and; सत् इति—Sat thus; एतत्—this; प्रयुज्यते—is used; प्रशस्ते—in auspicious; कर्मणि—action; तथा—also; सत् शब्दः—the word Sat; पार्थ—O Parth; युज्यते—is applied.',
+  'commentary':
+      '“Sat” means truth, goodness, and auspiciousness — it sanctifies righteous actions and existence itself.'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 27,
+  'sanskrit':
+      'यज्ञे तपसि दाने च स्थितिः सत् इति चोच्यते | कर्म चैव तदर्थीयं सदित्येवाभिधीयते || 27 ||',
+  'translation':
+      'Steadfastness in sacrifice, austerity, and charity is also called “Sat”; and action performed for the sake of the Supreme is likewise designated as “Sat.”',
+  'word_meaning':
+      'यज्ञे—in sacrifice; तपसि—in austerity; दाने—in charity; च—and; स्थितिः—steadfastness; सत् इति—is called Sat; च—and; उच्यते—is said; कर्म—action; च—and; एव—also; तत् अर्थीयम्—done for that purpose (of God); सत् इति एव—is verily called Sat; अभिधीयते—is designated.',
+  'commentary':
+      'When actions like charity or penance are performed with devotion and dedication to truth, they are imbued with the essence of “Sat.”'
+});
+
+await db.insert('chapter_17', {
+  'verse_number': 28,
+  'sanskrit':
+      'अश्रद्धया हुतं दत्तं तपस्तप्तं कृतं च यत् | असदित्युच्यते पार्थ न च तत्प्रेत्य नो इह || 28 ||',
+  'translation':
+      'Whatever is offered, given, or performed without faith is called “Asat,” O Parth — it is fruitless both now and hereafter.',
+  'word_meaning':
+      'अश्रद्धया—without faith; हुतम्—offered; दत्तम्—given; तपः—penance; तप्तम्—performed; कृतम्—done; च—and; यत्—which; असत् इति—is called Asat; उच्यते—is said; पार्थ—O Parth; न च—not; तत्—that; प्रेत्य—after death; न—not; इह—here (in this world).',
+  'commentary':
+      'Faith is the foundation of all spiritual action. Deeds done without faith are hollow — they yield no result, either here or beyond.'
+});
+
+  }
+  
+  Future<void> insertChapter18Verses(Database db) async {
+await db.insert('chapter_18', {
+  'verse_number': 1,
+  'sanskrit':
+      'अर्जुन उवाच | संन्यासस्य महाबाहो तत्त्वमिच्छामि वेदितुम् | त्यागस्य च हृषीकेश पृथक्केशिनिषूदन || 1 ||',
+  'translation':
+      'Arjun said: O mighty-armed Krishna, I wish to understand the true nature of renunciation (sannyās) and also of relinquishment (tyāg), and the distinction between them, O Hrishikesha, O Keshinisudana.',
+  'word_meaning':
+      'अर्जुन उवाच—Arjun said; संन्यासस्य—of renunciation; महा-बाहो—mighty-armed one; तत्त्वम्—the truth; इच्छामि—I wish; वेदितुम्—to know; त्यागस्य—of relinquishment; च—and; हृषीकेश—Krishna, master of the senses; पृथक्—difference; केशि-निषूदन—slayer of the demon Keshi.',
+  'commentary':
+      'Arjun begins the final chapter seeking clarification about the terms *sannyās* and *tyāg*. He wants to know if they are the same or different, as they seem to both involve giving up worldly actions.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 2,
+  'sanskrit':
+      'श्रीभगवानुवाच | काम्यानां कर्मणां न्यासं संन्यासं कवयो विदुः | सर्वकर्मफलत्यागं प्राहुस्त्यागं विचक्षणाः || 2 ||',
+  'translation':
+      'The Supreme Lord said: The wise understand *sannyās* as the renunciation of actions motivated by desire, while the learned declare *tyāg* as the renunciation of the fruits of all actions.',
+  'word_meaning':
+      'श्रीभगवान् उवाच—The Blessed Lord said; काम्यानाम्—motivated by desire; कर्मणाम्—of actions; न्यासम्—renunciation; संन्यासम्—renunciation; कवयः—the wise; विदुः—understand; सर्व—of all; कर्म—actions; फल—fruits; त्यागम्—relinquishment; प्राहुः—declare; त्यागम्—renunciation; विचक्षणाः—the learned.',
+  'commentary':
+      'Krishna distinguishes between *sannyās* (giving up desire-driven actions) and *tyāg* (giving up the fruits of all actions). Both are spiritual paths, but *tyāg* is considered more balanced for those in action.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 3,
+  'sanskrit':
+      'त्याज्यं दोषवदित्येके कर्म प्राहुर्मनीषिणः | यज्ञदानतपःकर्म न त्याज्यमिति चापरे || 3 ||',
+  'translation':
+      'Some philosophers declare that all kinds of actions should be given up as they are full of fault, while others declare that acts of sacrifice, charity, and penance should never be abandoned.',
+  'word_meaning':
+      'त्याज्यम्—should be given up; दोषवत्—full of fault; इति—thus; एके—some; कर्म—action; प्राहुः—say; मनीषिणः—the wise; यज्ञ—sacrifice; दान—charity; तपः—penance; कर्म—actions; न—not; त्याज्यम्—should be given up; इति—thus; च—and; अपरे—others.',
+  'commentary':
+      'There is a difference of opinion among spiritual thinkers—some advocate complete renunciation of all actions, while others recommend continuing noble acts like sacrifice, charity, and penance.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 4,
+  'sanskrit':
+      'निश्चयं श्रृणु मे तत्र त्यागे भरतसत्तम | त्यागो हि पुरुषव्याघ्र त्रिविधः संप्रकीर्तितः || 4 ||',
+  'translation':
+      'Hear from Me, O best of the Bharatas, My conclusion about renunciation. Renunciation has been declared to be of three kinds, O tiger among men.',
+  'word_meaning':
+      'निश्चयम्—definite conclusion; श्रृणु—hear; मे—from Me; तत्र—therein; त्यागे—about renunciation; भरत-सत्तम—best of the Bharatas (Arjun); त्यागः—renunciation; हि—indeed; पुरुष-व्याघ्र—tiger among men; त्रि-विदः—of three kinds; संप्रकीर्तितः—is declared.',
+  'commentary':
+      'Krishna promises to remove the confusion by clearly classifying renunciation into three types based on the modes (*gunas*).'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 5,
+  'sanskrit':
+      'यज्ञदानतपःकर्म न त्याज्यं कार्यमेव तत् | यज्ञो दानं तपश्चैव पावनानि मनीषिणाम् || 5 ||',
+  'translation':
+      'Acts of sacrifice, charity, and penance should never be abandoned; they must be performed, for they purify even the wise.',
+  'word_meaning':
+      'यज्ञ—sacrifice; दान—charity; तपः—penance; कर्म—actions; न—not; त्याज्यम्—should be abandoned; कार्यम्—must be done; एव—indeed; तत्—that; यज्ञः—sacrifice; दानम्—charity; तपः—penance; च—and; एव—certainly; पावनानि—purifying; मनीषिणाम्—of the wise.',
+  'commentary':
+      'Spiritual duties like sacrifice, charity, and penance elevate the soul by purifying the heart from selfishness and attachment.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 6,
+  'sanskrit':
+      'एतान्यपि तु कर्माणि सङ्गं त्यक्त्वा फलानि च | कर्तव्यानीति मे पार्थ निश्चितं मतमुत्तमम् || 6 ||',
+  'translation':
+      'Even these actions should be performed without attachment and expectation of reward, O Parth; this is My firm and best opinion.',
+  'word_meaning':
+      'एतानि—these; अपि—even; तु—but; कर्माणि—actions; सङ्गम्—attachment; त्यक्त्वा—renouncing; फलानि—fruits; च—and; कर्तव्यानि—should be done; इति—thus; मे—My; पार्थ—Arjun; निश्चितम्—certain; मतम्—opinion; उत्तमम्—supreme.',
+  'commentary':
+      'Krishna clarifies that true renunciation is not giving up action, but detaching from results and ego while performing one’s duty.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 7,
+  'sanskrit':
+      'नियतस्य तु संन्यासः कर्मणो नोपपद्यते | मोहात्तस्य परित्यागस्तामसः परिकीर्तितः || 7 ||',
+  'translation':
+      'Renunciation of obligatory duties is not proper. Abandonment of such duties out of delusion is declared to be in the mode of ignorance.',
+  'word_meaning':
+      'नियतस्य—of prescribed; तु—but; संन्यासः—renunciation; कर्मणः—of duty; न—not; उपपद्यते—is proper; मोहात्—out of delusion; तस्य—his; परित्यागः—abandonment; तामसः—in the mode of ignorance; परिकीर्तितः—is declared.',
+  'commentary':
+      'If a person gives up their duties out of ignorance or confusion, it leads to spiritual degradation rather than liberation.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 8,
+  'sanskrit':
+      'दुःखमित्येव यत्कर्म कायक्लेशभयात्त्यजेत् | स कृत्वा राजसं त्यागं नैव त्यागफलं लभेत् || 8 ||',
+  'translation':
+      'When one renounces duty merely because it is troublesome or causes bodily discomfort, such renunciation is said to be in the mode of passion. Such a renouncer does not gain the fruits of true renunciation.',
+  'word_meaning':
+      'दुःखम्—painful; इति—thus; एव—indeed; यत्—which; कर्म—action; कायक्लेश—bodily suffering; भयात्—out of fear; त्यजेत्—gives up; सः—that person; कृत्वा—having done; राजसम्—mode of passion; त्यागम्—renunciation; न—not; एव—indeed; त्याग-फलं—fruit of renunciation; लभेत्—obtains.',
+  'commentary':
+      'Renouncing action due to laziness or discomfort is *rājasic tyāg*—it arises from attachment to comfort rather than from wisdom.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 9,
+  'sanskrit':
+      'कार्यमित्येव यत्कर्म नियतं क्रियते अर्जुन | सङ्गं त्यक्त्वा फलं चैव स त्यागः सात्त्विको मतः || 9 ||',
+  'translation':
+      'When prescribed duty is performed only because it ought to be done, without attachment or desire for results, such renunciation is considered to be in the mode of goodness.',
+  'word_meaning':
+      'कार्यं—ought to be done; इति—thus; एव—certainly; यत्—which; कर्म—action; नियतम्—prescribed; क्रियते—is performed; अर्जुन—O Arjun; सङ्गम्—attachment; त्यक्त्वा—renouncing; फलम्—fruits; च—and; एव—indeed; सः—that; त्यागः—renunciation; सात्त्विकः—in goodness; मतः—is considered.',
+  'commentary':
+      '*Sāttvik tyāg* is ideal renunciation—acting dutifully without attachment, ego, or expectation of results.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 10,
+  'sanskrit':
+      'न द्वेष्ट्यकुशलं कर्म कुशले नानुषज्जते | त्यागी सत्त्वसमाविष्टो मेधावी छिन्नसंशयः || 10 ||',
+  'translation':
+      'The one who neither hates unpleasant work nor is attached to pleasant work is a true renunciate, full of goodness and wisdom, and free from all doubts.',
+  'word_meaning':
+      'न—does not; द्वेष्टि—hate; अकुशलम्—unpleasant; कर्म—work; कुशले—pleasant; न—not; अनुषज्जते—is attached; त्यागी—renunciate; सत्त्व—goodness; समाविष्टः—endowed with; मेधावी—wise; छिन्न—cut off; संशयः—doubts.',
+  'commentary':
+      'A wise renouncer performs every duty with equanimity. He neither clings to pleasurable tasks nor avoids difficult ones, showing purity of mind and detachment.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 11,
+  'sanskrit':
+      'न हि देहभृता शक्यं त्यक्तुं कर्माण्यशेषतः | यस्तु कर्मफलत्यागी स त्यागीत्यभिधीयते || 11 ||',
+  'translation':
+      'It is indeed not possible for one who possesses a body to completely renounce all actions. But the one who renounces the fruits of actions is said to have truly renounced.',
+  'word_meaning':
+      'न—not; हि—indeed; देह-भृता—embodied being; शक्यम्—is possible; त्यक्तुम्—to renounce; कर्माणि—actions; अशेषतः—entirely; यः—who; तु—but; कर्म-फल-त्यागी—renounces fruits of actions; सः—he; त्यागी—renunciate; इति—thus; अभिधीयते—is called.',
+  'commentary':
+      'As long as one lives in the body, action is inevitable. True renunciation is therefore giving up attachment to results, not abstaining from action.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 12,
+  'sanskrit':
+      'अनिष्टमिष्टं मिश्रं च त्रिविधं कर्मणः फलम् | भवत्यत्यागिनां प्रेत्य न तु संन्यासिनां क्वचित् || 12 ||',
+  'translation':
+      'The threefold results of actions—desirable, undesirable, and mixed—accrue after death to those who have not renounced, but never to those who are renounced.',
+  'word_meaning':
+      'अनिष्टम्—undesirable; इष्टम्—desirable; मिश्रम्—mixed; च—and; त्रि-विदम्—threefold; कर्मणः—of actions; फलम्—result; भवति—accrues; अ-त्यागिनाम्—to those who do not renounce; प्रेत्य—after death; न—not; तु—but; संन्यासिनाम्—to the renounced; क्वचित्—at any time.',
+  'commentary':
+      'Those attached to results are bound by karma, while true renunciates escape karmic bondage by surrendering outcomes to God.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 13,
+  'sanskrit':
+      'पञ्चैतानि महाबाहो कारणानि निबोध मे | सांख्ये कृतान्ते प्रोक्तानि सिद्धये सर्वकर्मणाम् || 13 ||',
+  'translation':
+      'Learn from Me, O mighty-armed Arjun, the five factors that have been declared in the Sāṅkhya philosophy as essential for the accomplishment of all actions.',
+  'word_meaning':
+      'पञ्च—five; एतानि—these; महा-बाहो—O mighty-armed one; कारणानि—causes; निबोध—learn; मे—from Me; सांख्ये—in the Sāṅkhya philosophy; कृतान्ते—ultimate conclusion; प्रोक्तानि—declared; सिद्धये—for accomplishment; सर्व-कर्मणाम्—of all actions.',
+  'commentary':
+      'Krishna introduces the five causes of any action’s completion, according to philosophy: the doer, instruments, efforts, circumstances, and the divine will.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 14,
+  'sanskrit':
+      'अधिष्ठानं तथा कर्ता करणं च पृथग्विधम् | विविधाश्च पृथक्चेष्टा दैवं चैवात्र पञ्चमम् || 14 ||',
+  'translation':
+      'The body, the doer, the various instruments, the distinct efforts, and the divine will—these are the five factors of action.',
+  'word_meaning':
+      'अधिष्ठानम्—the body; तथा—also; कर्ता—the doer; करणम्—instruments; च—and; पृथक्-विदम्—of various kinds; विविधाः—various; च—and; पृथक्—distinct; चेष्टाः—efforts; दैवम्—divine will; च—and; एव—indeed; अत्र—here; पञ्चमम्—the fifth.',
+  'commentary':
+      'No action is performed independently. The body and mind are tools, the soul is the doer, effort is the process, and divine grace ensures completion.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 15,
+  'sanskrit':
+      'शरीरवाङ्मनोभिर्यत्कर्म प्रारभते नरः | न्याय्यं वा विपरीतं वा पञ्चैते तस्य हेतवः || 15 ||',
+  'translation':
+      'Whatever action a person performs with body, speech, and mind—whether right or wrong—these five are its causes.',
+  'word_meaning':
+      'शरीर—body; वाक्—speech; मनोभिः—mind; यत्—which; कर्म—action; प्रारभते—performs; नरः—a person; न्याय्यम्—right; वा—or; विपरीतम्—wrong; वा—or; पञ्च—five; एते—these; तस्य—its; हेतवः—causes.',
+  'commentary':
+      'Human action arises from multiple sources—body, mind, and speech—guided by the five factors. Thus, no one can claim absolute doership.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 16,
+  'sanskrit':
+      'तत्रैवं सति कर्तारमात्मानं केवलं तु यः | पश्यत्यकृतबुद्धित्वान्न स पश्यति दुर्मतिः || 16 ||',
+  'translation':
+      'Therefore, the person whose mind is impure and who sees the self alone as the doer does not see truly; his understanding is deluded.',
+  'word_meaning':
+      'तत्र—there; एवम्—thus; सति—being so; कर्तारम्—the doer; आत्मानम्—the self; केवलम्—alone; तु—but; यः—who; पश्यति—sees; अ-कृत-बुद्धित्वात्—due to impure intellect; न—not; सः—he; पश्यति—sees; दुर्मतिः—of poor understanding.',
+  'commentary':
+      'Egoistic identification with being the sole doer is ignorance. The wise see actions as performed by the interplay of body, mind, and divine forces.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 17,
+  'sanskrit':
+      'यस्य नाहंकृतो भावो बुद्धिर्यस्य न लिप्यते | हत्वाऽपि स इमाँल्लोकान्न हन्ति न निबध्यते || 17 ||',
+  'translation':
+      'The one who is free from ego and whose intellect is untainted, even if he kills these people, does not kill and is not bound by the act.',
+  'word_meaning':
+      'यस्य—whose; न—not; अहं-कृतः—egoistic; भावः—disposition; बुद्धिः—intellect; यस्य—whose; न—not; लिप्यते—is tainted; हत्वा अपि—even having killed; सः—he; इमान्—these; लोकान्—people; न—not; हन्ति—kills; न—not; निबध्यते—is bound.',
+  'commentary':
+      'Krishna reiterates that a selfless person, acting without ego or attachment, remains untouched by karma even in seemingly violent actions.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 18,
+  'sanskrit':
+      'ज्ञानं ज्ञेयं परिज्ञाता त्रिविधा कर्मचोदना | करणं कर्म कर्तेति त्रिविधः कर्मसंग्रहः || 18 ||',
+  'translation':
+      'Knowledge, the object of knowledge, and the knower—these are the three motivating factors of action. The instrument, the action, and the doer—these make up the threefold basis of action.',
+  'word_meaning':
+      'ज्ञानम्—knowledge; ज्ञेयम्—object of knowledge; परिज्ञाता—knower; त्रि-विदा—threefold; कर्म-चोदना—incitement to action; करणम्—instrument; कर्म—action; कर्ता—doer; इति—thus; त्रि-विदः—threefold; कर्म-संग्रहः—basis of action.',
+  'commentary':
+      'Action is driven by three internal motivators—knowledge, the knower, and the object—and manifests through three external components—instrument, deed, and doer.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 19,
+  'sanskrit':
+      'ज्ञानं कर्म च कर्ता च त्रिधैव गुणभेदतः | प्रोच्यते गुणसङ्ख्याने यथावच्छृणु तान्यपि || 19 ||',
+  'translation':
+      'Knowledge, action, and the doer are of three kinds according to the distinction of the modes of material nature. Hear about them as I describe them in detail.',
+  'word_meaning':
+      'ज्ञानम्—knowledge; कर्म—action; च—and; कर्ता—doer; च—and; त्रिधा—threefold; एव—indeed; गुण-भेदतः—based on the modes; प्रोच्यते—are described; गुण-सङ्ख्याने—in the science of the Gunas; यथा-अवच्छृणु—hear properly; तानि—those; अपि—also.',
+  'commentary':
+      'Just as matter operates under three modes—sattva, rajas, and tamas—so too do knowledge, action, and the doer fall under these categories.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 20,
+  'sanskrit':
+      'सर्वभूतेषु येनैकं भावमव्ययमीक्षते | अविभक्तं विभक्तेषु तज्ज्ञानं विद्धि सात्त्विकम् || 20 ||',
+  'translation':
+      'That knowledge by which one sees the one indestructible reality in all beings, undivided among the divided—know that knowledge to be in the mode of goodness.',
+  'word_meaning':
+      'सर्व-भूतेषु—in all beings; येन—by which; एकम्—one; भावम्—essence; अव्ययम्—indestructible; ईक्षते—sees; अविभक्तम्—undivided; विभक्तेषु—among the divided; तत्—that; ज्ञानम्—knowledge; विद्धि—know; सात्त्विकम्—in goodness.',
+  'commentary':
+      'Sāttvik knowledge perceives the same divine essence in all beings. It sees unity in diversity—the oneness of the soul within all forms.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 21,
+  'sanskrit':
+      'पृथक्त्वेन तु यज्ज्ञानं नानाभावान्पृथग्विधान् | वेत्ति सर्वेषु भूतेषु तज्ज्ञानं विद्धि राजसम् || 21 ||',
+  'translation':
+      'But that knowledge which sees various entities of distinct kinds as separate among all beings—know that to be in the mode of passion.',
+  'word_meaning':
+      'पृथक्त्वेन—as separate; तु—but; यत्—which; ज्ञानम्—knowledge; नाना—many; भावान्—natures; पृथक्—different; विधान्—kinds; वेत्ति—sees; सर्वेषु—in all; भूतेषु—beings; तत्—that; ज्ञानम्—knowledge; विद्धि—know; राजसम्—in passion.',
+  'commentary':
+      'Rājasic knowledge sees diversity as division. It perceives separateness and individuality but ignores the underlying spiritual unity.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 22,
+  'sanskrit':
+      'यत्तु कृत्स्नवदेकस्मिन्कार्ये सक्तमहैतुकम् | अतत्त्वार्थवदल्पं च तत्तामसमुदाहृतम् || 22 ||',
+  'translation':
+      'That knowledge which clings to one single effect as if it were the whole, without reason or understanding of the truth, and which is trivial—know that to be in the mode of ignorance.',
+  'word_meaning':
+      'यत्—which; तु—but; कृत्स्नवत्—as if whole; एकस्मिन्—in one thing; कार्ये—effect; सक्तम्—attached; अ-हेतुकम्—without reason; अ-तत्त्व-अर्थवत्—without true understanding; अल्पम्—trivial; च—and; तत्—that; तामसम्—in ignorance; उदाहृतम्—is called.',
+  'commentary':
+      'Tāmasic knowledge is narrow, irrational, and misdirected—it mistakes a part for the whole and remains bound by superstition and delusion.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 23,
+  'sanskrit':
+      'नियतं सङ्गरहितमरागद्वेषतः कृतम् | अफलप्रेप्सुना कर्म यत्तत्सात्त्विकमुच्यते || 23 ||',
+  'translation':
+      'An action performed as a duty, without attachment, without love or hatred, and without desire for results, is declared to be in the mode of goodness.',
+  'word_meaning':
+      'नियतम्—prescribed; सङ्ग-रहितम्—free from attachment; अ-राग-द्वेषतः—without attraction or aversion; कृतम्—performed; अ-फल-प्रेप्सुना—without longing for fruits; कर्म—action; यत्—that; तत्—that; सात्त्विकम्—in goodness; उच्यते—is said.',
+  'commentary':
+      'Sāttvik action arises from duty, not desire. It is performed selflessly, balanced between joy and discomfort, with the welfare of all in mind.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 24,
+  'sanskrit':
+      'यत्तु कामेप्सुना कर्म साहंकारेण वा पुनः | क्रियते बहुलायासं तद्राजसमुदाहृतम् || 24 ||',
+  'translation':
+      'But that action which is performed with great effort, seeking pleasure or driven by ego, is declared to be in the mode of passion.',
+  'word_meaning':
+      'यत्—which; तु—but; काम-इप्सुना—desiring reward; कर्म—action; स-अहंकारेण—with ego; वा—or; पुनः—again; क्रियते—is performed; बहु-ल-आयासम्—with much strain; तत्—that; राजसम्—in passion; उदाहृतम्—is called.',
+  'commentary':
+      'Rājasic action is done with expectation of reward and personal gain, born of desire and ego, often resulting in stress and disappointment.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 25,
+  'sanskrit':
+      'अनुबन्धं क्षयं हिंसामनपेक्ष्य च पौरुषम् | मोहादारभ्यते कर्म यत्तत्तामसमुच्यते || 25 ||',
+  'translation':
+      'That action which is undertaken out of delusion, without regard for consequences, loss, harm, or one’s capacity, is said to be in the mode of ignorance.',
+  'word_meaning':
+      'अनुबन्धम्—consequences; क्षयम्—loss; हिंसाम्—injury; अनपेक्ष्य—without consideration; च—and; पौरुषम्—one’s ability; मोहात्—out of delusion; आरभ्यते—is undertaken; कर्म—action; यत्—that; तत्—that; तामसम्—in ignorance; उच्यते—is said.',
+  'commentary':
+      'Tāmasic action is impulsive and reckless, performed in ignorance of its outcomes, leading to harm for oneself and others.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 26,
+  'sanskrit':
+      'मुक्तसङ्गोऽनहंवादी धृत्युत्साहसमन्वितः | सिद्ध्यसिद्ध्योर्निर्विकारः कर्ता सात्त्विक उच्यते || 26 ||',
+  'translation':
+      'Free from attachment, without egotism, endowed with steadfastness and enthusiasm, and unchanged in success or failure—such a doer is said to be of *sattvic* nature.',
+  'word_meaning':
+      'मुक्तसङ्गः—free from attachment; अनहंवादी—without ego; धृत्युत्साहसमन्वितः—endowed with resolve and enthusiasm; सिद्ध्यसिद्ध्योः—in success and failure; निर्विकारः—unchanged; कर्ता—doer; सात्त्विकः—sattvic; उच्यते—is said to be.',
+  'commentary':
+      'A *sattvic* doer performs actions selflessly, with calmness and inner strength, remaining unaffected by results.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 27,
+  'sanskrit':
+      'रागी कर्मफलप्रेप्सुर्लुब्धो हिंसात्मकः अशुचिः | हर्षशोकान्वितः कर्ता राजसः परिकीर्तितः || 27 ||',
+  'translation':
+      'The doer who is passionate, desirous of the fruits of actions, greedy, harmful, impure, and subject to joy and sorrow—is declared to be *rajasic*.',
+  'word_meaning':
+      'रागी—passionate; कर्मफलप्रेप्सुः—desiring fruit of action; लुब्धः—greedy; हिंसात्मकः—malicious; अशुचिः—impure; हर्षशोकान्वितः—subject to joy and sorrow; कर्ता—doer; राजसः—rajasic; परिकीर्तितः—is said to be.',
+  'commentary':
+      'A *rajasic* person acts with desire and attachment, seeking results and experiencing emotional highs and lows.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 28,
+  'sanskrit':
+      'अयुक्तः प्राकृतः स्तब्धः शठो नैष्कृतिकोऽलसः | विषादी दीर्घसूत्री च कर्ता तामस उच्यते || 28 ||',
+  'translation':
+      'Unsteady, vulgar, stubborn, deceitful, malicious, lazy, despondent, and procrastinating—the doer is said to be *tamasic*.',
+  'word_meaning':
+      'अयुक्तः—unsteady; प्राकृतः—vulgar; स्तब्धः—stubborn; शठः—deceitful; नैष्कृतिकः—malicious; अलसः—lazy; विषादी—depressed; दीर्घसूत्री—procrastinating; कर्ता—doer; तामसः—tamasic; उच्यते—is said to be.',
+  'commentary':
+      'A *tamasic* person lacks focus and purity, often acting out of ignorance, laziness, or deceit.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 29,
+  'sanskrit':
+      'बुद्धेर्भेदं धृतेश्चैव गुणतस्त्रिविधं शृणु | प्रोच्यमानमशेषेण पृथक्त्वेन धनंजय || 29 ||',
+  'translation':
+      'Now hear from Me, O Dhananjaya, the threefold distinction of intellect and firmness, according to the modes of material nature, explained completely and separately.',
+  'word_meaning':
+      'बुद्धेः—of intellect; भेदम्—distinction; धृतेः—of firmness; च—and; एव—also; गुणतः—according to modes; त्रिविधम्—threefold; शृणु—hear; प्रोच्यमानम्—being explained; अशेषेण—completely; पृथक्त्वेन—separately; धनंजय—O Dhananjaya.',
+  'commentary':
+      'Krishna begins explaining how *intellect (buddhi)* and *steadfastness (dhriti)* differ according to the three gunas.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 30,
+  'sanskrit':
+      'प्रवृत्तिं च निवृत्तिं च कार्याकार्ये भयाभये | बन्धं मोक्षं च या वेत्ति बुद्धिः सा पार्थ सात्त्विकी || 30 ||',
+  'translation':
+      'That intellect which knows action and renunciation, what ought to be done and what ought not, fear and fearlessness, bondage and liberation—is said to be *sattvic*, O Partha.',
+  'word_meaning':
+      'प्रवृत्तिम्—action; च—and; निवृत्तिम्—renunciation; च—and; कार्य-अकार्ये—what ought or ought not be done; भय-अभये—fear and fearlessness; बन्धम्—bondage; मोक्षम्—liberation; च—and; या—who; वेत्ति—knows; बुद्धिः—intellect; सा—that; पार्थ—O Partha; सात्त्विकी—sattvic.',
+  'commentary':
+      'A *sattvic* intellect discerns right from wrong and acts according to dharma, guided by wisdom and self-control.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 31,
+  'sanskrit':
+      'यया धर्ममधर्मं च कार्यं चाकार्यमेव च | अयथावत्प्रजानाति बुद्धिः सा पार्थ राजसी || 31 ||',
+  'translation':
+      'That intellect, O Partha, which wrongly understands dharma and adharma, and what should be done and what should not, is *rajasic*.',
+  'word_meaning':
+      'यया—by which; धर्मम्—righteousness; अधर्मम्—unrighteousness; कार्यम्—what should be done; च—and; अकार्यं—what should not be done; एव—indeed; च—and; अयथावत्—wrongly; प्रजानाति—understands; बुद्धिः—intellect; सा—that; पार्थ—O Partha; राजसी—rajasic.',
+  'commentary':
+      'The *rajasic* intellect is clouded by desire and personal interest, often misjudging right and wrong.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 32,
+  'sanskrit':
+      'अधर्मं धर्ममिति या मन्यते तमसावृता | सर्वार्थान्विपरीतांश्च बुद्धिः सा पार्थ तामसी || 32 ||',
+  'translation':
+      'That intellect which, enveloped in darkness, regards unrighteousness as righteousness and sees all things in a perverted way, O Partha, is said to be *tamasic*.',
+  'word_meaning':
+      'अधर्मम्—unrighteousness; धर्मम्—righteousness; इति—thus; या—who; मन्यते—considers; तमसावृता—covered by darkness; सर्व-अर्थान्—all things; विपरीतान्—perverted; च—and; बुद्धिः—intellect; सा—that; पार्थ—O Partha; तामसी—tamasic.',
+  'commentary':
+      'A *tamasic* intellect sees everything in reverse due to ignorance, mistaking wrong for right.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 33,
+  'sanskrit':
+      'धृत्या यया धारयते मनःप्राणेन्द्रियक्रियाः | योगेनाव्यभिचारिण्या धृतिः सा पार्थ सात्त्विकी || 33 ||',
+  'translation':
+      'That firmness by which one steadfastly controls the functions of the mind, life-breath, and senses through unwavering yoga is *sattvic*, O Partha.',
+  'word_meaning':
+      'धृत्या—by firmness; यया—by which; धारयते—one controls; मनः—mind; प्राण—life-breath; इन्द्रिय—senses; क्रियाः—functions; योगेन—through yoga; अव्यभिचारिण्या—unswerving; धृतिः—firmness; सा—that; पार्थ—O Partha; सात्त्विकी—sattvic.',
+  'commentary':
+      'A *sattvic dhriti* reflects spiritual stability—control over body and mind through consistent practice of yoga and discipline.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 34,
+  'sanskrit':
+      'यया तु धर्मकामार्थान्धृत्या धारयतेऽर्जुन | प्रसङ्गेन फलाकाङ्क्षी धृतिः सा पार्थ राजसी || 34 ||',
+  'translation':
+      'But the firmness by which one holds fast to duty, desires, and wealth, with attachment and longing for results—that firmness, O Partha, is *rajasic*.',
+  'word_meaning':
+      'यया—by which; तु—but; धर्म-काम-अर्थान्—duty, desire, and wealth; धृत्या—by firmness; धारयते—holds fast; अर्जुन—O Arjuna; प्रसङ्गेन—with attachment; फल-आकाङ्क्षी—desiring fruit; धृतिः—firmness; सा—that; पार्थ—O Partha; राजसी—rajasic.',
+  'commentary':
+      'The *rajasic* type of firmness is fueled by desire and attachment to worldly outcomes rather than spiritual goals.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 35,
+  'sanskrit':
+      'यया स्वप्नं भयं शोकं विषादं मदमेव च | न विमुञ्चति दुर्मेधा धृतिः सा पार्थ तामसी || 35 ||',
+  'translation':
+      'That firmness by which a foolish person clings to sleep, fear, grief, despair, and conceit, O Partha, is *tamasic*.',
+  'word_meaning':
+      'यया—by which; स्वप्नम्—sleep; भयं—fear; शोकम्—grief; विषादम्—despair; मदम्—conceit; एव—also; च—and; न विमुञ्चति—does not give up; दुर्मेधा—foolish; धृतिः—firmness; सा—that; पार्थ—O Partha; तामसी—tamasic.',
+  'commentary':
+      'A *tamasic dhriti* binds a person to inertia, fear, and delusion—blocking progress and clarity.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 36,
+  'sanskrit':
+      'सुखं त्विदानीं त्रिविधं शृणु मे भरतर्षभ | अभ्यासाद्रमते यत्र दुःखान्तं च निगच्छति || 36 ||',
+  'translation':
+      'Now hear from Me, O best of the Bharatas, of the three kinds of happiness—by practice one delights in it and attains the end of sorrow.',
+  'word_meaning':
+      'सुखम्—happiness; तु—but; इदानीम्—now; त्रिविधम्—threefold; शृणु—hear; मे—from Me; भरतर्षभ—O best of Bharatas; अभ्यासात्—by practice; रमते—delights; यत्र—in which; दुःख-अन्तम्—end of sorrow; च—and; निगच्छति—attains.',
+  'commentary':
+      'Happiness, too, is classified according to the three gunas. Through right practice, one attains lasting peace.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 37,
+  'sanskrit':
+      'यत्तदग्रे विषमिव परिणामेऽमृतोपमम् | तत्सुखं सात्त्विकं प्रोक्तमात्मबुद्धिप्रसादजम् || 37 ||',
+  'translation':
+      'That which seems like poison at first but is nectar at the end—that happiness, born of the serenity of one’s intellect, is said to be *sattvic*.',
+  'word_meaning':
+      'यत्—which; तत्—that; अग्रे—at first; विषम्—poison; इव—as; परिणामे—at the end; अमृत-उपमम्—like nectar; तत्—that; सुखम्—happiness; सात्त्विकम्—sattvic; प्रोक्तम्—is said; आत्म-बुद्धि-प्रसादजम्—born of the purity of the mind and intellect.',
+  'commentary':
+      'True joy comes after discipline and self-control. Though initially difficult, it leads to peace and bliss.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 38,
+  'sanskrit':
+      'विषयेन्द्रियसंयोगाद्यत्तदग्रेऽमृतोपमम् | परिणामे विषमिव तत्सुखं राजसं स्मृतम् || 38 ||',
+  'translation':
+      'Happiness that arises from the contact of the senses with their objects, which seems like nectar at first but is poison in the end, is *rajasic*.',
+  'word_meaning':
+      'विषय—objects; इन्द्रिय—senses; संयोगात्—from contact; यत्—which; तत्—that; अग्रे—at first; अमृत-उपमम्—like nectar; परिणामे—at the end; विषम्—poison; इव—as; तत्—that; सुखम्—happiness; राजसम्—rajasic; स्मृतम्—is declared.',
+  'commentary':
+      '*Rajasic* happiness comes from sensory pleasures. Though enjoyable initially, it leads to suffering and attachment.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 39,
+  'sanskrit':
+      'यदग्रे चानुबन्धे च सुखं मोहनमात्मनः | निद्रालस्यप्रमादोत्थं तत्तामसमुदाहृतम् || 39 ||',
+  'translation':
+      'That happiness which deludes the self both at the beginning and in its results, arising from sleep, laziness, and negligence—is called *tamasic*.',
+  'word_meaning':
+      'यत्—which; अग्रे—at first; च—and; अनुबन्धे—afterwards; च—and; सुखम्—happiness; मोहनम्—delusive; आत्मनः—of the self; निद्रा—sleep; आलस्य—laziness; प्रमाद—negligence; उत्पन्नम्—arising from; तत्—that; तामसम्—tamasic; उदाहृतम्—is said to be.',
+  'commentary':
+      '*Tamasic* happiness gives false comfort, keeping one trapped in ignorance and indolence.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 40,
+  'sanskrit':
+      'न तदस्ति पृथिव्यां वा दिवि देवेषु वा पुनः | सत्त्वं प्रकृतिजैर्मुक्तं यदेभिः स्यात्त्रिभिर्गुणैः || 40 ||',
+  'translation':
+      'There is no being on earth, or even among the gods in heaven, that is free from these three modes born of material nature.',
+  'word_meaning':
+      'न—not; तत्—that; अस्ति—is; पृथिव्याम्—on earth; वा—or; दिवि—in heaven; देवेषु—among the gods; वा—or; पुनः—again; सत्त्वम्—being; प्रकृति-जैः—born of nature; मुक्तम्—free; यत्—which; एभिः—by these; स्यात्—may be; त्रिभिः गुणैः—three modes.',
+  'commentary':
+      'Every being, from the lowest to the highest, is influenced by the three gunas—sattva, rajas, and tamas. Liberation requires transcending them.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 41,
+  'sanskrit':
+      'ब्राह्मणक्षत्रियविशां शूद्राणां च परन्तप | कर्माणि प्रविभक्तानि स्वभावप्रभवैर्गुणैः || 41 ||',
+  'translation':
+      'The duties of the Brāhmaṇas, Kṣhatriyas, Vaiśyas, and Śūdras, O Parantapa, are divided according to the qualities born of their own nature.',
+  'word_meaning':
+      'ब्राह्मण—of the Brāhmaṇas; क्षत्रिय—of the Kṣhatriyas; विशाम्—of the Vaiśyas; शूद्राणाम्—of the Śūdras; च—and; परन्तप—O scorcher of enemies (Arjuna); कर्माणि—duties; प्रविभक्तानि—are divided; स्वभाव—one’s own nature; प्रभवैः—born of; गुणैः—qualities.',
+  'commentary':
+      'Krishna explains that social duties arise from one’s natural qualities (*guna*) and tendencies (*svabhava*), not from birth alone.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 42,
+  'sanskrit':
+      'शमो दमस्तपः शौचं क्षान्तिरार्जवमेव च | ज्ञानं विज्ञानमास्तिक्यं ब्रह्मकर्म स्वभावजम् || 42 ||',
+  'translation':
+      'Serenity, self-control, austerity, purity, forgiveness, uprightness, knowledge, wisdom, and faith in God are the duties of the Brāhmaṇas, born of their nature.',
+  'word_meaning':
+      'शमः—serenity; दमः—self-control; तपः—austerity; शौचम्—purity; क्षान्तिः—forgiveness; आर्जवम्—uprightness; एव—indeed; च—and; ज्ञानम्—knowledge; विज्ञानम्—wisdom; आस्तिक्यम्—faith in God; ब्रह्म-कर्म—duty of the Brāhmaṇa; स्वभाव-जम्—born of one’s nature.',
+  'commentary':
+      'Brāhmaṇas are naturally inclined toward learning, teaching, and spirituality, focusing on peace and wisdom.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 43,
+  'sanskrit':
+      'शौर्यं तेजो धृतिर्दाक्ष्यं युद्धे चाप्यपलायनम् | दानमीश्वरभावश्च क्षात्रं कर्म स्वभावजम् || 43 ||',
+  'translation':
+      'Valor, vigor, determination, skill, not fleeing from battle, generosity, and leadership are the duties of the Kṣhatriyas, born of their nature.',
+  'word_meaning':
+      'शौर्यम्—valor; तेजः—vigor; धृतिः—determination; दाक्ष्यम्—skill; युद्धे—in battle; च—and; अपि—also; अपलायनम्—not fleeing; दानम्—generosity; ईश्वर-भावः—leadership; च—and; क्षात्रम्—of the Kṣhatriya; कर्म—duty; स्वभाव-जम्—born of nature.',
+  'commentary':
+      'Kṣhatriyas are born leaders and protectors who combine courage and compassion in serving society.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 44,
+  'sanskrit':
+      'कृषिगौरक्ष्यवाणिज्यं वैश्यकर्म स्वभावजम् | परिचर्यात्मकं कर्म शूद्रस्यापि स्वभावजम् || 44 ||',
+  'translation':
+      'Agriculture, cattle rearing, and trade are the natural duties of the Vaiśyas; and service to others is the natural duty of the Śūdras.',
+  'word_meaning':
+      'कृषि—agriculture; गो-रक्ष्य—cow protection; वाणिज्यम्—trade; वैश्य-कर्म—duty of the Vaiśya; स्वभाव-जम्—born of nature; परिचर्या—service; आत्मकम्—by nature; कर्म—duty; शूद्रस्य—of the Śūdra; अपि—also; स्वभाव-जम्—born of nature.',
+  'commentary':
+      'The Vaiśya sustains economic life, while the Śūdra contributes through faithful service and labor.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 45,
+  'sanskrit':
+      'स्वे स्वे कर्मण्यभिरतः संसिद्धिं लभते नरः | स्वकर्मनिरतः सिद्धिं यथा विन्दति तच्छृणु || 45 ||',
+  'translation':
+      'By being devoted to one’s own natural duty, a person attains perfection. Hear now how one attains perfection by performing one’s own work.',
+  'word_meaning':
+      'स्वे स्वे—in one’s own; कर्मणि—duty; अभिरतः—engaged; संसिद्धिम्—perfection; लभते—attains; नरः—a person; स्वकर्म—one’s own duty; निरतः—devoted; सिद्धिम्—perfection; यथा—how; विन्दति—attains; तत्—that; शृणु—hear.',
+  'commentary':
+      'Krishna emphasizes that spiritual perfection comes through dedication to one’s *svadharma*—one’s own natural duty.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 46,
+  'sanskrit':
+      'यतः प्रवृत्तिर्भूतानां येन सर्वमिदं ततम् | स्वकर्मणा तमभ्यर्च्य सिद्धिं विन्दति मानवः || 46 ||',
+  'translation':
+      'By worshiping through one’s own duty Him from whom all beings have come and by whom all this is pervaded, a person attains perfection.',
+  'word_meaning':
+      'यतः—from whom; प्रवृत्तिः—origination; भूतानाम्—of beings; येन—by whom; सर्वम्—everything; इदम्—this; ततम्—is pervaded; स्व-कर्मणा—by one’s own duty; तम्—Him; अभ्यर्च्य—by worshiping; सिद्धिम्—perfection; विन्दति—attains; मानवः—a person.',
+  'commentary':
+      'All duties, when performed with devotion to God, become acts of worship leading to perfection.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 47,
+  'sanskrit':
+      'श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात् | स्वभावनियतं कर्म कुर्वन्नाप्नोति किल्बिषम् || 47 ||',
+  'translation':
+      'Better is one’s own duty, though imperfect, than the duty of another well-performed. Performing duty according to one’s nature, one does not incur sin.',
+  'word_meaning':
+      'श्रेयान्—better; स्व-धर्मः—one’s own duty; विगुणः—imperfectly performed; पर-धर्मात्—than another’s duty; सुवनुष्ठितात्—well performed; स्वभाव—one’s nature; नियतम्—prescribed; कर्म—duty; कुर्वन्—doing; न—not; आप्नोति—incurs; किल्बिषम्—sin.',
+  'commentary':
+      'Even an imperfectly done *svadharma* purifies the soul, while adopting another’s duty can cause confusion and bondage.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 48,
+  'sanskrit':
+      'सहजं कर्म कौन्तेय सदोषमपि न त्यजेत् | सर्वारम्भा हि दोषेण धूमेनाग्निरिवावृताः || 48 ||',
+  'translation':
+      'One should not abandon the duty born of one’s nature, even if it appears faulty, O Kaunteya. For all undertakings are covered by defects, just as fire is enveloped by smoke.',
+  'word_meaning':
+      'सहजम्—born of one’s nature; कर्म—duty; कौन्तेय—O son of Kunti; स-दोषम्—with fault; अपि—even; न—not; त्यजेत्—should abandon; सर्व-आरम्भाः—all undertakings; हि—for; दोषेण—by defect; धूमेन—by smoke; अग्निः—fire; इव—as; आवृताः—enveloped.',
+  'commentary':
+      'No action is flawless; therefore, one must perform their natural duty despite imperfections.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 49,
+  'sanskrit':
+      'असक्तबुद्धिः सर्वत्र जितात्मा विगतस्पृहः | नैष्कर्म्यसिद्धिं परमां संन्यासेनाधिगच्छति || 49 ||',
+  'translation':
+      'He whose intellect is unattached everywhere, who has conquered the self and is free from desires, attains the supreme perfection of freedom from action through renunciation.',
+  'word_meaning':
+      'असक्त-बुद्धिः—with unattached intellect; सर्वत्र—everywhere; जित-आत्मा—self-controlled; विगत-स्पृहः—free from desire; नैष्कर्म्य-सिद्धिम्—perfection of actionlessness; परमाम्—supreme; संन्यासेन—through renunciation; अधिगच्छति—attains.',
+  'commentary':
+      'True renunciation is inner detachment, not abandonment of action. Through this, one attains liberation.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 50,
+  'sanskrit':
+      'सिद्धिं प्राप्तो यथा ब्रह्म तथाप्नोति निबोध मे | समासेनैव कौन्तेय निष्ठा ज्ञानस्य या परा || 50 ||',
+  'translation':
+      'Learn from Me briefly, O Kaunteya, how one who has attained perfection reaches Brahman, the supreme state of knowledge.',
+  'word_meaning':
+      'सिद्धिम्—perfection; प्राप्तः—having attained; यथा—how; ब्रह्म—Brahman; तथ—thus; आप्नोति—attains; निबोध—understand; मे—from Me; समासेन—briefly; एव—indeed; कौन्तेय—O Kaunteya; निष्ठा—culmination; ज्ञानस्य—of knowledge; या—which; परा—supreme.',
+  'commentary':
+      'Krishna now explains the ultimate stage beyond action—how perfection leads to realization of Brahman.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 51,
+  'sanskrit':
+      'बुद्ध्या विशुद्धया युक्तो धृत्यात्मानं नियम्य च | शब्दादीन्विषयांस्त्यक्त्वा रागद्वेषौ व्युदस्य च || 51 ||',
+  'translation':
+      'Endowed with a purified intellect, controlling the mind with firmness, renouncing the objects of the senses, and giving up attraction and aversion...',
+  'word_meaning':
+      'बुद्ध्या—by intellect; विशुद्धया—purified; युक्तः—endowed; धृत्या—with firmness; आत्मानम्—the mind; नियम्य—controlling; च—and; शब्द-आदीन्—sound and others; विषयान्—objects; त्यक्त्वा—renouncing; राग-द्वेषौ—attraction and aversion; व्युदस्य—giving up; च—and.',
+  'commentary':
+      'The seeker must discipline intellect, senses, and desires, turning inward toward spiritual realization.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 52,
+  'sanskrit':
+      'विविक्तसेवी लघ्वाशी यतवाक्कायमानसः | ध्यानयोगपरो नित्यं वैराग्यं समुपाश्रितः || 52 ||',
+  'translation':
+      'Living in seclusion, eating lightly, controlling speech, body, and mind, devoted to meditation and yoga, and taking refuge in dispassion...',
+  'word_meaning':
+      'विविक्त-सेवी—living in seclusion; लघु-आशी—eating lightly; यत-वाक्-काय-मानसः—controlling speech, body, and mind; ध्यान-योग-परः—devoted to meditation and yoga; नित्यम्—always; वैराग्यम्—dispassion; समुपाश्रितः—taking refuge in.',
+  'commentary':
+      'The path to Brahman requires solitude, simplicity, self-control, and consistent meditation.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 53,
+  'sanskrit':
+      'अहङ्कारं बलं दर्पं कामं क्रोधं परिग्रहम् | विमुच्य निर्ममः शान्तो ब्रह्मभूयाय कल्पते || 53 ||',
+  'translation':
+      'Having abandoned ego, power, pride, desire, anger, and possession, being free from selfishness and calm—such a person becomes fit for union with Brahman.',
+  'word_meaning':
+      'अहङ्कारम्—ego; बलम्—power; दर्पम्—pride; कामम्—desire; क्रोधम्—anger; परिग्रहम्—possessiveness; विमुच्य—having given up; निर्ममः—without self-interest; शान्तः—peaceful; ब्रह्म-भूयाय—for becoming Brahman; कल्पते—is fit.',
+  'commentary':
+      'Liberation comes when the ego dissolves, and peace arises from the absence of selfish attachments.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 54,
+  'sanskrit':
+      'ब्रह्मभूतः प्रसन्नात्मा न शोचति न काङ्क्षति | समः सर्वेषु भूतेषु मद्भक्तिṁ लभते पराम् || 54 ||',
+  'translation':
+      'One who has become Brahman, serene in mind, neither grieves nor desires. Such a person, seeing all beings alike, attains supreme devotion to Me.',
+  'word_meaning':
+      'ब्रह्म-भूतः—one who has realized Brahman; प्रसन्न-आत्मा—serene in mind; न—not; शोचति—grieves; न—not; काङ्क्षति—desires; समः—equanimous; सर्वेषु—in all; भूतेषु—beings; मत्-भक्तिम्—devotion to Me; लभते—attains; पराम्—supreme.',
+  'commentary':
+      'When knowledge matures into equanimity, devotion naturally arises—devotion that transcends all distinctions.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 55,
+  'sanskrit':
+      'भक्त्या मामभिजानाति यावान्यश्चास्मि तत्त्वतः | ततो मां तत्त्वतो ज्ञात्वा विशते तदनन्तरम् || 55 ||',
+  'translation':
+      'Through devotion, one truly knows Me in essence—who I am and what I am. Having thus known Me in truth, one enters into Me thereafter.',
+  'word_meaning':
+      'भक्त्या—through devotion; माम्—Me; अभिजानाति—knows truly; यावान्—what I am; यः च—and who I am; अस्मि—I am; तत्त्वतः—in truth; ततः—then; मां—Me; तत्त्वतः—truly; ज्ञात्वा—knowing; विशते—enters; तत्-अनन्तरम्—thereafter.',
+  'commentary':
+      'Bhakti is the highest path—through pure devotion, one knows Krishna in truth and merges into His divine being.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 56,
+  'sanskrit':
+      'सर्वकर्माण्यपि सदा कुर्वाणो मद्व्यपाश्रयः | मत्प्रसादादवाप्नोति शाश्वतं पदमव्ययम् || 56 ||',
+  'translation':
+      'Though engaged in all kinds of actions, those who take refuge in Me, by My grace, attain the eternal and imperishable abode.',
+  'word_meaning':
+      'सर्व कर्माणि अपि सदा—though always performing all actions; कुर्वाणः—engaged; मत् व्यपाश्रयः—taking refuge in Me; मत् प्रसादात्—by My grace; अवाप्नोति—attains; शाश्वतं—eternal; पदम्—abode; अव्ययम्—imperishable.',
+  'commentary':
+      'Even while acting in the world, those who surrender to Krishna remain untouched by its bondage and reach His supreme abode through His grace.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 57,
+  'sanskrit':
+      'चेतसा सर्वकर्माणि मयि संन्यस्य मत्परः | बुद्धियोगमुपाश्रित्य मच्चित्तः सततं भव || 57 ||',
+  'translation':
+      'Mentally renounce all actions to Me, considering Me as the Supreme. Take refuge in the yoga of intelligence and always keep your mind fixed on Me.',
+  'word_meaning':
+      'चेतसा—by the mind; सर्व कर्माणि—all actions; मयि—unto Me; संन्यस्य—renouncing; मत् परः—regarding Me as Supreme; बुद्धि योगम्—yoga of intelligence; उपाश्रित्य—taking refuge in; मत् चित्तः—mind fixed on Me; सततम्—always; भव—be.',
+  'commentary':
+      'Krishna instructs Arjuna to dedicate all actions to Him and remain absorbed in divine consciousness through the yoga of wisdom.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 58,
+  'sanskrit':
+      'मच्चित्तः सर्वदुर्गाणि मत्प्रसादात्तरिष्यसि | अथ चेत्त्वमहंकारान्न श्रोष्यसि विनङ्क्ष्यसि || 58 ||',
+  'translation':
+      'If your mind is fixed on Me, you shall overcome all obstacles by My grace. But if, due to ego, you do not listen, you will perish.',
+  'word_meaning':
+      'मत् चित्तः—mind fixed on Me; सर्व दुर्गाणि—all obstacles; मत् प्रसादात्—by My grace; तरिष्यसि—you shall cross over; अथ—but; चेत्—if; त्वम्—you; अहंकारात्—from ego; न—not; श्रोष्यसि—heed; विनङ्क्ष्यसि—you will perish.',
+  'commentary':
+      'Surrender removes all hindrances through divine grace. Ego and disobedience, however, lead to downfall and suffering.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 59,
+  'sanskrit':
+      'यदहंकारमाश्रित्य न योत्स्य इति मन्यसे | मिथ्यैष व्यवसायस्ते प्रकृतिस्त्वां नियोक्ष्यति || 59 ||',
+  'translation':
+      'If, out of ego, you think, “I will not fight,” this resolve of yours is false; your own nature will compel you to act.',
+  'word_meaning':
+      'यत्—if; अहंकारम्—ego; आश्रित्य—taking shelter of; न—not; योत्स्ये—I will fight; इति—thus; मन्यसे—you think; मिथ्या—false; एष—this; व्यवसायः—resolve; ते—your; प्रकृतिः—your nature; त्वाम्—you; नियोक्ष्यति—will drive to act.',
+  'commentary':
+      'Actions are driven by one’s nature. Denying duty out of ego is futile; the guṇas of nature will still compel one to act.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 60,
+  'sanskrit':
+      'स्वभावजेन कौन्तेय निबद्धः स्वेन कर्मणा | कर्तुं नेच्छसि यन्मोहात्करिष्यस्यवशोऽपि तत् || 60 ||',
+  'translation':
+      'Bound by your own nature-born karma, O Kaunteya, though you do not wish to act out of delusion, you will be driven to perform it even against your will.',
+  'word_meaning':
+      'स्वभावजेन—born of your nature; कौन्तेय—O son of Kunti; निबद्धः—bound; स्वेन—by your own; कर्मणा—duty; कर्तुम्—to perform; न—not; इच्छसि—you wish; यत्—what; मोहात्—out of delusion; करिष्यसि—you shall perform; अवशः—helplessly; अपि—even; तत्—that.',
+  'commentary':
+      'Arjuna’s warrior nature, born of rajas, compels him to fight. One’s innate nature cannot be denied indefinitely.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 61,
+  'sanskrit':
+      'ईश्वरः सर्वभूतानां हृद्देशेऽर्जुन तिष्ठति | भ्रामयन्सर्वभूतानि यन्त्रारूढानि मायया || 61 ||',
+  'translation':
+      'The Supreme Lord dwells in the hearts of all beings, O Arjuna, and causes them to revolve by His māyā as if mounted on a machine.',
+  'word_meaning':
+      'ईश्वरः—the Supreme Lord; सर्व भूतानाम्—of all beings; हृद् देशे—in the hearts; अर्जुन—O Arjuna; तिष्ठति—resides; भ्रामयन्—causing to revolve; सर्व भूतानि—all beings; यन्त्र आरूढानि—mounted on a machine; मायया—by His illusion.',
+  'commentary':
+      'God, seated within all, directs the movements of all beings through the power of His divine illusion. He is the inner controller of all actions.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 62,
+  'sanskrit':
+      'तमेव शरणं गच्छ सर्वभावेन भारत | तत्प्रसादात्परां शान्तिं स्थानं प्राप्स्यसि शाश्वतम् || 62 ||',
+  'translation':
+      'Surrender fully unto Him, O Bhārata; by His grace you shall attain supreme peace and the eternal abode.',
+  'word_meaning':
+      'तम् एव—unto Him alone; शरणम्—refuge; गच्छ—go; सर्व भावेन—with all your being; भारत—O son of Bharata; तत् प्रसादात्—by His grace; पराम्—supreme; शान्तिम्—peace; स्थानम्—abode; प्राप्स्यसि—you shall attain; शाश्वतम्—eternal.',
+  'commentary':
+      'The culmination of all teachings: surrender completely to the Lord with heart and mind, and attain eternal peace in His abode.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 63,
+  'sanskrit':
+      'इति ते ज्ञानमाख्यातं गुह्याद्गुह्यतरं मया | विमृश्यैतदशेषेण यथेच्छसि तथा कुरु || 63 ||',
+  'translation':
+      'Thus, I have declared to you this knowledge which is more secret than all secrets. Reflect fully on it, and then act as you wish.',
+  'word_meaning':
+      'इति—thus; ते—to you; ज्ञानम्—knowledge; आख्यातम्—has been explained; गुह्यात्—than secret; गुह्यतरम्—more profound; मया—by Me; विमृश्य—reflecting; एतत्—on this; अशेषेण—completely; यथा इच्छसि—as you wish; तथा—so; कुरु—act.',
+  'commentary':
+      'Krishna grants Arjuna free will after giving divine wisdom — urging him to reflect and then choose his course.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 64,
+  'sanskrit':
+      'सर्वगुह्यतमं भूयः शृणु मे परमं वचः | इष्टोऽसि मे दृढमिति ततो वक्ष्यामि ते हितम् || 64 ||',
+  'translation':
+      'Hear again My most confidential words, the supreme instruction; you are very dear to Me, and therefore I will tell you what is best for you.',
+  'word_meaning':
+      'सर्व गुह्यतमम्—the most confidential; भूयः—again; शृणु—hear; मे—My; परमम्—supreme; वचः—word; इष्टः—dear; असि—you are; मे—to Me; दृढम्—truly; इति—thus; ततः—therefore; वक्ष्यामि—I shall speak; ते—your; हितम्—welfare.',
+  'commentary':
+      'Out of divine affection, Krishna prepares to reveal the essence of all teachings — the supreme secret leading to liberation.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 65,
+  'sanskrit':
+      'मन्मना भव मद्भक्तो मद्याजी मां नमस्कुरु | मामेवैष्यसि युक्तैवमात्मानं मत्परायणः || 65 ||',
+  'translation':
+      'Always think of Me, be devoted to Me, worship Me, and offer obeisance to Me. Thus you shall surely come to Me, having dedicated yourself to Me.',
+  'word_meaning':
+      'मत् मनाः—think of Me; भव—be; मत् भक्तः—My devotee; मत् याजी—worship Me; माम्—unto Me; नमस्कुरु—offer obeisance; माम् एव—unto Me alone; एष्यसि—you shall come; युक्तः—united; एवम्—thus; आत्मानम्—yourself; मत् परायणः—fully devoted to Me.',
+  'commentary':
+      'The simplest and highest path: devotion through love and remembrance of God leads one to union with Him.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 66,
+  'sanskrit':
+      'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज | अहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः || 66 ||',
+  'translation':
+      'Abandon all varieties of dharma and simply surrender unto Me. I shall deliver you from all sinful reactions; do not fear.',
+  'word_meaning':
+      'सर्व धर्मान्—all duties; परित्यज्य—abandoning; माम्—unto Me; एकम्—alone; शरणम्—refuge; व्रज—go; अहम्—I; त्वाम्—you; सर्व पापेभ्यः—from all sins; मोक्षयिष्यामि—shall liberate; मा—not; शुचः—grieve.',
+  'commentary':
+      'This is the Gita’s ultimate verse — complete surrender to God transcends all duties and leads to liberation. It is both a promise and a command of divine love.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 67,
+  'sanskrit':
+      'इदं ते नातपस्काय नाभक्ताय कदाचन | न चाशुश्रूषवे वाच्यं न च मां योऽभ्यसूयति || 67 ||',
+  'translation':
+      'This should never be spoken to one who is not austere, not devoted, unwilling to listen, or who is envious of Me.',
+  'word_meaning':
+      'इदम्—this; ते—by you; न—not; अतपस्काय—to one who is not austere; न—not; अभक्ताय—to one who is not devoted; कदाचन—ever; न—not; च—and; अशुश्रूषवे—to one who is unwilling to hear; वाच्यम्—should be spoken; न—not; च—and; माम्—of Me; यः—who; अभ्यसूयति—is envious.',
+  'commentary':
+      'The sacred knowledge of surrender is to be shared only with sincere, pure-hearted seekers — not with the irreverent or envious.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 68,
+  'sanskrit':
+      'यं मां परमं गुह्यं मद्भक्तेष्वभिधास्यति | भक्तिं मयि परां कृत्वा मामेवैष्यत्यसंशयम् || 68 ||',
+  'translation':
+      'Whoever teaches this supreme secret to My devotees, performing the highest act of devotion, shall surely come to Me.',
+  'word_meaning':
+      'यः—whoever; माम्—Me; परमम्—supreme; गुह्यम्—secret; मत् भक्तेषु—to My devotees; अभिधास्यति—will explain; भक्तिम्—devotion; मयि—towards Me; पराम्—supreme; कृत्वा—having performed; माम् एव—unto Me alone; एष्यति—will come; असंशयम्—without doubt.',
+  'commentary':
+      'Teaching the Gita to others with devotion is itself the highest service to Krishna and leads one to union with Him.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 69,
+  'sanskrit':
+      'न च तस्मान्मनुष्येषु कश्चिन्मे प्रियकृत्तमः | भविता न च मे तस्मादन्यः प्रियतरो भुवि || 69 ||',
+  'translation':
+      'There is no one among humans who does dearer service to Me than he, nor shall there ever be one more beloved to Me on earth.',
+  'word_meaning':
+      'न च—and none; तस्मात्—than him; मनुष्येषु—among humans; कश्चित्—anyone; मे—to Me; प्रिय कृत्—one who does what is dear; तमः—greater; भविता—will be; न—not; च—and; मे—to Me; तस्मात्—than him; अन्यः—another; प्रियतरः—dearer; भुवि—on earth.',
+  'commentary':
+      'One who spreads this divine message becomes most dear to the Lord — as he participates in uplifting souls toward liberation.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 70,
+  'sanskrit':
+      'अध्येष्यते च य इमं धर्म्यं संवादमावयोः | ज्ञानयज्ञेन तेनाहमिष्टः स्यामिति मे मतिः || 70 ||',
+  'translation':
+      'And one who studies this sacred dialogue of ours worships Me through the sacrifice of knowledge — this is My conviction.',
+  'word_meaning':
+      'अध्येष्यते—will study; च—and; यः—who; इमम्—this; धर्म्यम्—sacred; संवादम्—conversation; आवयोः—between us two; ज्ञान यज्ञेन—by the sacrifice of knowledge; तेन—by him; अहम्—I; इष्टः—am worshiped; स्याम्—I become; इति—thus; मे—My; मतिः—opinion.',
+  'commentary':
+      'Reading or studying the Gita with reverence is an act of worship in itself. Through understanding, one performs the yajña of wisdom that pleases the Lord.'
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 71,
+  'sanskrit':
+      'श्रद्धावाननसूयश्च शृणुयादपि यो नरः | सोऽपि मुक्तः शुभाँल्लोकान्प्राप्नुयात्पुण्यकर्मणाम् || 71 ||',
+  'translation':
+      'Even the man who listens with faith and without envy, even he, being free from sin, shall attain to the auspicious worlds of the pious.',
+  'word_meaning':
+      'श्रद्धावान्—full of faith; अनसूयः—without envy; च—and; शृणुयात्—may hear; अपि—even; यः—who; नरः—man; सः—he; अपि—even; मुक्तः—liberated; शुभान्—auspicious; लोकान्—worlds; प्राप्नुयात्—shall attain; पुण्यकर्मणाम्—of the pious.',
+  'commentary':
+      'Even listening to the Gita with devotion and without criticism grants merit and liberation, leading one toward higher realms of righteousness.',
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 72,
+  'sanskrit':
+      'कच्चिदेतच्छ्रुतं पार्थ त्वयैकाग्रेण चेतसा | कच्चिदज्ञानसंमोहः प्रनष्टस्ते धनञ्जय || 72 ||',
+  'translation':
+      'O Partha, has this been heard by you with a one-pointed mind? Has your delusion born of ignorance been destroyed, O Dhananjaya?',
+  'word_meaning':
+      'कच्चित्—whether; एतत्—this; श्रुतम्—heard; पार्थ—O son of Pritha; त्वया—by you; एकाग्रेण—with a concentrated; चेतसा—mind; कच्चित्—whether; अज्ञान—ignorance; संमोहः—delusion; प्रनष्टः—destroyed; ते—your; धनञ्जय—O Arjuna.',
+  'commentary':
+      'After delivering His teachings, Krishna gently asks Arjuna if his confusion and delusion have been removed, symbolizing the teacher’s compassion and concern.',
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 73,
+  'sanskrit':
+      'अर्जुन उवाच | नष्टो मोहः स्मृतिर्लब्धा त्वत्प्रसादान्मयाच्युत | स्थितोऽस्मि गतसन्देहः करिष्ये वचनं तव || 73 ||',
+  'translation':
+      'Arjuna said: My delusion is destroyed, and I have regained memory through Your grace, O Achyuta. I am firm and free from doubt; I will act according to Your word.',
+  'word_meaning':
+      'अर्जुन उवाच—Arjuna said; नष्टः—destroyed; मोहः—delusion; स्मृतिः—memory; लब्धा—regained; त्वत्—Your; प्रसादात्—by grace; मया—by me; अच्युत—O Krishna; स्थितः अस्मि—I stand firm; गतसन्देहः—free from doubt; करिष्ये—I shall act; वचनम्—word; तव—Your.',
+  'commentary':
+      'Arjuna’s realization marks the transformation from confusion to clarity. Enlightened by Krishna’s wisdom, he resolves to fulfill his duty as a warrior.',
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 74,
+  'sanskrit':
+      'सञ्जय उवाच | इत्यहं वासुदेवस्य पार्थस्य च महात्मनः | संवादमिममश्रौषमद्भुतं रोमहर्षणम् || 74 ||',
+  'translation':
+      'Sanjaya said: Thus have I heard this wonderful and thrilling dialogue between the great-souled Krishna and Arjuna, the son of Pritha.',
+  'word_meaning':
+      'सञ्जय उवाच—Sanjaya said; इति—thus; अहम्—I; वासुदेवस्य—of Krishna; पार्थस्य—of Arjuna; च—and; महात्मनः—great-souled; संवादम्—dialogue; इमम्—this; अश्रौषम्—heard; अद्भुतम्—wonderful; रोमहर्षणम्—hair-raising.',
+  'commentary':
+      'Sanjaya, the divine seer, expresses awe and reverence for the divine conversation that inspires devotion and spiritual wonder.',
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 75,
+  'sanskrit':
+      'व्यासप्रसादाच्छ्रुतवानेतद्गुह्यमहं परम् | योगं योगेश्वरात्कृष्णात्साक्षात्कथयतः स्वयम् || 75 ||',
+  'translation':
+      'Through the grace of Vyasa, I have heard this supreme and most secret Yoga, directly from Krishna, the Lord of Yoga, Himself declaring it.',
+  'word_meaning':
+      'व्यास—Vyasa; प्रसादात्—by grace; श्रुतवान्—have heard; एतत्—this; गुह्यम्—secret; अहम्—I; परम्—supreme; योगम्—Yoga; योगेश्वरात्—from the Lord of Yoga; कृष्णात्—from Krishna; साक्षात्—directly; कथयतः—speaking; स्वयम्—Himself.',
+  'commentary':
+      'Sanjaya acknowledges that his ability to hear this divine discourse was due to Sage Vyasa’s blessing, showing humility and gratitude.',
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 76,
+  'sanskrit':
+      'राजन्संस्मृत्य संस्मृत्य संवादमिममद्भुतम् | केशवार्जुनयोः पुण्यं हृष्यामि च मुहुर्मुहुः || 76 ||',
+  'translation':
+      'O King, as I repeatedly recall this marvelous and holy dialogue between Keshava and Arjuna, I rejoice again and again.',
+  'word_meaning':
+      'राजन्—O King; संस्मृत्य—remembering; संवादम्—dialogue; इमम्—this; अद्भुतम्—wonderful; केशव—Krishna; अर्जुनयोः—of Arjuna; पुण्यम्—holy; हृष्यामि—I rejoice; मुहुः मुहुः—again and again.',
+  'commentary':
+      'Sanjaya describes the joy and upliftment he experiences each time he recalls the sacred conversation, emphasizing its divine purity and power.',
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 77,
+  'sanskrit':
+      'तच्च संस्मृत्य संस्मृत्य रूपमत्यद्भुतं हरेः | विस्मयो मे महान् राजन्हृष्यामि च पुनः पुनः || 77 ||',
+  'translation':
+      'And remembering again and again that most wondrous form of Hari, great is my astonishment, and I rejoice again and again, O King.',
+  'word_meaning':
+      'तत्—that; संस्मृत्य—remembering; रूपम्—form; अत्यद्भुतम्—most wonderful; हरेः—of Krishna; विस्मयः—astonishment; मे—my; महान्—great; राजन्—O King; हृष्यामि—I rejoice; पुनः पुनः—again and again.',
+  'commentary':
+      'The vision of Krishna’s divine form remains vividly imprinted in Sanjaya’s mind, filling him with both wonder and devotion.',
+});
+
+await db.insert('chapter_18', {
+  'verse_number': 78,
+  'sanskrit':
+      'यत्र योगेश्वरः कृष्णो यत्र पार्थो धनुर्धरः | तत्र श्रीर्विजयो भूतिर्ध्रुवा नीतिर्मतिर्मम || 78 ||',
+  'translation':
+      'Wherever there is Krishna, the Lord of Yoga, and wherever there is Arjuna, the wielder of the bow, there will surely be prosperity, victory, happiness, and firm morality — this is my conviction.',
+  'word_meaning':
+      'यत्र—wherever; योगेश्वरः—Lord of Yoga; कृष्णः—Krishna; यत्र—wherever; पार्थः—Arjuna; धनुर्धरः—wielder of the bow; तत्र—there; श्रीः—prosperity; विजयः—victory; भूतिः—happiness; ध्रुवा—certain; नीतिः—morality; मतिः मम—this is my opinion.',
+  'commentary':
+      'The Gita concludes with this powerful affirmation: wherever divine wisdom (Krishna) and righteous action (Arjuna) unite, success and virtue are assured.',
+});
+
   }
   // --- INSERT CHAPTER METADATA ---
   Future<void> _insertInitialChapters(Database db) async {
