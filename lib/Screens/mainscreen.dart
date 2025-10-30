@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gita/Screens/ChapterDetailPage.dart';
+import 'package:gita/Screens/chatbot.dart';
 import 'dart:ui';
 // 1. IMPORT DATABASE HELPER AND THE NEW MODEL
 import 'package:gita/data/local/database_helper.dart'; // Make sure this is your SQLite helper file
@@ -83,6 +84,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onItemTapped(int index) {
+    if (index == 1) {
+      // 🟣 When user taps "Gita GPT" icon
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Chatbot()),
+      );
+      return; // prevent changing the bottom nav highlight
+    }
+
+    // Normal tab switching for others
     setState(() {
       _selectedIndex = index;
     });
@@ -885,6 +896,7 @@ Widget _buildChapterCard(Chapter chapter) {
             BottomNavigationBarItem(
               icon: Icon(Icons.auto_awesome),
               label: 'Gita GPT',
+              
             ),
             BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Saved'),
             BottomNavigationBarItem(
