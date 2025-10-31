@@ -9439,6 +9439,49 @@ await db.insert('chapter_18', {
     return List.generate(maps.length, (i) => Chapter.fromMap(maps[i]));
   }
 
+  // Inside your DatabaseHelper class (database_helper.dart)
+
+// --- FETCH A SPECIFIC VERSE (REQUIRED FOR NAVIGATION) ---
+Future<Verse?> fetchSpecificVerse(int chapterNumber, int verseNumber) async {
+  final db = await instance.database;
+  final tableName = 'chapter_$chapterNumber';
+
+  try {
+    final List<Map<String, dynamic>> maps = await db.query(
+      tableName,
+      where: 'verse_number = ?',
+      whereArgs: [verseNumber],
+      limit: 1,
+    );
+
+    if (maps.isNotEmpty) {
+      return Verse.fromMap(maps.first);
+    }
+  } catch (e) {
+    // This catches errors like the chapter table not existing (e.g., if data insertion failed)
+    print('Error fetching verse $chapterNumber.$verseNumber: $e');
+  }
+  return null;
+}
+
+// --- GET TOTAL VERSES FOR NAVIGATION BOUNDARY ---
+Future<int> getTotalVersesInChapter(int chapterNumber) async {
+  final db = await instance.database;
+  final List<Map<String, dynamic>> result = await db.query(
+    'chapters',
+    columns: ['total_verses'],
+    where: 'chapter_number = ?',
+    whereArgs: [chapterNumber],
+    limit: 1,
+  );
+
+  if (result.isNotEmpty) {
+    // Return the value from the 'total_verses' column, or 0 if null
+    return result.first['total_verses'] as int? ?? 0;
+  }
+  return 0;
+}
+
   // --- FETCH VERSES OF A GIVEN CHAPTER ---
   Future<List<Verse>> fetchChapterVerses(int chapterNumber) async {
     final db = await instance.database;

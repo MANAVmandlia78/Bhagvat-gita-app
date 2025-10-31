@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 // Import the Verse model from your database helper file
 import 'package:gita/data/local/database_helper.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 // Enhanced color palette with spiritual touch
-const Color kPrimaryOrange = Color(0xFFFF6F00); 
+const Color kPrimaryOrange = Color(0xFFFF6F00);
 const Color kBackgroundColor = Color(0xFFFFF8E1); // Warm cream background
 const Color kAccentGold = Color(0xFFFFB300);
 const Color kSacredRed = Color(0xFFD84315);
@@ -12,7 +13,7 @@ const Color kTextPrimary = Color(0xFF4E342E); // Warm brown for text
 class ReadingPage extends StatefulWidget {
   final Verse initialVerse;
   final int chapterNumber;
-  
+
   const ReadingPage({
     super.key,
     required this.initialVerse,
@@ -25,54 +26,117 @@ class ReadingPage extends StatefulWidget {
 
 class _ReadingPageState extends State<ReadingPage> {
   double _currentSliderValue = 0.0;
+  FlutterTts flutterTts = FlutterTts();
   bool _isPlaying = false;
-  
-  late Verse _currentVerse;
-  final int totalVerses = 47;
 
-  @override
+  late Verse _currentVerse;
+  int _totalVerses = 0; // Initialized to 0, will be fetched from DB
+  final DatabaseHelper _dbHelper = DatabaseHelper.instance;
+
   void initState() {
     super.initState();
+    flutterTts.setLanguage("en-IN"); // you can use "en-US" or any other locale
+    flutterTts.setPitch(0.1); // voice tone
+    flutterTts.setSpeechRate(0.8); // speaking speed (0.0 - 1.0)
     _currentVerse = widget.initialVerse;
+    _loadChapterMetadata(); // Load total verse count
   }
+
   
-  void _togglePlayPause() {
+
+  Future<void> _loadChapterMetadata() async {
+    final count = await _dbHelper.getTotalVersesInChapter(widget.chapterNumber);
     setState(() {
-      _isPlaying = !_isPlaying;
+      _totalVerses = count;
     });
   }
+void _togglePlayPause() async {
+  if (_isPlaying) {
+    await flutterTts.stop();
+    setState(() {
+      _isPlaying = false;
+    });
+  } else {
+    setState(() {
+      _isPlaying = true;
+    });
+
+    // Step 1: Speak Sanskrit using Hindi TTS (hi-IN can read Devanagari)
+    await flutterTts.setLanguage("hi-IN");
+    await flutterTts.setPitch(1.0);
+    await flutterTts.speak(_currentVerse.sanskrit);
+
+    flutterTts.setCompletionHandler(() async {
+      if (_isPlaying) {
+        // Pause 1 second
+        await Future.delayed(const Duration(seconds: 1));
+
+        // Step 2: Switch back to Indian English for translation
+        await flutterTts.setLanguage("en-IN");
+        await flutterTts.setPitch(0.85);
+        await flutterTts.speak(_currentVerse.translation);
+
+        flutterTts.setCompletionHandler(() async {
+          if (_isPlaying) {
+            // Pause again
+            await Future.delayed(const Duration(seconds: 1));
+
+            // Step 3: Speak Commentary in same English tone
+            await flutterTts.speak(_currentVerse.commentary);
+
+            flutterTts.setCompletionHandler(() {
+              setState(() {
+                _isPlaying = false;
+              });
+            });
+          }
+        });
+      }
+    });
+  }
+}
+
 
   void _seekForwardBackward(int seconds) {
     print('Seeking $seconds seconds...');
   }
-  
-  void _nextVerse() {
-    if (_currentVerse.verseNumber < totalVerses) {
+
+  Future<void> _fetchAndSetVerse(int newVerseNumber) async {
+    if (newVerseNumber < 1 || newVerseNumber > _totalVerses) {
+      return; // Boundary check: should be caught by Opacity, but essential here
+    }
+
+    // Optional: Show a temporary loading indicator (or keep old text until new loads)
+    // For simplicity, we fetch directly and update when ready.
+
+    final newVerse = await _dbHelper.fetchSpecificVerse(
+      widget.chapterNumber,
+      newVerseNumber,
+    );
+
+    if (mounted && newVerse != null) {
       setState(() {
-        _currentVerse = Verse(
-          id: _currentVerse.id + 1,
-          verseNumber: _currentVerse.verseNumber + 1,
-          sanskrit: 'Placeholder for Verse ${_currentVerse.verseNumber + 1}',
-          translation: 'Fetching next verse from DB is required here.',
-          wordMeaning: '',
-          commentary: '',
-        );
+        _currentVerse = newVerse;
+        _currentSliderValue = 0.0; // Reset audio position
       });
+    } else if (mounted) {
+      // Optional: Show error or toast message if verse fetch failed
+      print("Failed to fetch verse ${widget.chapterNumber}.$newVerseNumber");
+    }
+  }
+
+  // --- UPDATED NAVIGATION LOGIC ---
+  void _nextVerse() {
+    final nextNumber = _currentVerse.verseNumber + 1;
+    if (nextNumber <= _totalVerses) {
+      _fetchAndSetVerse(nextNumber);
     }
   }
 
   void _previousVerse() {
-    if (_currentVerse.verseNumber > 1) {
-      setState(() {
-        _currentVerse = Verse(
-          id: _currentVerse.id - 1,
-          verseNumber: _currentVerse.verseNumber - 1,
-          sanskrit: 'Placeholder for Verse ${_currentVerse.verseNumber - 1}',
-          translation: 'Fetching previous verse from DB is required here.',
-          wordMeaning: '',
-          commentary: '',
-        );
-      });
+    final previousNumber = _currentVerse.verseNumber - 1;
+    if (previousNumber >= 1) {
+      _fetchAndSetVerse(previousNumber);
     }
   }
 
@@ -82,7 +146,9 @@ class _ReadingPageState extends State<ReadingPage> {
       padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Row(
         children: [
-          Expanded(child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1)),
+          Expanded(
+            child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
@@ -90,7 +156,9 @@ class _ReadingPageState extends State<ReadingPage> {
               style: TextStyle(fontSize: 20, color: kPrimaryOrange),
             ),
           ),
-          Expanded(child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1)),
+          Expanded(
+            child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1),
+          ),
         ],
       ),
     );
@@ -102,7 +170,9 @@ class _ReadingPageState extends State<ReadingPage> {
       padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Row(
         children: [
-          Expanded(child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1)),
+          Expanded(
+            child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Text(
@@ -110,7 +180,9 @@ class _ReadingPageState extends State<ReadingPage> {
               style: TextStyle(fontSize: 18, color: kSacredRed),
             ),
           ),
-          Expanded(child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1)),
+          Expanded(
+            child: Divider(color: kAccentGold.withOpacity(0.5), thickness: 1),
+          ),
         ],
       ),
     );
@@ -122,16 +194,13 @@ class _ReadingPageState extends State<ReadingPage> {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [
-            Colors.orange.shade50.withOpacity(0.3),
-            Colors.transparent,
-          ],
+          colors: [Colors.orange.shade50.withOpacity(0.3), Colors.transparent],
         ),
       ),
       child: Column(
         children: [
           const SizedBox(height: 10),
-          
+
           // Verse Number with decorative border
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -150,7 +219,7 @@ class _ReadingPageState extends State<ReadingPage> {
               ),
             ),
           ),
-          
+
           const SizedBox(height: 30),
 
           // Sanskrit Text with enhanced styling
@@ -181,13 +250,13 @@ class _ReadingPageState extends State<ReadingPage> {
               ),
             ),
           ),
-          
+
           _buildOmDivider(),
         ],
       ),
     );
   }
-  
+
   Widget _buildAudioControls() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -247,7 +316,7 @@ class _ReadingPageState extends State<ReadingPage> {
                 ),
               ),
               const SizedBox(width: 20),
-              
+
               // Forward button
               Container(
                 decoration: BoxDecoration(
@@ -287,7 +356,7 @@ class _ReadingPageState extends State<ReadingPage> {
               },
             ),
           ),
-          
+
           // Time Labels
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -296,11 +365,17 @@ class _ReadingPageState extends State<ReadingPage> {
               children: [
                 Text(
                   '00:00',
-                  style: TextStyle(fontSize: 13, color: kTextPrimary.withOpacity(0.7)),
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: kTextPrimary.withOpacity(0.7),
+                  ),
                 ),
                 Text(
                   '00:00',
-                  style: TextStyle(fontSize: 13, color: kTextPrimary.withOpacity(0.7)),
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: kTextPrimary.withOpacity(0.7),
+                  ),
                 ),
               ],
             ),
@@ -309,20 +384,23 @@ class _ReadingPageState extends State<ReadingPage> {
       ),
     );
   }
-  
+
   Widget _buildWordMeaningsSection() {
-    final Map<String, String> wordMeanings = _currentVerse.wordMeaning.split(';').where((s) => s.contains('—')).fold({}, (map, element) {
-        final parts = element.split('—');
-        if (parts.length == 2) {
+    final Map<String, String> wordMeanings = _currentVerse.wordMeaning
+        .split(';')
+        .where((s) => s.contains('—'))
+        .fold({}, (map, element) {
+          final parts = element.split('—');
+          if (parts.length == 2) {
             map[parts[0].trim()] = parts[1].trim();
-        }
-        return map;
-    });
+          }
+          return map;
+        });
 
     return Column(
       children: [
         _buildLotusDivider(),
-        
+
         // Header with decorative elements
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -342,7 +420,7 @@ class _ReadingPageState extends State<ReadingPage> {
             Text('✦', style: TextStyle(color: kAccentGold, fontSize: 16)),
           ],
         ),
-        
+
         const SizedBox(height: 25),
 
         // Word meanings in a card
@@ -355,53 +433,59 @@ class _ReadingPageState extends State<ReadingPage> {
             border: Border.all(color: kAccentGold.withOpacity(0.3), width: 1),
           ),
           child: Column(
-            children: wordMeanings.entries.map(
-              (entry) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '• ',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: kAccentGold,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Expanded(
-                      child: RichText(
-                        text: TextSpan(
-                          style: TextStyle(fontSize: 16, height: 1.6, color: kTextPrimary),
-                          children: [
-                            TextSpan(
-                              text: entry.key,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: kPrimaryOrange,
-                              ),
-                            ),
-                            const TextSpan(text: ' — '),
-                            TextSpan(text: entry.value),
-                          ],
+            children: wordMeanings.entries
+                .map(
+                  (entry) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '• ',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: kAccentGold,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
+                        Expanded(
+                          child: RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                fontSize: 16,
+                                height: 1.6,
+                                color: kTextPrimary,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: entry.key,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: kPrimaryOrange,
+                                  ),
+                                ),
+                                const TextSpan(text: ' — '),
+                                TextSpan(text: entry.value),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-            ).toList(),
+                  ),
+                )
+                .toList(),
           ),
         ),
       ],
     );
   }
-  
+
   Widget _buildTranslationSection() {
     return Column(
       children: [
         _buildLotusDivider(),
-        
+
         // Header
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -421,7 +505,7 @@ class _ReadingPageState extends State<ReadingPage> {
             Text('✦', style: TextStyle(color: kAccentGold, fontSize: 16)),
           ],
         ),
-        
+
         const SizedBox(height: 25),
 
         // Translation text in card
@@ -436,11 +520,7 @@ class _ReadingPageState extends State<ReadingPage> {
           child: Text(
             _currentVerse.translation,
             textAlign: TextAlign.justify,
-            style: TextStyle(
-              fontSize: 16,
-              height: 1.8,
-              color: kTextPrimary,
-            ),
+            style: TextStyle(fontSize: 16, height: 1.8, color: kTextPrimary),
           ),
         ),
       ],
@@ -451,7 +531,7 @@ class _ReadingPageState extends State<ReadingPage> {
     return Column(
       children: [
         _buildLotusDivider(),
-        
+
         // Header
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -471,7 +551,7 @@ class _ReadingPageState extends State<ReadingPage> {
             Text('✦', style: TextStyle(color: kAccentGold, fontSize: 16)),
           ],
         ),
-        
+
         const SizedBox(height: 25),
 
         // Commentary text in card
@@ -486,14 +566,10 @@ class _ReadingPageState extends State<ReadingPage> {
           child: Text(
             _currentVerse.commentary,
             textAlign: TextAlign.justify,
-            style: TextStyle(
-              fontSize: 16,
-              height: 1.8,
-              color: kTextPrimary,
-            ),
+            style: TextStyle(fontSize: 16, height: 1.8, color: kTextPrimary),
           ),
         ),
-        
+
         const SizedBox(height: 40),
       ],
     );
@@ -504,7 +580,9 @@ class _ReadingPageState extends State<ReadingPage> {
       padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border(top: BorderSide(color: kAccentGold.withOpacity(0.3), width: 2)),
+        border: Border(
+          top: BorderSide(color: kAccentGold.withOpacity(0.3), width: 2),
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
@@ -522,17 +600,21 @@ class _ReadingPageState extends State<ReadingPage> {
             opacity: _currentVerse.verseNumber > 1 ? 1.0 : 0.3,
             child: Container(
               decoration: BoxDecoration(
-                color: _currentVerse.verseNumber > 1 ? Colors.orange.shade50 : Colors.grey.shade100,
+                color: _currentVerse.verseNumber > 1
+                    ? Colors.orange.shade50
+                    : Colors.grey.shade100,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: IconButton(
                 icon: const Icon(Icons.chevron_left, size: 28),
                 color: kPrimaryOrange,
-                onPressed: _currentVerse.verseNumber > 1 ? _previousVerse : null,
+                onPressed: _currentVerse.verseNumber > 1
+                    ? _previousVerse
+                    : null,
               ),
             ),
           ),
-          
+
           // Current Verse Indicator
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -542,7 +624,7 @@ class _ReadingPageState extends State<ReadingPage> {
               border: Border.all(color: kAccentGold.withOpacity(0.5), width: 1),
             ),
             child: Text(
-              'Verse ${_currentVerse.verseNumber}/$totalVerses',
+              'Verse ${_currentVerse.verseNumber}/$_totalVerses',
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -550,19 +632,23 @@ class _ReadingPageState extends State<ReadingPage> {
               ),
             ),
           ),
-          
+
           // Next Verse Button
           Opacity(
-            opacity: _currentVerse.verseNumber < totalVerses ? 1.0 : 0.3,
+            opacity: _currentVerse.verseNumber < _totalVerses ? 1.0 : 0.3,
             child: Container(
               decoration: BoxDecoration(
-                color: _currentVerse.verseNumber < totalVerses ? Colors.orange.shade50 : Colors.grey.shade100,
+                color: _currentVerse.verseNumber < _totalVerses
+                    ? Colors.orange.shade50
+                    : Colors.grey.shade100,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: IconButton(
                 icon: const Icon(Icons.chevron_right, size: 28),
                 color: kPrimaryOrange,
-                onPressed: _currentVerse.verseNumber < totalVerses ? _nextVerse : null,
+                onPressed: _currentVerse.verseNumber < _totalVerses
+                    ? _nextVerse
+                    : null,
               ),
             ),
           ),
@@ -580,7 +666,9 @@ class _ReadingPageState extends State<ReadingPage> {
         elevation: 0,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(color: kAccentGold.withOpacity(0.3), width: 2)),
+            border: Border(
+              bottom: BorderSide(color: kAccentGold.withOpacity(0.3), width: 2),
+            ),
           ),
         ),
         leading: IconButton(
@@ -606,7 +694,14 @@ class _ReadingPageState extends State<ReadingPage> {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Text('अ', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: kPrimaryOrange)),
+            icon: const Text(
+              'अ',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: kPrimaryOrange,
+              ),
+            ),
             onPressed: () {},
           ),
           IconButton(
@@ -615,7 +710,7 @@ class _ReadingPageState extends State<ReadingPage> {
           ),
         ],
       ),
-      
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -630,7 +725,7 @@ class _ReadingPageState extends State<ReadingPage> {
           ],
         ),
       ),
-      
+
       bottomNavigationBar: _buildBottomVerseNavigation(),
     );
   }
