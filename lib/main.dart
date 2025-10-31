@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:gita/Screens/homescreen.dart';
 import 'package:gita/Screens/mainscreen.dart';
+import 'package:gita/Screens/splashscreen.dart';
 import 'package:rive/rive.dart' hide Image, LinearGradient;
 
 void main() {
@@ -20,9 +21,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         fontFamily: 'Poppins',
       ),
-      home: HomeScreen(),
+      // 👇 Start with SplashScreen
+      home: SplashScreen(),
+
+      // 👇 Define routes for navigation
+      routes: {
+        '/home': (context) => const HomePage(),
+      },
     );
   }
 }
-
-// HomeScreen()
