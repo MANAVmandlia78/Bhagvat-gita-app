@@ -67,27 +67,34 @@ void _togglePlayPause() async {
       _isPlaying = true;
     });
 
-    // Step 1: Speak Sanskrit using Hindi TTS (hi-IN can read Devanagari)
+    // Step 1: Speak Sanskrit (hi-IN can read Devanagari)
     await flutterTts.setLanguage("hi-IN");
     await flutterTts.setPitch(1.0);
     await flutterTts.speak(_currentVerse.sanskrit);
 
     flutterTts.setCompletionHandler(() async {
       if (_isPlaying) {
-        // Pause 1 second
         await Future.delayed(const Duration(seconds: 1));
 
-        // Step 2: Switch back to Indian English for translation
-        await flutterTts.setLanguage("en-IN");
-        await flutterTts.setPitch(0.85);
-        await flutterTts.speak(_currentVerse.translation);
+        // Step 2: Speak translation based on toggle
+        if (_showHindiTranslation) {
+          // Hindi translation
+          await flutterTts.setLanguage("hi-IN");
+          await flutterTts.setPitch(1.0);
+          await flutterTts.speak(_currentVerse.translationH);
+        } else {
+          // English translation
+          await flutterTts.setLanguage("en-IN");
+          await flutterTts.setPitch(0.85);
+          await flutterTts.speak(_currentVerse.translation);
+        }
 
         flutterTts.setCompletionHandler(() async {
           if (_isPlaying) {
-            // Pause again
             await Future.delayed(const Duration(seconds: 1));
 
-            // Step 3: Speak Commentary in same English tone
+            // Step 3: Speak commentary (always in English for now)
+            await flutterTts.setLanguage("en-IN");
             await flutterTts.speak(_currentVerse.commentary);
 
             flutterTts.setCompletionHandler(() {
