@@ -32,6 +32,7 @@ class _ReadingPageState extends State<ReadingPage> {
   late Verse _currentVerse;
   int _totalVerses = 0; // Initialized to 0, will be fetched from DB
   final DatabaseHelper _dbHelper = DatabaseHelper.instance;
+  bool _showHindiTranslation = false; 
 
   void initState() {
     super.initState();
@@ -42,7 +43,12 @@ class _ReadingPageState extends State<ReadingPage> {
     _loadChapterMetadata(); // Load total verse count
   }
 
-  
+  String _getTranslationText() {
+    if (_showHindiTranslation) {
+      return _currentVerse.translationH;
+    }
+    return _currentVerse.translation;
+  }
 
   Future<void> _loadChapterMetadata() async {
     final count = await _dbHelper.getTotalVersesInChapter(widget.chapterNumber);
@@ -482,6 +488,10 @@ void _togglePlayPause() async {
   }
 
   Widget _buildTranslationSection() {
+     // Determine header text and content based on toggle state
+    final headerText = _showHindiTranslation ? 'हिन्दी अनुवाद' : 'English Translation';
+    final contentText = _showHindiTranslation ? _currentVerse.translationH : _currentVerse.translation;
+    final headerColor = _showHindiTranslation ? kSacredRed : kPrimaryOrange;
     return Column(
       children: [
         _buildLotusDivider(),
@@ -518,7 +528,7 @@ void _togglePlayPause() async {
             border: Border.all(color: kAccentGold.withOpacity(0.3), width: 1),
           ),
           child: Text(
-            _currentVerse.translation,
+            contentText,
             textAlign: TextAlign.justify,
             style: TextStyle(fontSize: 16, height: 1.8, color: kTextPrimary),
           ),
@@ -694,16 +704,21 @@ void _togglePlayPause() async {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Text(
-              'अ',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: kPrimaryOrange,
-              ),
-            ),
-            onPressed: () {},
-          ),
+  icon: Text(
+    _showHindiTranslation ? 'T' : 'अ', // toggle text
+    style: const TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+      color: kPrimaryOrange,
+    ),
+  ),
+  onPressed: () {
+    setState(() {
+      _showHindiTranslation = !_showHindiTranslation;
+    });
+  },
+),
+
           IconButton(
             icon: const Icon(Icons.bookmark_border, color: kPrimaryOrange),
             onPressed: () {},
