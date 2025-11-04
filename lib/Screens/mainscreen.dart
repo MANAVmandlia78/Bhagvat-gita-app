@@ -5,6 +5,7 @@ import 'dart:ui';
 // 1. IMPORT DATABASE HELPER AND THE NEW MODEL
 import 'package:gita/data/local/database_helper.dart'; // Make sure this is your SQLite helper file
 import 'package:gita/Screens/readingpage.dart';
+import 'package:gita/Screens/bookmarkscreen.dart'; // 💥 NEW IMPORT 💥
 
 // Custom Colors based on the image's aesthetic (UNCHANGED)
 const Color kPrimaryOrange = Color(0xFFE65100);
@@ -55,6 +56,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+  late PageController _pageController;
   // 3. STATE VARIABLE FOR CHAPTERS
   List<Chapter> _chapters = [];
   bool _isLoading = true;
@@ -63,8 +65,15 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    _pageController = PageController();
     // 4. FETCH CHAPTERS ON INIT
     _fetchChapters();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   Future<void> _fetchChapters() async {
@@ -89,6 +98,14 @@ class _HomePageState extends State<HomePage> {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Chatbot()),
+      );
+      return; // prevent changing the bottom nav highlight
+    }
+    if (index == 2) {
+      // 🟣 When user taps "Gita GPT" icon
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => BookmarksPage()),
       );
       return; // prevent changing the bottom nav highlight
     }

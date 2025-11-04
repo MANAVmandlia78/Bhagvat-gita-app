@@ -1,6 +1,26 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
+class Bookmark {
+  final int id;
+  final int chapterNumber;
+  final int verseNumber;
+
+  Bookmark({
+    required this.id,
+    required this.chapterNumber,
+    required this.verseNumber,
+  });
+
+  factory Bookmark.fromMap(Map<String, dynamic> map) {
+    return Bookmark(
+      id: map['id'] as int,
+      chapterNumber: map['chapter_number'] as int,
+      verseNumber: map['verse_number'] as int,
+    );
+  }
+}
+
 // --- NEW MODEL CLASS for Verses ---
 class Verse {
   final int id;
@@ -11,7 +31,7 @@ class Verse {
   final String wordMeaning;
   final String commentary;
   final bool isRead; // Added for UI state demonstration
-
+  final int chapterNumber; 
   Verse({
     required this.id,
     required this.verseNumber,
@@ -21,6 +41,7 @@ class Verse {
     required this.wordMeaning,
     required this.commentary,
     this.isRead = false, // Set a default value
+    required this.chapterNumber,
   });
 
   factory Verse.fromMap(Map<String, dynamic> map) {
@@ -34,6 +55,7 @@ class Verse {
       commentary: map['commentary'] as String,
       // Assuming 'is_read' is not in DB yet, setting default for UI
       isRead: map['is_read'] == 1,
+      chapterNumber: map['chapter_number'] as int? ?? -1
     );
   }
 }
@@ -89,10 +111,10 @@ class DatabaseHelper {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
 
-    // Delete database during development to reset
-    await deleteDatabase(path);
+    // // Delete database during development to reset
+    // await deleteDatabase(path);
 
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    return await openDatabase(path, version: 3, onCreate: _createDB);
   }
 
   // --- CREATE ALL TABLES ---
@@ -110,6 +132,7 @@ class DatabaseHelper {
       );
     ''');
 
+    await _createBookmarksTable(db); 
     // Insert metadata for all 18 chapters
     await _insertInitialChapters(db);
 
@@ -191,13 +214,64 @@ class DatabaseHelper {
 
     await insertChapter16Verses(db);
 
-     await createChapterTable(db, 17);
+    await createChapterTable(db, 17);
 
     await insertChapter17Verses(db);
 
     await createChapterTable(db, 18);
 
     await insertChapter18Verses(db);
+  }
+
+  // 💥 NEW: Function to create the Bookmarks table 💥
+  Future<void> _createBookmarksTable(Database db) async {
+    await db.execute('''
+      CREATE TABLE bookmarks (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        chapter_number INTEGER NOT NULL,
+        verse_number INTEGER NOT NULL,
+        UNIQUE (chapter_number, verse_number) ON CONFLICT REPLACE
+      );
+    ''');
+  }
+
+    Future<bool> toggleBookmark(int chapterNum, int verseNum) async {
+    final db = await instance.database;
+    final isBookmarked = await isVerseSaved(chapterNum, verseNum);
+
+    if (isBookmarked) {
+      await db.delete(
+        'bookmarks',
+        where: 'chapter_number = ? AND verse_number = ?',
+        whereArgs: [chapterNum, verseNum],
+      );
+      return false; // Removed
+    } else {
+      await db.insert(
+        'bookmarks',
+        {'chapter_number': chapterNum, 'verse_number': verseNum},
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+      return true; // Added
+    }
+  }
+
+   // 2. Check if a verse is saved
+  Future<bool> isVerseSaved(int chapterNum, int verseNum) async {
+    final db = await instance.database;
+    final result = await db.query(
+      'bookmarks',
+      where: 'chapter_number = ? AND verse_number = ?',
+      whereArgs: [chapterNum, verseNum],
+    );
+    return result.isNotEmpty;
+  }
+
+   // 3. Fetch all saved bookmarks
+  Future<List<Bookmark>> fetchAllBookmarks() async {
+    final db = await instance.database;
+    final maps = await db.query('bookmarks', orderBy: 'chapter_number ASC, verse_number ASC');
+    return List.generate(maps.length, (i) => Bookmark.fromMap(maps[i]));
   }
 
   // --- DYNAMIC TABLE CREATION FUNCTION ---
@@ -10503,7 +10577,19 @@ Future<Verse?> fetchSpecificVerse(int chapterNumber, int verseNumber) async {
     );
 
     if (maps.isNotEmpty) {
-      return Verse.fromMap(maps.first);
+      final verseMap = maps.first;
+        // 💥 INJECTING chapterNumber into the Verse constructor 💥
+        return Verse(
+          id: verseMap['id'] as int,
+          verseNumber: verseMap['verse_number'] as int,
+          sanskrit: verseMap['sanskrit'] as String,
+          translation: verseMap['translation'] as String,
+          translationH: verseMap['translation_h'] as String? ?? 'अनुवाद उपलब्ध नहीं', 
+          wordMeaning: verseMap['word_meaning'] as String,
+          commentary: verseMap['commentary'] as String,
+          isRead: verseMap['is_read'] == 1,
+          chapterNumber: chapterNumber, // Use the parameter value
+        );
     }
   } catch (e) {
     // This catches errors like the chapter table not existing (e.g., if data insertion failed)

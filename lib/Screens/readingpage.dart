@@ -31,8 +31,10 @@ class _ReadingPageState extends State<ReadingPage> {
 
   late Verse _currentVerse;
   int _totalVerses = 0; // Initialized to 0, will be fetched from DB
+  bool _isFetchingVerse = false; 
   final DatabaseHelper _dbHelper = DatabaseHelper.instance;
   bool _showHindiTranslation = false; 
+  bool _isBookmarked = false;
 
   void initState() {
     super.initState();
@@ -41,6 +43,7 @@ class _ReadingPageState extends State<ReadingPage> {
     flutterTts.setSpeechRate(0.8); // speaking speed (0.0 - 1.0)
     _currentVerse = widget.initialVerse;
     _loadChapterMetadata(); // Load total verse count
+     _checkBookmarkStatus(widget.chapterNumber, widget.initialVerse.verseNumber); 
   }
 
   String _getTranslationText() {
@@ -48,6 +51,39 @@ class _ReadingPageState extends State<ReadingPage> {
       return _currentVerse.translationH;
     }
     return _currentVerse.translation;
+  }
+
+   Future<void> _checkBookmarkStatus(int chapterNum, int verseNum) async {
+    final status = await _dbHelper.isVerseSaved(chapterNum, verseNum);
+    if (mounted) {
+      setState(() {
+        _isBookmarked = status;
+      });
+    }
+  }
+
+  Future<void> _toggleBookmark() async {
+    final newStatus = await _dbHelper.toggleBookmark(
+      widget.chapterNumber,
+      _currentVerse.verseNumber,
+    );
+    
+    if (mounted) {
+      setState(() {
+        _isBookmarked = newStatus;
+      });
+      // Provide user feedback (Optional)
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            newStatus 
+              ? 'श्लोक ${widget.chapterNumber}.${_currentVerse.verseNumber} सहेजा गया।'
+              : 'श्लोक ${widget.chapterNumber}.${_currentVerse.verseNumber} हटाया गया।',
+          ),
+          duration: const Duration(seconds: 1),
+        ),
+      );
+    }
   }
 
   Future<void> _loadChapterMetadata() async {
@@ -115,29 +151,33 @@ void _togglePlayPause() async {
   }
 
   Future<void> _fetchAndSetVerse(int newVerseNumber) async {
-    if (newVerseNumber < 1 || newVerseNumber > _totalVerses) {
-      return; // Boundary check: should be caught by Opacity, but essential here
+    if (_isFetchingVerse || newVerseNumber < 1 || newVerseNumber > _totalVerses) {
+      return; 
     }
 
-    // Optional: Show a temporary loading indicator (or keep old text until new loads)
-    // For simplicity, we fetch directly and update when ready.
+    setState(() {
+      _isFetchingVerse = true;
+    });
 
     final newVerse = await _dbHelper.fetchSpecificVerse(
       widget.chapterNumber,
       newVerseNumber,
     );
 
-    if (mounted && newVerse != null) {
+    if (mounted) {
       setState(() {
-        _currentVerse = newVerse;
-        _currentSliderValue = 0.0; // Reset audio position
+        _isFetchingVerse = false;
+        if (newVerse != null) {
+          _currentVerse = newVerse;
+          _currentSliderValue = 0.0;
+          // IMPORTANT: Recheck bookmark status for the new verse
+          _checkBookmarkStatus(widget.chapterNumber, newVerse.verseNumber);
+        } else {
+          print("Failed to fetch verse ${widget.chapterNumber}.$newVerseNumber");
+        }
       });
-    } else if (mounted) {
-      // Optional: Show error or toast message if verse fetch failed
-      print("Failed to fetch verse ${widget.chapterNumber}.$newVerseNumber");
     }
   }
-
   // --- UPDATED NAVIGATION LOGIC ---
   void _nextVerse() {
     final nextNumber = _currentVerse.verseNumber + 1;
@@ -727,8 +767,12 @@ void _togglePlayPause() async {
 ),
 
           IconButton(
-            icon: const Icon(Icons.bookmark_border, color: kPrimaryOrange),
-            onPressed: () {},
+            icon: Icon(
+              // Use a filled icon if bookmarked, outline otherwise
+              _isBookmarked ? Icons.bookmark : Icons.bookmark_border, 
+              color: kPrimaryOrange,
+            ),
+            onPressed: _toggleBookmark, // Call the new toggle function
           ),
         ],
       ),
