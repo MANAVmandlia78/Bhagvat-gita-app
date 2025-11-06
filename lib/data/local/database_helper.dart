@@ -93,6 +93,42 @@ class Chapter {
   }
 }
 
+// 🆕 NEW MODEL CLASS for Characters 🆕
+class Character {
+  final int id;
+  final String name;
+  final String imagePath; // Path to local asset image
+  final String summary;
+  final String role; // Role in Gita or Mahabharat
+  final String keyLessons;
+  final String quote; // Famous quote from Gita
+  final String quoteChapter; // Which chapter the quote is from
+
+  Character({
+    required this.id,
+    required this.name,
+    required this.imagePath,
+    required this.summary,
+    required this.role,
+    required this.keyLessons,
+    required this.quote,
+    required this.quoteChapter,
+  });
+
+  factory Character.fromMap(Map<String, dynamic> map) {
+    return Character(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      imagePath: map['image_path'] as String,
+      summary: map['summary'] as String,
+      role: map['role'] as String,
+      keyLessons: map['key_lessons'] as String,
+      quote: map['quote'] as String,
+      quoteChapter: map['quote_chapter'] as String,
+    );
+  }
+}
+
 // --- MAIN DATABASE HELPER CLASS ---
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._init();
@@ -114,7 +150,7 @@ class DatabaseHelper {
     // // Delete database during development to reset
     // await deleteDatabase(path);
 
-    return await openDatabase(path, version: 3, onCreate: _createDB);
+    return await openDatabase(path, version: 4, onCreate: _createDB);
   }
 
   // --- CREATE ALL TABLES ---
@@ -134,6 +170,10 @@ class DatabaseHelper {
 
     await _createBookmarksTable(db); 
     // Insert metadata for all 18 chapters
+
+    await _createCharactersTable(db);
+    await _insertInitialCharacters(db);
+
     await _insertInitialChapters(db);
 
     // 2️⃣ Create Chapter 1 table dynamically
@@ -233,6 +273,58 @@ class DatabaseHelper {
         UNIQUE (chapter_number, verse_number) ON CONFLICT REPLACE
       );
     ''');
+  }
+
+  // 🆕 NEW: Function to create the Characters table 🆕
+  Future<void> _createCharactersTable(Database db) async {
+    await db.execute('''
+      CREATE TABLE characters (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        image_path TEXT NOT NULL,
+        summary TEXT,
+        role TEXT,
+        key_lessons TEXT,
+        quote TEXT,
+        quote_chapter TEXT
+      );
+    ''');
+  }
+
+  Future<void> _insertInitialCharacters(Database db) async {
+    final List<Map<String, dynamic>> initialCharacters = [
+      {
+        'name': 'Lord Krishna',
+        'image_path': 'assets/images/teaching.jpg', 
+        'summary': 'The Supreme Personality of Godhead, who acts as Arjuna\'s charioteer and spiritual preceptor.',
+        'role': 'Arjuna\'s charioteer, Guru, and the narrator of the Bhagavad Gita.',
+        'key_lessons': 'The nature of the soul, Karma Yoga, Bhakti Yoga, and the concept of Dharma.',
+        'quote': 'Yada yada hi dharmasya glanir bhavati bharata...',
+        'quote_chapter': 'Chapter 4, Verse 7',
+      },
+      {
+        'name': 'Arjuna',
+        'image_path': 'assets/images/mainpageimage.jpg', 
+        'summary': 'A Pandava prince and a formidable archer, who is the central human recipient of the Gita\'s wisdom.',
+        'role': 'The disciple to whom Lord Krishna delivers the Bhagavad Gita on the battlefield of Kurukshetra.',
+        'key_lessons': 'Dilemma resolution, the importance of duty (Swadharma), and emotional fortitude.',
+        'quote': 'I shall not fight.',
+        'quote_chapter': 'Chapter 2, Verse 9',
+      },
+      // Add more characters (e.g., Dhritarashtra, Sanjaya, etc.) here
+    ];
+
+    final Batch batch = db.batch();
+    for (var character in initialCharacters) {
+      batch.insert('characters', character, conflictAlgorithm: ConflictAlgorithm.replace);
+    }
+    await batch.commit(noResult: true);
+  }
+
+  Future<List<Character>> fetchAllCharacters() async {
+    final db = await instance.database;
+    final maps = await db.query('characters', orderBy: 'id ASC');
+    return List.generate(maps.length, (i) => Character.fromMap(maps[i]));
   }
 
     Future<bool> toggleBookmark(int chapterNum, int verseNum) async {

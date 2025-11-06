@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1027776579853",
+    "project_id": "gita-24ec8",
+    "storage_bucket": "gita-24ec8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027776579853:android:115881b68dd5aee82dc844",
+        "android_client_info": {
+          "package_name": "com.example.gita"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxfwlqRZc7yR_z11Uiw-Dfx53eQjFFU-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

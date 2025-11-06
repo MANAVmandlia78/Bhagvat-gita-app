@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gita/Screens/ChapterDetailPage.dart';
+import 'package:gita/Screens/character.dart';
+import 'package:gita/Screens/character_listscreen.dart';
 import 'package:gita/Screens/chatbot.dart';
 import 'dart:ui';
 // 1. IMPORT DATABASE HELPER AND THE NEW MODEL
@@ -106,6 +108,13 @@ class _HomePageState extends State<HomePage> {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => BookmarksPage()),
+      );
+      return; // prevent changing the bottom nav highlight
+    }if (index == 3) {
+      // 🟣 When user taps "Gita GPT" icon
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CharacterListPage()),
       );
       return; // prevent changing the bottom nav highlight
     }
