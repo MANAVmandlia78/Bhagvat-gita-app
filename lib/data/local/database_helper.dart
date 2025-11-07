@@ -294,24 +294,297 @@ class DatabaseHelper {
   Future<void> _insertInitialCharacters(Database db) async {
     final List<Map<String, dynamic>> initialCharacters = [
       {
-        'name': 'Lord Krishna',
-        'image_path': 'assets/images/teaching.jpg', 
-        'summary': 'The Supreme Personality of Godhead, who acts as Arjuna\'s charioteer and spiritual preceptor.',
-        'role': 'Arjuna\'s charioteer, Guru, and the narrator of the Bhagavad Gita.',
-        'key_lessons': 'The nature of the soul, Karma Yoga, Bhakti Yoga, and the concept of Dharma.',
-        'quote': 'Yada yada hi dharmasya glanir bhavati bharata...',
-        'quote_chapter': 'Chapter 4, Verse 7',
-      },
+  'name': 'Lord Krishna',
+  'image_path': 'assets/images/krishna.jpg',
+  'summary':
+      'Lord Krishna, the divine incarnation of Lord Vishnu, served as the charioteer and spiritual guide of Arjuna during the great battle of Kurukshetra. He is the speaker of the Bhagavad Gita, where he revealed the eternal wisdom of life, duty, and self-realization. Through his teachings, Krishna emphasized the importance of karma (selfless action), bhakti (devotion), and jnana (knowledge). He represents the supreme consciousness guiding humanity toward righteousness and detachment from material desires.',
+  'role':
+      'Lord Krishna played a pivotal role in the Mahabharata as Arjuna’s divine charioteer, counselor, and guide. '
+      'Though he himself did not wield weapons in the war, his wisdom and strategy shaped the course of the Kurukshetra battle. '
+      'He revealed the Bhagavad Gita to Arjuna, resolving his moral dilemmas and teaching the essence of Dharma. '
+      'Krishna’s presence symbolized divine intervention in the human realm, guiding righteousness and ensuring the victory of truth over falsehood. '
+      'Beyond the battlefield, he served as a protector of Dharma, a philosopher, and a divine teacher whose words continue to inspire humanity.',
+  'key_lessons':
+      '- Perform your duty selflessly, without attachment to the results (Karma Yoga).\n'
+      '- Surrender completely to the Divine and act with faith (Bhakti Yoga).\n'
+      '- Seek wisdom and inner realization beyond material illusions (Jnana Yoga).\n'
+      '- Maintain equanimity in success and failure.',
+  'quote':
+      '“Whenever there is a decline in righteousness and rise of unrighteousness, O Arjuna, I manifest myself.”',
+  'quote_chapter': 'Bhagavad Gita Chapter 4.7',
+},
       {
-        'name': 'Arjuna',
-        'image_path': 'assets/images/mainpageimage.jpg', 
-        'summary': 'A Pandava prince and a formidable archer, who is the central human recipient of the Gita\'s wisdom.',
-        'role': 'The disciple to whom Lord Krishna delivers the Bhagavad Gita on the battlefield of Kurukshetra.',
-        'key_lessons': 'Dilemma resolution, the importance of duty (Swadharma), and emotional fortitude.',
-        'quote': 'I shall not fight.',
-        'quote_chapter': 'Chapter 2, Verse 9',
-      },
-      // Add more characters (e.g., Dhritarashtra, Sanjaya, etc.) here
+  'name': 'Arjuna',
+  'image_path': 'assets/images/arjuna.jpg',
+  'summary':
+      'Arjuna, one of the five Pandava brothers, was a mighty warrior, a master archer, and the greatest disciple of Dronacharya. '
+      'Renowned for his skill, focus, and sense of righteousness, Arjuna stands as the central human figure of the Bhagavad Gita. '
+      'During the Kurukshetra war, he found himself overwhelmed with doubt and moral confusion about fighting his own relatives and teachers. '
+      'His internal conflict becomes the setting through which Lord Krishna reveals the timeless wisdom of the Gita.',
+  'role':
+      'Arjuna serves as the seeker of truth and the listener to Lord Krishna’s divine discourse in the Bhagavad Gita. '
+      'As a warrior bound by duty (Kshatriya Dharma), he symbolizes the human struggle between emotion and responsibility. '
+      'When faced with despair and indecision, Arjuna surrenders to Krishna as a disciple, seeking guidance on what is right. '
+      'Through him, Krishna conveys the eternal teachings of selfless action, devotion, and inner balance. '
+      'Arjuna’s journey from confusion to enlightenment represents every human being’s path toward spiritual awakening, courage, and clarity of purpose.',
+  'key_lessons':
+      '- Perform one’s duty (Swadharma) without attachment to personal outcomes.\n'
+      '- Seek guidance with humility when faced with moral dilemmas.\n'
+      '- Control the mind and emotions through discipline and faith.\n'
+      '- True strength lies in self-knowledge and spiritual surrender.',
+  'quote': '“My heart is overwhelmed by the taint of pity; my mind is confused about duty. I ask You, tell me decisively what is right for me. I am Your disciple; instruct me, for I have taken refuge in You.”',
+  'quote_chapter': 'Bhagavad Gita Chapter 2.7',
+},
+{
+  'name': 'Draupadi',
+  'image_path': 'assets/images/draupadi.jpg',
+  'summary':
+      'Draupadi, the princess of Panchala, was born from fire and is often regarded as a symbol of honor, courage, and righteousness. '
+      'She was the wife of the five Pandavas and played a crucial role in the events leading to the Mahabharata war. '
+      'Known for her strength of character, deep devotion, and unshakable faith in justice, Draupadi’s humiliation in the Kaurava court became the turning point that led to the Kurukshetra war.',
+  'role':
+      'Draupadi stands as a symbol of dignity, resilience, and divine justice. '
+      'Though not a participant on the battlefield, her role was central to the moral and emotional foundation of the Mahabharata. '
+      'Her unwavering faith in Lord Krishna and her plea for justice during the dice game episode revealed her inner strength and purity of heart. '
+      'Draupadi’s courage to question wrong, her endurance of injustice, and her faith in Dharma inspired the Pandavas to fight for righteousness. '
+      'She represents the voice of every individual who stands against humiliation and seeks divine justice.',
+  'key_lessons':
+      '- Uphold self-respect and dignity even in adversity.\n'
+      '- Have unwavering faith in divine justice and Dharma.\n'
+      '- Stand courageously against injustice and oppression.\n'
+      '- True devotion and righteousness ultimately lead to victory over evil.',
+  'quote':
+      '“O Govinda, O Kesava! You are the protector of the helpless. I surrender myself to You — save me, O Lord of the universe!”',
+  'quote_chapter': 'Mahabharata, Sabha Parva – The Dice Game Episode',
+},
+{
+  'name': 'Yudhishthira',
+  'image_path': 'assets/images/yudhishthira.jpg',
+  'summary':
+      'Yudhishthira, the eldest of the Pandava brothers, was the son of Kunti and the god of Dharma (Yama). '
+      'He was renowned for his unwavering commitment to truth, justice, and righteousness. '
+      'Known as Dharmaraja, Yudhishthira served as the moral compass of the Pandavas throughout their trials and tribulations, embodying virtue and calm wisdom even in the face of immense suffering.',
+  'role':
+      'As the rightful heir to the Kuru throne, Yudhishthira played a central role in the events leading to and following the Kurukshetra war. '
+      'His adherence to truth and Dharma often placed him in moral dilemmas, including the infamous dice game where he lost his kingdom, brothers, and wife. '
+      'Despite his human flaws, his dedication to righteousness made him a symbol of integrity and moral strength. '
+      'During and after the war, he sought to restore peace and justice, ruling with compassion and fairness. '
+      'His character teaches that true victory lies not in power, but in upholding virtue and self-control.',
+  'key_lessons':
+      '- Always uphold truth and righteousness, even when faced with loss.\n'
+      '- The path of Dharma may be difficult, but it leads to inner peace and ultimate victory.\n'
+      '- Wisdom and self-control are greater strengths than anger or desire.\n'
+      '- Forgiveness and humility are marks of true leadership.',
+  'quote':
+      '“I can sacrifice everything, even my life, but never truth and righteousness.”',
+  'quote_chapter': 'Mahabharata, Shanti Parva – Teachings of Dharma',
+},
+{
+  'name': 'Bhima',
+  'image_path': 'assets/images/bhima.jpg',
+  'summary':
+      'Bhima, the second of the Pandava brothers, was the son of Kunti and the wind god Vayu. '
+      'Known for his immense physical strength, courage, and fierce loyalty, Bhima was both a formidable warrior and a deeply emotional soul. '
+      'He played a vital role in the Mahabharata, fighting valiantly to uphold Dharma and protect his family’s honor.',
+  'role':
+      'Bhima embodied the power and passion necessary to fight for righteousness. '
+      'Though often driven by anger, especially against the Kauravas who humiliated Draupadi, his intentions were rooted in justice and loyalty. '
+      'On the battlefield of Kurukshetra, he was one of the Pandavas’ greatest assets, defeating many key warriors including Duryodhana and Dushasana. '
+      'Bhima’s role extended beyond brute strength — he was also a protector, a brother with a deep sense of justice, and a warrior whose heart was guided by devotion to his family and faith in Krishna. '
+      'He teaches that strength, when combined with righteousness, becomes a force for good.',
+  'key_lessons':
+      '- True strength lies not only in might but in loyalty and righteousness.\n'
+      '- Anger should be controlled and directed toward upholding justice, not revenge.\n'
+      '- Devotion and faith can turn power into a tool for Dharma.\n'
+      '- Courage and perseverance lead to victory over injustice.',
+  'quote':
+      '“I fight not for pride or vengeance, but for justice and the honor of those I love.”',
+  'quote_chapter': 'Mahabharata, Drona Parva – Battle of Kurukshetra',
+},{
+  'name': 'Duryodhana',
+  'image_path': 'assets/images/duryodhana.jpg',
+  'summary':
+      'Duryodhana, the eldest of the Kauravas and son of King Dhritarashtra, was a powerful warrior and skilled mace fighter. '
+      'He is often remembered as the main antagonist of the Mahabharata, whose pride and jealousy toward the Pandavas set the stage for the great war of Kurukshetra. '
+      'Despite his flaws, Duryodhana was also brave, loyal to his friends, and a capable ruler who believed deeply in his right to the throne.',
+  'role':
+      'As the crown prince of Hastinapura, Duryodhana’s ambition and envy led him down the path of adharma (unrighteousness). '
+      'He rejected peace, mocked Dharma, and relied heavily on deceit and arrogance to maintain his power. '
+      'His refusal to yield even five villages to the Pandavas ultimately triggered the Kurukshetra war. '
+      'Yet, Duryodhana’s courage on the battlefield, loyalty to Karna, and confidence in his cause show the complexity of his character — a man blinded by pride but fearless in adversity. '
+      'He represents the internal struggle between ego and righteousness, showing how attachment and arrogance can destroy wisdom and peace.',
+  'key_lessons':
+      '- Pride and envy can blind even the strongest minds.\n'
+      '- True leadership requires humility and fairness, not dominance.\n'
+      '- Standing by adharma, even with confidence, leads to downfall.\n'
+      '- Friendship and loyalty are noble, but they must align with righteousness.',
+  'quote':
+      '“I have no fear of defeat, for I believe in my strength, my allies, and my destiny.”',
+  'quote_chapter': 'Mahabharata, Udyoga Parva – The War Declaration',
+},{
+  'name': 'Karna',
+  'image_path': 'assets/images/karna.jpg',
+  'summary':
+      'Karna, the son of Kunti and the Sun God (Surya), was born with divine armor and earrings. '
+      'Abandoned at birth and raised by a charioteer, Karna rose to become one of the greatest warriors of his time. '
+      'Despite his noble heart and unmatched generosity, fate placed him on the side of the Kauravas, where he fought out of loyalty to his friend Duryodhana. '
+      'Karna’s life is a tale of honor, sacrifice, and the tragic consequences of destiny.',
+  'role':
+      'Karna’s role in the Mahabharata is that of the tragic hero — brave, loyal, and virtuous, yet bound by fate to stand against his own brothers. '
+      'Denied recognition due to his birth, he constantly struggled for respect and justice. '
+      'His loyalty to Duryodhana and his sense of gratitude often overshadowed his inner voice that longed for righteousness. '
+      'Even in death, Karna upheld his principles — he never abandoned his word, never begged for mercy, and remained true to his ideals of charity and valor. '
+      'Karna represents the eternal struggle between destiny and free will, between righteousness and loyalty, and between pride and humility.',
+  'key_lessons':
+      '- True greatness lies in humility and generosity, not in birth or status.\n'
+      '- Destiny may be cruel, but one’s duty and integrity define true honor.\n'
+      '- Gratitude and loyalty are virtues, but they must never blind one’s moral judgment.\n'
+      '- Even amidst injustice, one should act with courage and self-respect.',
+  'quote':
+      '“It is better to die doing one’s duty than to live with the burden of dishonor.”',
+  'quote_chapter': 'Inspired by Bhagavad Gita, Chapter 2, Verse 31–33',
+},
+{
+  'name': 'Bhishma',
+  'image_path': 'assets/images/bhishma.jpg',
+  'summary':
+      'Bhishma, born as Devavrata, was the son of King Shantanu and Goddess Ganga. '
+      'Renowned for his unparalleled valor, wisdom, and unbreakable vows, Bhishma stood as the pillar of the Kuru dynasty. '
+      'His life was defined by sacrifice — from his vow of celibacy to his unwavering commitment to the throne of Hastinapura. '
+      'Even in the face of moral conflict, he remained steadfast in his principles and duties. '
+      'Bhishma’s wisdom and righteousness made him one of the most revered figures in the Mahabharata, earning him the power to choose the moment of his death.',
+  'role':
+      'Bhishma played the role of the grand patriarch, guardian, and moral authority of the Kuru dynasty. '
+      'Despite recognizing the unrighteousness of the Kauravas, his vow of loyalty to the throne bound him to their side in the Kurukshetra war. '
+      'His role symbolizes the conflict between personal morality and sworn duty — a conflict that defined much of his life. '
+      'Even after being struck down in battle, he continued to teach Dharma, leadership, and virtue to Yudhishthira and others while lying on a bed of arrows. '
+      'Through his endurance, serenity, and dedication, Bhishma embodied the ideal of selfless duty and devotion to righteousness beyond personal gain or suffering.',
+  'key_lessons':
+      '- True Dharma is not always simple; it often demands sacrifice and inner strength.\n'
+      '- Duty and integrity must be upheld even in pain and conflict.\n'
+      '- Wisdom and composure in adversity define a true warrior and leader.\n'
+      '- One’s loyalty must serve truth and righteousness, not blind obedience.',
+  'quote':
+      '“When a man fights for righteousness, even his fall becomes immortal.”',
+  'quote_chapter': 'Bhagavad Gita Chapter 2.47',
+},{
+  'name': 'Dronacharya',
+  'image_path': 'assets/images/duryodhana.jpg',
+  'summary':
+      'Dronacharya, the revered teacher of both the Pandavas and Kauravas, was the son of sage Bharadwaja. '
+      'He was a master of advanced warfare and archery, known for his exceptional command over divine weapons (Astras). '
+      'Despite his humble beginnings, Dronacharya rose to great prominence through his unmatched skill, intellect, and dedication to the art of warfare. '
+      'His life reflects the balance between knowledge and discipline, wisdom and ambition, and the moral struggles faced by one who serves duty above personal feelings.',
+  'role':
+      'As the royal guru of Hastinapura, Dronacharya trained the princes in all branches of martial arts, molding them into formidable warriors. '
+      'He loved his students dearly, especially Arjuna, whom he considered his most devoted disciple. '
+      'However, his sense of duty to the throne and loyalty to the Kuru dynasty led him to fight on the side of the Kauravas during the Kurukshetra war. '
+      'Bound by obligation, Dronacharya became a tragic figure torn between righteousness and loyalty. '
+      'His leadership in battle demonstrated his tactical brilliance, yet his moral conflict revealed the burden of a teacher caught between Dharma and duty.',
+  'key_lessons':
+      '- True wisdom lies not only in knowledge but in understanding how to use it with righteousness.\n'
+      '- Duty and loyalty must never blind one’s moral vision.\n'
+      '- A teacher’s greatest legacy is not in victory, but in the virtue and character of his students.\n'
+      '- Even the most learned can falter when emotion and attachment overpower Dharma.',
+  'quote':
+      '“Knowledge is the greatest weapon — but it must be wielded with righteousness.”',
+  'quote_chapter': 'Bhagavad Gita Chapter 2.50',
+},{
+  'name': 'Ashwatthama',
+  'image_path': 'assets/images/Ashwathama.jpg',
+  'summary':
+      'Ashwatthama, the son of Dronacharya and Kripi, was born with a celestial gem on his forehead that granted him protection from hunger, thirst, and fatigue. '
+      'Trained under his father’s expert guidance, Ashwatthama became a fierce warrior and one of the few humans to master divine weapons like the Brahmastra. '
+      'Though blessed with immense power, his pride and emotions often overshadowed his wisdom. '
+      'Ashwatthama’s story is a tale of unmatched strength, intense loyalty, and the tragic consequences of anger and vengeance.',
+  'role':
+      'In the Mahabharata, Ashwatthama served as one of the chief warriors of the Kaurava army during the Kurukshetra war. '
+      'He fought valiantly and was deeply devoted to his father, Dronacharya, and his friend Duryodhana. '
+      'However, after witnessing the fall of Duryodhana and the death of his father, rage consumed him. '
+      'In a moment of vengeance, Ashwatthama unleashed the deadly Brahmastra against the Pandavas — an act that defied Dharma and brought immense destruction. '
+      'His story reflects the dangers of uncontrolled emotion and the moral downfall that results when power is used without wisdom. '
+      'Cursed by Lord Krishna to wander the earth eternally, Ashwatthama’s fate serves as a warning against the misuse of divine strength.',
+  'key_lessons':
+      '- Power without wisdom leads to self-destruction.\n'
+      '- Revenge blinds even the most noble-hearted and turns virtue into sin.\n'
+      '- True victory lies in self-control and forgiveness, not in violence.\n'
+      '- Dharma must guide every action, even in the face of loss or grief.',
+  'quote':
+      '“From anger comes delusion; from delusion, loss of memory; from loss of memory, the destruction of intellect; and from the destruction of intellect, one perishes.”',
+  'quote_chapter': 'Bhagavad Gita Chapter 2.63',
+},{
+  'name': 'Sanjaya',
+  'image_path': 'assets/images/sanjay and dhrishtra.jpg',
+  'summary':
+      'Sanjaya, the loyal charioteer and advisor to King Dhritarashtra, was granted divine vision (*divya drishti*) by the sage Vyasa. '
+      'Through this celestial gift, he could witness the entire battle of Kurukshetra from afar and narrate it to the blind king in real time. '
+      'Calm, wise, and deeply introspective, Sanjaya served as the moral and spiritual bridge between the divine truths revealed on the battlefield and the human emotions of the palace. '
+      'His narration of the Bhagavad Gita immortalized him as the first listener of Lord Krishna’s divine discourse to Arjuna.',
+  'role':
+      'Sanjaya’s role in the Mahabharata is that of a divine observer and messenger of truth. '
+      'Unlike the warriors who fought on the battlefield, Sanjaya’s duty was to bear witness — to see, understand, and convey the profound realities of war and Dharma. '
+      'Through his narration to King Dhritarashtra, he not only described the physical events of the battle but also revealed the spiritual essence of the Gita. '
+      'He remained detached, truthful, and composed even in the face of tragedy, embodying the principles of *sattva* (clarity and truthfulness). '
+      'Sanjaya’s character symbolizes the ideal of awareness — to see beyond illusion and remain steadfast in truth. '
+      'In the end, after witnessing the entire destruction of the Kuru clan, Sanjaya emerged enlightened, realizing the impermanence of worldly power and the eternal nature of the soul.',
+  'key_lessons':
+      '- True vision is not through the eyes but through wisdom and spiritual insight.\n'
+      '- Detachment allows one to witness truth without being consumed by emotion.\n'
+      '- The messenger of truth must remain honest, calm, and fearless in delivering what is right.\n'
+      '- Awareness and self-realization lead to peace amidst chaos and destruction.',
+  'quote':
+      '“What is night to all beings is the time of awakening for the self-controlled; and what is night for the self-controlled is the time of awakening for all beings.”',
+  'quote_chapter': 'Bhagavad Gita Chapter 2.69',
+},{
+  'name': 'Dhritarashtra',
+  'image_path': 'assets/images/sanjay and dhrishtra.jpg',
+  'summary':
+      'Dhritarashtra, the blind king of Hastinapura, was the father of the Kauravas and a key figure whose attachment and indecision fueled the great war of Kurukshetra. '
+      'Though physically blind from birth, his true blindness was of the heart and mind — his inability to see the path of righteousness beyond his love for his sons. '
+      'As a ruler, he was torn between his duty as king and his affection as a father, leading him to remain silent even when he knew the Kauravas’ actions were unjust. '
+      'His inner conflict symbolizes the eternal struggle between attachment and wisdom, between what is right and what is comfortable.',
+  'role':
+      'Dhritarashtra’s role in the Mahabharata and the Bhagavad Gita is that of a tragic monarch whose moral weakness and excessive attachment to his sons set the stage for the war. '
+      'Though not a warrior on the battlefield, the entire Gita unfolds through his perspective — as Sanjaya narrates the divine conversation between Krishna and Arjuna to him. '
+      'Throughout the war, Dhritarashtra is consumed by anxiety, regret, and guilt, realizing too late that his silence against adharma (unrighteousness) cost countless lives. '
+      'In many ways, he represents the human tendency to turn a blind eye to truth when it threatens one’s attachments or personal interests. '
+      'His sorrow after the war becomes a lesson in the dangers of misplaced affection, moral compromise, and failure to act when duty demands courage.',
+  'key_lessons':
+      '- Blind attachment can cloud judgment and lead even the wise toward ruin.\n'
+      '- True vision comes from moral clarity and courage to stand by righteousness.\n'
+      '- Leadership demands detachment — decisions must be guided by Dharma, not emotion.\n'
+      '- Silence in the face of injustice is itself a form of wrongdoing.\n'
+      '- Repentance is valuable, but wisdom must be exercised before it is too late.',
+  'quote':
+      '“Attachment blinds even the wisest, making them forget their duty and lose sight of truth.”',
+  'quote_chapter': 'Bhagavad Gita Chapter 3.37',
+},{
+  'name': 'Kunti',
+  'image_path': 'assets/images/kunti.jpg',
+  'summary':
+      'Kunti, the mother of the Pandavas, was a woman of immense strength, wisdom, and devotion. '
+      'Born as Princess Pritha, she was granted a divine boon by sage Durvasa that allowed her to invoke any god to bear a child. '
+      'Out of curiosity, she invoked Surya, the Sun God, giving birth to Karna — a secret she carried with deep sorrow. '
+      'Throughout her life, Kunti endured tremendous trials — from raising her sons in exile to witnessing the devastation of war — yet she faced every hardship with grace and faith. '
+      'Her life is a journey of endurance, sacrifice, and unwavering devotion to Dharma.',
+  'role':
+      'Kunti’s role in the Mahabharata is one of silent strength and moral backbone. '
+      'As the mother of the Pandavas, she guided them through every adversity, teaching them the importance of unity, righteousness, and humility. '
+      'Despite her deep emotional turmoil — torn between her love for all her sons, including Karna — she never wavered from her sense of duty. '
+      'Kunti’s wisdom often served as a moral compass for her children, especially Yudhishthira and Arjuna. '
+      'Even in her suffering, she remained steadfast, understanding that life’s pain is part of one’s spiritual evolution. '
+      'Her strength did not lie in power or wealth but in patience, forgiveness, and an unshakable faith in the divine plan. '
+      'In her final days, Kunti chose a path of renunciation, retreating to the forest and attaining peace — a symbol of detachment and liberation.',
+  'key_lessons':
+      '- True strength lies in endurance, patience, and faith in divine justice.\n'
+      '- A mother’s love, when rooted in wisdom, can guide generations toward righteousness.\n'
+      '- Acceptance of suffering leads to spiritual growth and inner peace.\n'
+      '- Detachment and surrender to the Divine are the highest forms of devotion.\n'
+      '- Every hardship is a divine test that reveals one’s inner strength and purpose.',
+  'quote':
+      '“embodying the essence of surrender taught in the Bhagavad Gita, Chapter 18, Verse 66: “Abandon all varieties of dharma and surrender unto Me alone.”',
+  'quote_chapter': 'Inspired by Kunti’s prayer from the Mahabharata (Bhagavata Purana, Book 1, Chapter 8) ”',
+},   
     ];
 
     final Batch batch = db.batch();

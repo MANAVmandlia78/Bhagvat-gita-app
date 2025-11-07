@@ -149,7 +149,7 @@ class CharacterPage extends StatelessWidget {
 
             // Role Description Section
             _buildSection(
-              title: 'Role in Gita / Mahabharata',
+              title: 'Role in Gita',
               // 7. 🎯 Use the character's role
               content: character.role,
             ),
@@ -220,7 +220,7 @@ class CharacterPage extends StatelessWidget {
                     ),
                     child: Text(
                       // 10. 🎯 Use the quote chapter
-                      '– Bhagavad Gita ${character.quoteChapter}',
+                      '${character.quoteChapter}',
                       style: TextStyle(
                         fontSize: 14,
                         color: kTextPrimary,
