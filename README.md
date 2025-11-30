@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🕉️ Bhagavad Gita App 🕉️
+# 🪷 Bhagavad Gita App 🪷
 
 <img src="https://c.tenor.com/PLN8KAyMSW0AAAAC/lord-krishna-lordkrishna.gif" alt="Lord Krishna" width="400" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);"/>
 
