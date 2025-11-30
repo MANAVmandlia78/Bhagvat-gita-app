@@ -437,7 +437,7 @@ If this app brings peace and wisdom to your life, consider:
 
 <div align="center">
 
-<img src="https://images.unsplash.com/photo-1582552938357-32b906d702c5?w=600&q=80" alt="Krishna Flute" width="300" style="border-radius: 15px;"/>
+<img src="https://media1.tenor.com/m/5ZRtfytAuQ8AAAAC/gopal-krishna.gif" alt="Krishna Flute" width="300" style="border-radius: 15px;"/>
 
 <br><br>
 
