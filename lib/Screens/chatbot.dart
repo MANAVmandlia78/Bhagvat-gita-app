@@ -23,7 +23,8 @@ class _ChatbotState extends State<Chatbot> {
     });
 
     String apiKey =
-        "AIzaSyC9ZVxBgj4wxOr3KakmhFlLzPCiIoeeF7w"; // 🔒 use your Gemini key
+        "AIzaSyB808RIoR7iEhZwU5epDJMF2SnAxmoI3jI"; // 🔒 use your Gemini key
+        
     String url =
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$apiKey";
 

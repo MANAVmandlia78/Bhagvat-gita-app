@@ -170,6 +170,8 @@ class DatabaseHelper {
 
     await _createBookmarksTable(db); 
     // Insert metadata for all 18 chapters
+    await _createLastReadTable(db);
+
 
     await _createCharactersTable(db);
     await _insertInitialCharacters(db);
@@ -290,6 +292,39 @@ class DatabaseHelper {
       );
     ''');
   }
+
+  Future<void> saveLastReadVerse(int chapterNumber, int verseNumber) async {
+  final db = await instance.database;
+
+  await db.insert(
+    'last_read',
+    {
+      'id': 1,
+      'chapter_number': chapterNumber,
+      'verse_number': verseNumber,
+    },
+    conflictAlgorithm: ConflictAlgorithm.replace,
+  );
+}
+
+Future<Verse?> fetchLastReadVerse() async {
+  final db = await instance.database;
+
+  final result = await db.query(
+    'last_read',
+    where: 'id = ?',
+    whereArgs: [1],
+    limit: 1,
+  );
+
+  if (result.isEmpty) return null;
+
+  final chapterNumber = result.first['chapter_number'] as int;
+  final verseNumber = result.first['verse_number'] as int;
+
+  return await fetchSpecificVerse(chapterNumber, verseNumber);
+}
+
 
   Future<void> _insertInitialCharacters(Database db) async {
     final List<Map<String, dynamic>> initialCharacters = [
@@ -651,7 +686,9 @@ class DatabaseHelper {
         translation TEXT,
         translation_h TEXT,
         word_meaning TEXT,
-        commentary TEXT
+        commentary TEXT,
+        is_read INTEGER DEFAULT 0
+
       );
     ''');
   }
@@ -10773,7 +10810,6 @@ await db.insert('chapter_18', {
         'summary':
             'Arjuna’s despondency and moral confusion on the battlefield of Kurukshetra.',
         'total_verses': 47,
-        'completed_percentage': 8,
       },
       {
         'chapter_number': 2,
@@ -10806,7 +10842,6 @@ await db.insert('chapter_18', {
         'summary':
             'The Yoga of Renunciation — Krishna explains detachment from fruits of action.',
         'total_verses': 29,
-        'completed_percentage': 55,
       },
       {
         'chapter_number': 6,
@@ -10925,6 +10960,66 @@ await db.insert('chapter_18', {
     final maps = await db.query('chapters', orderBy: 'chapter_number ASC');
     return List.generate(maps.length, (i) => Chapter.fromMap(maps[i]));
   }
+
+  Future<void> _createLastReadTable(Database db) async {
+  await db.execute('''
+    CREATE TABLE last_read (
+      id INTEGER PRIMARY KEY CHECK (id = 1),
+      chapter_number INTEGER NOT NULL,
+      verse_number INTEGER NOT NULL
+    );
+  ''');
+}
+
+Future<void> markVerseAsRead(int chapterNumber, int verseNumber) async {
+  final db = await database;
+  final tableName = 'chapter_$chapterNumber';
+
+  await db.update(
+    tableName,
+    {'is_read': 1},
+    where: 'verse_number = ?',
+    whereArgs: [verseNumber],
+  );
+
+  // After marking read → update chapter progress
+  await _updateChapterCompletion(chapterNumber);
+}
+
+Future<void> _updateChapterCompletion(int chapterNumber) async {
+  final db = await database;
+  final tableName = 'chapter_$chapterNumber';
+
+  // Count read verses
+  final readResult = await db.rawQuery(
+    'SELECT COUNT(*) as count FROM $tableName WHERE is_read = 1',
+  );
+
+  final readCount = readResult.first['count'] as int;
+
+  // Get total verses
+  final totalResult = await db.query(
+    'chapters',
+    columns: ['total_verses'],
+    where: 'chapter_number = ?',
+    whereArgs: [chapterNumber],
+  );
+
+  final totalVerses = totalResult.first['total_verses'] as int;
+
+  final completion =
+      ((readCount / totalVerses) * 100).round();
+
+  // Update chapters table
+  await db.update(
+    'chapters',
+    {'completed_percentage': completion},
+    where: 'chapter_number = ?',
+    whereArgs: [chapterNumber],
+  );
+}
+
+
 
   // Inside your DatabaseHelper class (database_helper.dart)
 

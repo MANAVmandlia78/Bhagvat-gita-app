@@ -7,14 +7,30 @@ import 'package:gita/Screens/mainscreen.dart';
 import 'package:gita/Screens/splashscreen.dart';
 import 'package:rive/rive.dart' hide Image, LinearGradient;
 
+// ✅ REQUIRED IMPORT FOR LOCAL NOTIFICATIONS
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import 'notification.dart';
+
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
 }
 
+
+
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  FirebaseMessaging.onBackgroundMessage(
+    _firebaseMessagingBackgroundHandler,
+  );
+
+  // ✅ INITIALIZE LOCAL NOTIFICATIONS
+  await NotificationService.init();
+
   runApp(const MyApp());
 }
 
@@ -27,10 +43,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late FirebaseMessaging messaging;
+
+  @override
   void initState() {
+    super.initState();
+
+    // 🔔 Firebase push notification permission (unchanged)
     messaging = FirebaseMessaging.instance;
     messaging.requestPermission();
-    super.initState();
   }
 
   @override
@@ -43,9 +63,9 @@ class _MyAppState extends State<MyApp> {
         fontFamily: 'Poppins',
       ),
       home: SplashScreen(),
-
-      
-      routes: {'/home': (context) => const HomePage()},
+      routes: {
+        '/home': (context) => const HomePage(),
+      },
     );
   }
 }

@@ -75,7 +75,9 @@ class _BookmarksPageState extends State<BookmarksPage> {
             MaterialPageRoute(
               builder: (context) => ReadingPage(
                 initialVerse: verse,
-                chapterNumber: verse.chapterNumber, // Assuming initialVerse has the chapter number embedded or passed
+                chapterNumber: verse.chapterNumber,
+                verseNumber: verse.verseNumber,
+                 // Assuming initialVerse has the chapter number embedded or passed
               ),
             ),
           );

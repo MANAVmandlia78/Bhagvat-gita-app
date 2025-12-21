@@ -13,11 +13,13 @@ const Color kTextPrimary = Color(0xFF4E342E); // Warm brown for text
 class ReadingPage extends StatefulWidget {
   final Verse initialVerse;
   final int chapterNumber;
+  final int verseNumber;
 
   const ReadingPage({
     super.key,
     required this.initialVerse,
     required this.chapterNumber,
+    required this.verseNumber,
   });
 
   @override
@@ -38,6 +40,14 @@ class _ReadingPageState extends State<ReadingPage> {
 
   void initState() {
     super.initState();
+    DatabaseHelper.instance.markVerseAsRead(
+    widget.chapterNumber,
+    widget.verseNumber,
+  );
+    DatabaseHelper.instance.saveLastReadVerse(
+  widget.chapterNumber,
+  widget.verseNumber,
+);
     flutterTts.setLanguage("en-IN"); // you can use "en-US" or any other locale
     flutterTts.setPitch(0.1); // voice tone
     flutterTts.setSpeechRate(0.8); // speaking speed (0.0 - 1.0)

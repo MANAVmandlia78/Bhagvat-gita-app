@@ -61,6 +61,7 @@ class _ChapterDetailPageState extends State<ChapterDetailPage> {
                 builder: (context) => ReadingPage(
                   initialVerse: verse,
                   chapterNumber: widget.chapterNumber,
+                  verseNumber: verse.verseNumber,
                 ),
               ),
             );

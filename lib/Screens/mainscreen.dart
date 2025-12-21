@@ -8,6 +8,8 @@ import 'dart:ui';
 import 'package:gita/data/local/database_helper.dart'; // Make sure this is your SQLite helper file
 import 'package:gita/Screens/readingpage.dart';
 import 'package:gita/Screens/bookmarkscreen.dart'; // 💥 NEW IMPORT 💥
+import 'package:gita/notification.dart';
+import 'package:gita/verse_of_the_day.dart';
 
 // Custom Colors based on the image's aesthetic (UNCHANGED)
 const Color kPrimaryOrange = Color(0xFFE65100);
@@ -46,6 +48,35 @@ final List<MostReadVerse> mockMostReadVerses = [
     'Rāja Vidyā Rāja Guhya Yog',
     'Engage your mind always in thinking of Me, offer obeisances and just worship Me. Being completely absorbed in Me, surely you will come to Me.',
   ),
+  MostReadVerse(
+    '4.7',
+    'Jñāna–Karma–Sanyāsa Yog',
+    'Whenever there is a decline in righteousness and an increase in unrighteousness, O Arjuna, at that time I manifest Myself.',
+  ),
+
+  MostReadVerse(
+    '4.8',
+    'Jñāna–Karma–Sanyāsa Yog',
+    'To protect the righteous, to annihilate the wicked, and to reestablish the principles of dharma, I appear millennium after millennium.',
+  ),
+
+  MostReadVerse(
+    '6.5',
+    'Ātma–Saṁyama Yog',
+    'One must elevate oneself by one’s own mind and not degrade oneself. The mind is the friend of the conditioned soul, and his enemy as well.',
+  ),
+
+  MostReadVerse(
+    '6.6',
+    'Ātma–Saṁyama Yog',
+    'For one who has conquered the mind, the mind is the best of friends; but for one who has failed to do so, the mind will remain the greatest enemy.',
+  ),
+
+  MostReadVerse(
+    '12.15',
+    'Bhakti Yog',
+    'One who is not disturbed by others and who does not disturb others, who is free from fear and anxiety, is very dear to Me.',
+  ),
 ];
 
 // --- HOME PAGE WIDGET ---
@@ -57,16 +88,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late Map<String, String> todayVerse;
   int _selectedIndex = 0;
   late PageController _pageController;
   // 3. STATE VARIABLE FOR CHAPTERS
   List<Chapter> _chapters = [];
   bool _isLoading = true;
   final DatabaseHelper _dbHelper = DatabaseHelper.instance;
+  Verse? lastReadVerse;
 
   @override
   void initState() {
     super.initState();
+    todayVerse = VerseOfTheDay.getTodayVerse();
+    NotificationService.scheduleDailyVerse(
+    title: 'Verse of the Day • ${todayVerse['ref']}',
+    body: todayVerse['text']!,
+  );
+    loadLastRead();
     _pageController = PageController();
     // 4. FETCH CHAPTERS ON INIT
     _fetchChapters();
@@ -94,6 +133,14 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  Future<void> loadLastRead() async {
+    final verse = await DatabaseHelper.instance.fetchLastReadVerse();
+
+    setState(() {
+      lastReadVerse = verse;
+    });
+  }
+
   void _onItemTapped(int index) {
     if (index == 1) {
       // 🟣 When user taps "Gita GPT" icon
@@ -110,7 +157,8 @@ class _HomePageState extends State<HomePage> {
         MaterialPageRoute(builder: (context) => BookmarksPage()),
       );
       return; // prevent changing the bottom nav highlight
-    }if (index == 3) {
+    }
+    if (index == 3) {
       // 🟣 When user taps "Gita GPT" icon
       Navigator.push(
         context,
@@ -156,9 +204,9 @@ class _HomePageState extends State<HomePage> {
   // }
 
   // 5. UPDATED METHOD SIGNATURE TO USE THE NEW Chapter MODEL
-// Remember to import your Chapter model and ChapterDetailPage at the top of mainscreen.dart
+  // Remember to import your Chapter model and ChapterDetailPage at the top of mainscreen.dart
 
-Widget _buildChapterCard(Chapter chapter) {
+  Widget _buildChapterCard(Chapter chapter) {
     // The UI part remains UNCHANGED, only the source of 'chapter' has changed.
     return Padding(
       padding: const EdgeInsets.only(bottom: 12.0),
@@ -185,7 +233,7 @@ Widget _buildChapterCard(Chapter chapter) {
                   // Passing the specific chapter data to the detail page
                   chapterNumber: chapter.number,
                   chapterTitle: chapter.title,
-                  chapterSummary: chapter.summary, 
+                  chapterSummary: chapter.summary,
                 ),
               ),
             );
@@ -205,7 +253,12 @@ Widget _buildChapterCard(Chapter chapter) {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: Colors.transparent, // 👈 No fill color
                     border: Border.all(
-                      color: const Color.fromARGB(255, 250, 144, 30), // 👈 Border color
+                      color: const Color.fromARGB(
+                        255,
+                        250,
+                        144,
+                        30,
+                      ), // 👈 Border color
                       width: 2, // 👈 Border thickness
                     ),
                   ),
@@ -215,7 +268,12 @@ Widget _buildChapterCard(Chapter chapter) {
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
-                        color: Color.fromARGB(255, 33, 32, 31), // 👈 Match text color with border
+                        color: Color.fromARGB(
+                          255,
+                          33,
+                          32,
+                          31,
+                        ), // 👈 Match text color with border
                       ),
                     ),
                   ),
@@ -267,7 +325,7 @@ Widget _buildChapterCard(Chapter chapter) {
       ),
     );
   }
-    // --- Other Methods (UNCHANGED) ---
+  // --- Other Methods (UNCHANGED) ---
 
   Widget _buildMostReadVerseCard(MostReadVerse verse) {
     // ... (widget implementation is unchanged)
@@ -428,10 +486,7 @@ Widget _buildChapterCard(Chapter chapter) {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: const [
-            Text(
-              '🪷',
-              style: TextStyle(fontSize: 20),
-            ),
+            Text('🪷', style: TextStyle(fontSize: 20)),
             SizedBox(width: 8),
             Text(
               'Bhagavad Gita',
@@ -443,11 +498,7 @@ Widget _buildChapterCard(Chapter chapter) {
               ),
             ),
             SizedBox(width: 8),
-            Text(
-              '🪷',
-              style: TextStyle(fontSize: 20),
-            ),
-            
+            Text('🪷', style: TextStyle(fontSize: 20)),
           ],
         ),
         centerTitle: true,
@@ -557,8 +608,8 @@ Widget _buildChapterCard(Chapter chapter) {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'BG 6.19',
+                           Text(
+                            todayVerse['ref']!,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -566,8 +617,8 @@ Widget _buildChapterCard(Chapter chapter) {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          const Text(
-                            'Just as a lamp in a windless place does not flicker, so the disciplined mind of a yogi remains steady in meditation on the Supreme.',
+                           Text(
+                            todayVerse['text']!,
                             style: TextStyle(
                               fontSize: 16,
                               height: 1.4,
@@ -618,98 +669,107 @@ Widget _buildChapterCard(Chapter chapter) {
                           color: Color(0xFF333333),
                         ),
                       ),
-                      const Text(
-                        '3 days ago',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontStyle: FontStyle.italic,
-                          color: Colors.grey,
-                        ),
-                      ),
                     ],
                   ),
                   const SizedBox(height: 8),
 
                   // LAST READ CARD (UNCHANGED)
-                  Card(
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
+                  if (lastReadVerse != null)
+                    InkWell(
                       borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              'assets/images/teaching.jpg',
-                              width: 80,
-                              height: 80,
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  Container(
-                                    width: 80,
-                                    height: 80,
-                                    color: Colors.grey.shade200,
-                                    child: const Icon(
-                                      Icons.menu_book,
-                                      size: 40,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ReadingPage(
+                              initialVerse:
+                                  lastReadVerse!, // ✅ pass verse object
+                              chapterNumber: lastReadVerse!.chapterNumber,
+                              verseNumber: lastReadVerse!.verseNumber,
                             ),
                           ),
-                          const SizedBox(width: 15),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'BG 1.1',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black54,
-                                  ),
+                        );
+                      },
+                      child: Card(
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.asset(
+                                  'assets/images/teaching.jpg',
+                                  width: 80,
+                                  height: 80,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      Container(
+                                        width: 80,
+                                        height: 80,
+                                        color: Colors.grey.shade200,
+                                        child: const Icon(
+                                          Icons.menu_book,
+                                          size: 40,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
                                 ),
-                                const SizedBox(height: 4),
-                                const Text(
-                                  'Dhritarashtra said: O Sanjay, after gather...',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black,
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                const SizedBox(height: 8),
-                                Row(
+                              ),
+                              const SizedBox(width: 15),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Continue reading',
-                                      style: TextStyle(
+                                      'BG ${lastReadVerse!.chapterNumber}.${lastReadVerse!.verseNumber}',
+                                      style: const TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
-                                        color: kPrimaryOrange,
+                                        color: Colors.black54,
                                       ),
                                     ),
-                                    const Icon(
-                                      Icons.chevron_right,
-                                      color: kPrimaryOrange,
-                                      size: 18,
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      '${lastReadVerse!.translation}',
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black,
+                                      ),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Continue reading',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: kPrimaryOrange,
+                                          ),
+                                        ),
+                                        const Icon(
+                                          Icons.chevron_right,
+                                          color: kPrimaryOrange,
+                                          size: 18,
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
 
                   // CHAPTERS SECTION Heading (UNCHANGED)
                   const SizedBox(height: 30),
@@ -764,7 +824,6 @@ Widget _buildChapterCard(Chapter chapter) {
             BottomNavigationBarItem(
               icon: Icon(Icons.auto_awesome),
               label: 'Gita GPT',
-              
             ),
             BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Saved'),
             BottomNavigationBarItem(
